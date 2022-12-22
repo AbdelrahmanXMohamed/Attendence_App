@@ -33,7 +33,7 @@ public class User {
     @Column
     private String phone ;
 
-    @ManyToOne
+//    @ManyToOne
 //    @JoinColumn(name = "teams")
-    private Long team_id ;
+//    private Long team_id ;
 }
