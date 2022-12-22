@@ -1,37 +1,29 @@
 package com.example.demo.attendence.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "vacation_request")
+@Table(name = "status")
 @Data
-public class VacationRequest {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "day")
+    private LocalDate day;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
-
-    @Column(name = "type")
-    private Short type;
-
     @Column(name = "status")
     private Short status;
-
-    @Column(name = "startDate")
-    private LocalDate startDate;
-
-    @Column(name = "endDate")
-    private LocalDate endDate;
-
-    @Column(name = "comment")
-    private String comment;
-
 
 }
