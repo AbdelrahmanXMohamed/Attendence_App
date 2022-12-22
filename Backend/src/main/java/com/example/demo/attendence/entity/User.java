@@ -1,39 +1,33 @@
 package com.example.demo.attendence.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
+@Data
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column( nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Column(name = "username")
     private String username;
 
-    @Column
+    @Column(name = "password")
     private String password;
 
-    @Column
-    private Integer type ;
+    @Column(name = "type")
+    private Short type;
 
-    @Column
-    private String email ;
+    @Column(name = "email")
+    private String email;
 
-    @Column
-    private String phone ;
+    @Column(name = "phone")
+    private String phone;
 
-    @ManyToOne
-    @JoinColumn(name = "teams_id")
-    private Team team ;
 }
