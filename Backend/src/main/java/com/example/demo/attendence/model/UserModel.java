@@ -1,4 +1,4 @@
-package com.example.demo.attendence.dto;
+package com.example.demo.attendence.model;
 
 import lombok.Getter;
 import lombok.Setter;

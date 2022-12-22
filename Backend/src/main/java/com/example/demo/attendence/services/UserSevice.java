@@ -1,9 +1,6 @@
 package com.example.demo.attendence.services;
 
-import com.example.demo.attendence.dto.UserModel;
-import com.example.demo.attendence.entity.User;
-
-import org.springframework.stereotype.Service;
+import com.example.demo.attendence.model.UserModel;
 
 import java.util.*;
 

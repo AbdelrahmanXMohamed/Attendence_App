@@ -1,6 +1,6 @@
 package com.example.demo.attendence.services.impl;
 
-import com.example.demo.attendence.dto.UserModel;
+import com.example.demo.attendence.model.UserModel;
 import com.example.demo.attendence.entity.User;
 import com.example.demo.attendence.mapper.UserMapper;
 import com.example.demo.attendence.repository.UserRepo;
