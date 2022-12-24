@@ -1,19 +1,20 @@
 package com.example.demo.attendence.services;
 
-import com.example.demo.attendence.model.UserModel;
+import com.example.demo.attendence.model.UserRequestModel;
+import com.example.demo.attendence.model.UserResponseModel;
 
 import java.util.List;
 
 
 public interface UserSevice {
 
-     UserModel createUser(UserModel userModel);
+     UserResponseModel createUser(UserRequestModel userRequestModel);
 
-    UserModel updateUser(UserModel userModel);
+    UserResponseModel updateUser(UserRequestModel userRequestModel);
 
-    UserModel getUser(Long id);
+    UserResponseModel getUser(Long id);
 
-    List<UserModel> getAllUsers();
+    List<UserResponseModel> getAllUsers();
 
     void deleteUser (Long id);
 

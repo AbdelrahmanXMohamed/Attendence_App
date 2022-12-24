@@ -1,6 +1,7 @@
 package com.example.demo.attendence.controller;
 
-import com.example.demo.attendence.model.UserModel;
+import com.example.demo.attendence.model.UserRequestModel;
+import com.example.demo.attendence.model.UserResponseModel;
 import com.example.demo.attendence.services.impl.UserSeviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,22 +20,22 @@ public class UserController {
     }
 
     @PostMapping
-    public UserModel createUser(@RequestBody UserModel userModel){
-        return userSevice.createUser(userModel) ;
+    public UserResponseModel createUser(@RequestBody UserRequestModel userRequestModel){
+        return userSevice.createUser(userRequestModel) ;
     }
 
     @PutMapping
-    public UserModel updateUser(@RequestBody UserModel userModel) {
+    public UserResponseModel updateUser(@RequestBody UserRequestModel userRequestModel) {
         return null ;
     }
 
     @GetMapping("{id}")
-    public UserModel getUserById(@PathVariable Long id){
+    public UserResponseModel getUserById(@PathVariable Long id){
         return userSevice.getUser(id);
     }
 
     @GetMapping
-    public List<UserModel> getAllUsers(){
+    public List<UserResponseModel> getAllUsers(){
         return userSevice.getAllUsers();
     }
 
