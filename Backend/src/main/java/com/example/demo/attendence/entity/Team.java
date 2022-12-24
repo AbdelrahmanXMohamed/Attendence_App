@@ -3,6 +3,8 @@ package com.example.demo.attendence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.*;
+
 @Entity
 @Table(name = "teams")
 @Data
@@ -21,6 +23,9 @@ public class Team {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "managerId")
     private User manager;
+
+    @OneToMany
+    private List<User> users ;
 
 
 }

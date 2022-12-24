@@ -15,12 +15,12 @@ public class UserModel {
 
     private String password;
 
-    private Integer type ;
+//    private Integer type ;
 
     private String email ;
 
     private String phone ;
 
-    private Long team_id ;
+    private TeamRequestModel team_id ;
 
 }

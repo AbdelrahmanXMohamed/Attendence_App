@@ -21,13 +21,17 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "type")
-    private Short type;
+//    @Column(name = "type")
+//    private Short type;
 
     @Column(name = "email")
     private String email;
 
     @Column(name = "phone")
     private String phone;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    private Team team ;
 
 }
