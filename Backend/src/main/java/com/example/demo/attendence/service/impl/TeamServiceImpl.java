@@ -15,10 +15,8 @@ import java.util.List;
 @Service
 public class TeamServiceImpl implements TeamService {
 
-
-
     private final TeamRepository teamRepository;
-    private final TeamMapper mapper;
+    private TeamMapper mapper;
     private final UserRepository userRepository;
 
     public TeamServiceImpl(TeamRepository teamRepository, TeamMapper mapper, UserRepository userRepository) {
@@ -36,7 +34,7 @@ public class TeamServiceImpl implements TeamService {
         Team team = this.teamRepository.findById(teamId).orElseThrow();
         team.getUsers().add(user);
         this.teamRepository.save(team);
-        user.setTeam(team);
+        //user.setTeam(team);
         this.userRepository.save(user);
         return this.mapper.toResponseModel(team);
     }
@@ -44,13 +42,14 @@ public class TeamServiceImpl implements TeamService {
     public List<User> getAllTeamUsers(Long teamId) {
         Team team = this.teamRepository.findById(teamId).orElseThrow();
         return team.getUsers();
+
     }
 
     public TeamResponseModel removeUserFromTeam(Long userId, Long teamId) {
         Team team = this.teamRepository.findById(teamId).orElseThrow();
         User user = this.userRepository.findById(userId).orElseThrow();
         team.getUsers().remove(user);
-        user.setTeam(null);
+        //user.setTeam(null);
         this.userRepository.save(user);
         this.teamRepository.save(team);
         return this.mapper.toResponseModel(team);

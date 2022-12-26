@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VacationRequestRepository extends JpaRepository<VacationRequest, Long> {
+
 }

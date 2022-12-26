@@ -1,5 +1,6 @@
 package com.example.demo.attendence.model;
 
+import com.example.demo.attendence.entity.User;
 import lombok.Data;
 
 import java.util.List;

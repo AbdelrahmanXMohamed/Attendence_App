@@ -1,28 +1,29 @@
 package com.example.demo.attendence.controller;
 
-import com.example.demo.attendence.model.UserModel;
-import com.example.demo.attendence.service.impl.UserSeviceImpl;
+import com.example.demo.attendence.model.UserRequestModel;
+import com.example.demo.attendence.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserController {
 
-    private UserSeviceImpl userSevice ;
+    private UserServiceImpl userSevice;
 
     @Autowired
-    public UserController (UserSeviceImpl userSevice){
-        this.userSevice = userSevice ;
+    public UserController(UserServiceImpl userSevice) {
+        this.userSevice = userSevice;
     }
 
     @PostMapping
-    public void createUser(@RequestBody UserModel userModel){
+    public void createUser(@RequestBody UserRequestModel userModel) {
+        userSevice.createUser(userModel);
 
     }
 
     @PutMapping
-    public void updateUser(@RequestBody UserModel userModel) {
+    public void updateUser(@RequestBody UserRequestModel userModel) {
 
     }
 

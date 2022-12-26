@@ -21,6 +21,9 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "type")
+    private Short type;
+
     @Column(name = "email")
     private String email;
 
@@ -30,5 +33,4 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
-
 }
