@@ -1,0 +1,16 @@
+*{
+    text-align: center;
+    text-transform: capitalize;
+}
+
+p{
+    font-size: 20px;
+}
+.container{
+    margin-top: 100px;
+}
+
+.container button{
+    padding: 10px 20px;
+    margin-right: 20px;
+}
