@@ -8,8 +8,8 @@ import lombok.Setter;
 @Setter
 public class TeamRequestModel {
 
-
     private String name;
+
     private String description;
 
     private User manager;

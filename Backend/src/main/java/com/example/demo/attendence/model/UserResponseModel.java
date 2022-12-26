@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserResponseModel {
+public class UserModel {
     private Long id;
 
     private String name;
@@ -14,12 +14,10 @@ public class UserResponseModel {
 
     private String password;
 
-//    private Integer type ;
-
     private String email ;
 
     private String phone ;
 
-    private TeamResponseModel team ;
+    private Long team_id ;
 
 }

@@ -1,15 +1,12 @@
 package com.example.demo.attendence.controller;
 
-import com.example.demo.attendence.model.UserRequestModel;
-import com.example.demo.attendence.model.UserResponseModel;
+import com.example.demo.attendence.model.UserModel;
 import com.example.demo.attendence.services.impl.UserSeviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
-
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserController {
 
     private UserSeviceImpl userSevice ;
@@ -20,28 +17,14 @@ public class UserController {
     }
 
     @PostMapping
-    public UserResponseModel createUser(@RequestBody UserRequestModel userRequestModel){
-        return userSevice.createUser(userRequestModel) ;
+    public void createUser(@RequestBody UserModel userModel){
+        userSevice.createUser(userModel);
+
     }
 
     @PutMapping
-    public UserResponseModel updateUser(@RequestBody UserRequestModel userRequestModel) {
-        return null ;
-    }
+    public void updateUser(@RequestBody UserModel userModel) {
 
-    @GetMapping("{id}")
-    public UserResponseModel getUserById(@PathVariable Long id){
-        return userSevice.getUser(id);
-    }
-
-    @GetMapping
-    public List<UserResponseModel> getAllUsers(){
-        return userSevice.getAllUsers();
-    }
-
-    @DeleteMapping("{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userSevice.deleteUser(id);
     }
 
 
