@@ -30,4 +30,7 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    private Team team;
 }

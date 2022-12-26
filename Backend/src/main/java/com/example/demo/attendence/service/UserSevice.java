@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserSevice {
 
-     UserResponseModel createUser(UserRequestModel userRequestModel);
+    UserResponseModel createUser(UserRequestModel userRequestModel);
 
     UserResponseModel updateUser(UserRequestModel userRequestModel);
 

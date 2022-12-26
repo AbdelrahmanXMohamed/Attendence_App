@@ -3,7 +3,7 @@ package com.example.demo.attendence.controller;
 import com.example.demo.attendence.model.ApproveRequuestModel;
 import com.example.demo.attendence.model.VacationModel;
 import com.example.demo.attendence.model.VacationRequestModel;
-import com.example.demo.attendence.services.VacationRequestService;
+import com.example.demo.attendence.service.VacationRequestService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;

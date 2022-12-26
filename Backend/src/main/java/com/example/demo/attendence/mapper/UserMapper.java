@@ -11,6 +11,5 @@ public interface UserMapper {
 
     User userToEntity (UserRequestModel userRequestModel);
 
-    @Mapping(target = "team" , ignore = true)
     UserResponseModel userToModel (User User);
 }

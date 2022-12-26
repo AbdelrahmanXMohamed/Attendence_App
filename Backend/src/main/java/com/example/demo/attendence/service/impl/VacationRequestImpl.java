@@ -1,4 +1,4 @@
-package com.example.demo.attendence.services.impl;
+package com.example.demo.attendence.service.impl;
 
 import com.example.demo.attendence.entity.Team;
 import com.example.demo.attendence.entity.User;
@@ -11,7 +11,7 @@ import com.example.demo.attendence.model.VacationRequestModel;
 import com.example.demo.attendence.repository.TeamRepository;
 import com.example.demo.attendence.repository.UserRepository;
 import com.example.demo.attendence.repository.VacationRequestRepository;
-import com.example.demo.attendence.services.VacationRequestService;
+import com.example.demo.attendence.service.VacationRequestService;
 import com.example.demo.attendence.utils.VacationStatus;
 import com.example.demo.attendence.utils.VacationType;
 import org.mapstruct.factory.Mappers;
