@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UserController {
 
-    private UserServiceImpl userSevice;
+    private UserServiceImpl userService;
 
     @Autowired
-    public UserController(UserServiceImpl userSevice) {
-        this.userSevice = userSevice;
+    public UserController(UserServiceImpl userService) {
+        this.userService = userService;
     }
 
     @PostMapping
     public void createUser(@RequestBody UserRequestModel userModel) {
-        userSevice.createUser(userModel);
+        userService.createUser(userModel);
 
     }
 
