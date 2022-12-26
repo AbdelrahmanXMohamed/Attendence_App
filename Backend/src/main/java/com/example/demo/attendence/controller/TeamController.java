@@ -1,8 +1,8 @@
 package com.example.demo.attendence.controller;
 
-import com.example.demo.attendence.entity.User;
 import com.example.demo.attendence.model.TeamRequestModel;
 import com.example.demo.attendence.model.TeamResponseModel;
+import com.example.demo.attendence.model.UserResponseModel;
 import com.example.demo.attendence.service.impl.TeamServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

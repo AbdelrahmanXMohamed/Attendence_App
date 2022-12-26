@@ -1,10 +1,12 @@
 package com.example.demo.attendence.service.impl;
 
 import com.example.demo.attendence.entity.User;
+import com.example.demo.attendence.mapper.UserMapper;
 import com.example.demo.attendence.model.TeamRequestModel;
 import com.example.demo.attendence.model.TeamResponseModel;
 import com.example.demo.attendence.entity.Team;
 import com.example.demo.attendence.mapper.TeamMapper;
+import com.example.demo.attendence.model.UserResponseModel;
 import com.example.demo.attendence.repository.TeamRepository;
 import com.example.demo.attendence.repository.UserRepository;
 import com.example.demo.attendence.service.TeamService;
@@ -17,6 +19,8 @@ public class TeamServiceImpl implements TeamService {
 
     private final TeamRepository teamRepository;
     private TeamMapper mapper;
+
+    private UserMapper userMapper;
     private final UserRepository userRepository;
 
     public TeamServiceImpl(TeamRepository teamRepository, TeamMapper mapper, UserRepository userRepository) {
@@ -39,10 +43,12 @@ public class TeamServiceImpl implements TeamService {
         return this.mapper.toResponseModel(team);
     }
 
-    public List<User> getAllTeamUsers(Long teamId) {
+    public List<UserResponseModel> getAllTeamUsers(Long teamId) {
         Team team = this.teamRepository.findById(teamId).orElseThrow();
-        return team.getUsers();
-
+        return team.getUsers()
+                .stream()
+                .map(user -> userMapper.userToModel(user))
+                .toList();
     }
 
     public TeamResponseModel removeUserFromTeam(Long userId, Long teamId) {
