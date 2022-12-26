@@ -1,5 +1,6 @@
 package com.example.demo.attendence.entity;
 
+import com.example.demo.attendence.utils.DailyStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,13 +18,12 @@ public class Status {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
     @Column(name = "day")
     private LocalDate day;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
     @Column(name = "status")
-    private Short status;
+    private DailyStatus status;
 
 }

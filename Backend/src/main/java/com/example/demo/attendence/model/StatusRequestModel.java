@@ -1,11 +1,13 @@
 package com.example.demo.attendence.model;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import com.example.demo.attendence.annotation.EnumNamePattern;
+import com.example.demo.attendence.utils.DailyStatus;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -13,14 +15,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StatusRequestModel {
-
-    @NotBlank(message = "Day is required")
+    @NotNull(message = "Day is required")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate day;
-    @NotBlank(message = "User id is required")
+    @NotNull(message = "User id is required")
+    @Positive(message = "Invalid id")
     private Long userId;
-    @NotBlank(message = "Status code is required")
-    @Min(value = 0, message = "Can't be less then zero")
-    @Max(value = 3, message = "Can't greater than 3")
-    private Short status;
-
+    @NotNull(message = "Status can't empty")
+    @EnumNamePattern(regexp = "ABSENCE|REMOTE|ONSITE")
+    private DailyStatus status;
 }

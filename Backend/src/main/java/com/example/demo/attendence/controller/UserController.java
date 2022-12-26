@@ -1,7 +1,7 @@
 package com.example.demo.attendence.controller;
 
 import com.example.demo.attendence.model.UserModel;
-import com.example.demo.attendence.services.impl.UserSeviceImpl;
+import com.example.demo.attendence.service.impl.UserSeviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

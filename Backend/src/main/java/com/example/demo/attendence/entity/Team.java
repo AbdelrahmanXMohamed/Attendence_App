@@ -11,16 +11,12 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
     @Column(name = "name")
     private String name;
-
     @Column(name = "description")
     private String description;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "managerId")
     private User manager;
-
 
 }

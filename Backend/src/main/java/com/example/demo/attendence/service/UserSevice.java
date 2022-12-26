@@ -1,4 +1,4 @@
-package com.example.demo.attendence.services;
+package com.example.demo.attendence.service;
 
 import com.example.demo.attendence.model.UserModel;
 

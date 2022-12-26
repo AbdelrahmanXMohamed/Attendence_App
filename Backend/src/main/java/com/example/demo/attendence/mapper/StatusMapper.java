@@ -5,10 +5,13 @@ import com.example.demo.attendence.model.StatusModel;
 import com.example.demo.attendence.model.StatusRequestModel;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface StatusMapper {
+    StatusModel statusToStatusModel(Status status);
+
     StatusModel statusRequestModelToStatusModel(StatusRequestModel statusRequestModel);
 
     Status statusModelToStatus(StatusModel statusModel);
+
 
 }

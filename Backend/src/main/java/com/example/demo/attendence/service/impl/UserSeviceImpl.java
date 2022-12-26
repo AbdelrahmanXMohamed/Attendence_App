@@ -1,10 +1,10 @@
-package com.example.demo.attendence.services.impl;
+package com.example.demo.attendence.service.impl;
 
 import com.example.demo.attendence.model.UserModel;
 import com.example.demo.attendence.entity.User;
 import com.example.demo.attendence.mapper.UserMapper;
 import com.example.demo.attendence.repository.UserRepo;
-import com.example.demo.attendence.services.UserSevice;
+import com.example.demo.attendence.service.UserSevice;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

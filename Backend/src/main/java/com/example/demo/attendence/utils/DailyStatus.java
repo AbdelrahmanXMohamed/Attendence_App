@@ -4,5 +4,7 @@ public enum DailyStatus {
     ABSENCE,
     REMOTE,
     ONSITE,
-    VACATION
+    VACATION,
+    UNKNOWN,
+    NOT_EXIST
 }
