@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="536e54c7-6872-4243-b8be-de48f0457c8e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/entity/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/entity/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/entity/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/entity/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/entity/VacationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/entity/VacationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/model/UserRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/model/UserRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2JMlh0RXek3SvmQfUu0tA8brAXw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mostafa/Downloads/slf4j-simple-1.7.26.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="536e54c7-6872-4243-b8be-de48f0457c8e" name="Changes" comment="" />
+      <created>1671895950402</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671895950402</updated>
+      <workItem from="1671895952008" duration="2586000" />
+      <workItem from="1671978965489" duration="1312000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
