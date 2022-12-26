@@ -12,8 +12,6 @@ public class UserRequestModel {
 
     private String password;
 
-//    private Integer type ;
-
     private String email ;
 
     private String phone ;

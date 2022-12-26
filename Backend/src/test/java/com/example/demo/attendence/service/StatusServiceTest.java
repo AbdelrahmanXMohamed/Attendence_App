@@ -33,7 +33,6 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class StatusServiceTest {
-
     @InjectMocks
     private StatusServiceImpl statusService;
     @Mock
