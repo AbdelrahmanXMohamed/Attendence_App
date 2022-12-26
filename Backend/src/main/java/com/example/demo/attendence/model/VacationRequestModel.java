@@ -2,14 +2,14 @@ package com.example.demo.attendence.model;
 
 import com.example.demo.attendence.utils.VacationStatus;
 import com.example.demo.attendence.utils.VacationType;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
 
 public class VacationRequestModel {
 
-    @NotNull
+   @NotNull
     private VacationType type;
 
     private VacationStatus status;

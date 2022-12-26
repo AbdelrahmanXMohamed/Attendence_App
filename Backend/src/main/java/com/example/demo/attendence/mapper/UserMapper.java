@@ -1,13 +1,16 @@
 package com.example.demo.attendence.mapper;
 
-import com.example.demo.attendence.model.UserModel;
 import com.example.demo.attendence.entity.User;
+import com.example.demo.attendence.model.UserRequestModel;
+import com.example.demo.attendence.model.UserResponseModel;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring" )
+@Mapper(componentModel = "spring" , uses = {TeamMapper.class})
 public interface UserMapper {
 
-    User userToEntity (UserModel userModel);
+    User userToEntity (UserRequestModel userRequestModel);
 
-    UserModel userToModel (User User);
+    @Mapping(target = "team" , ignore = true)
+    UserResponseModel userToModel (User User);
 }

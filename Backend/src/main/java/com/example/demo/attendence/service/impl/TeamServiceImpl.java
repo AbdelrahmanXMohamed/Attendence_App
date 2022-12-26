@@ -1,13 +1,13 @@
-package com.example.demo.attendence.service.impl;
+package com.example.demo.attendence.services.impl;
 
+import com.example.demo.attendence.entity.Team;
 import com.example.demo.attendence.entity.User;
+import com.example.demo.attendence.mapper.TeamMapper;
 import com.example.demo.attendence.model.TeamRequestModel;
 import com.example.demo.attendence.model.TeamResponseModel;
-import com.example.demo.attendence.entity.Team;
-import com.example.demo.attendence.mapper.TeamMapper;
 import com.example.demo.attendence.repository.TeamRepository;
 import com.example.demo.attendence.repository.UserRepository;
-import com.example.demo.attendence.service.TeamService;
+import com.example.demo.attendence.services.TeamService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
