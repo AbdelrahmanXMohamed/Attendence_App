@@ -1,6 +1,7 @@
 package com.example.demo.attendence.service.impl;
 
 import com.example.demo.attendence.entity.User;
+import com.example.demo.attendence.exception.*;
 import com.example.demo.attendence.mapper.UserMapper;
 import com.example.demo.attendence.model.TeamRequestModel;
 import com.example.demo.attendence.model.TeamResponseModel;
@@ -13,60 +14,71 @@ import com.example.demo.attendence.service.TeamService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TeamServiceImpl implements TeamService {
 
-    private final TeamRepository teamRepository;
-    private TeamMapper mapper;
 
-    private UserMapper userMapper;
+
+    private final TeamRepository teamRepository;
+    private final TeamMapper teamMapper;
+    private final UserMapper userMapper;
     private final UserRepository userRepository;
 
-    public TeamServiceImpl(TeamRepository teamRepository, TeamMapper mapper, UserRepository userRepository) {
+    public TeamServiceImpl(TeamRepository teamRepository, TeamMapper teamMapper, UserMapper userMapper, UserRepository userRepository) {
         this.teamRepository = teamRepository;
-        this.mapper = mapper;
+        this.teamMapper = teamMapper;
+        this.userMapper = userMapper;
         this.userRepository = userRepository;
     }
 
     public TeamResponseModel createTeam(TeamRequestModel requestModel){
-        return this.mapper.toResponseModel(this.teamRepository.save(this.mapper.toTeam(requestModel)));
+        if(requestModel.getManager() == null) throw new TeamMustHaveManagerException();
+        if (userRepository.findById(requestModel.getManager().getId()).isPresent() && (userRepository.findById(requestModel.getManager().getId()).get().getTeam() != null)) throw new MemberCannotManagerTeamException();
+        return this.teamMapper.toResponseModel(this.teamRepository.save(this.teamMapper.toTeam(requestModel)));
     }
 
     public TeamResponseModel addUserToTeam(Long userId,Long teamId){
         User user = this.userRepository.findById(userId).orElseThrow();
+        // handle if the user is in a team
+        if(user.getTeam() != null) throw new UserAlreadyIsInTeamException();
+        // handle if the user is a manager
+        Optional<Team> team1 = this.teamRepository.findByManager_Id(userId);
+        if (team1.isPresent()) throw new UserIsMangerException();
         Team team = this.teamRepository.findById(teamId).orElseThrow();
-        team.getUsers().add(user);
-        this.teamRepository.save(team);
-        //user.setTeam(team);
+        user.setTeam(team);
         this.userRepository.save(user);
-        return this.mapper.toResponseModel(team);
+        return this.teamMapper.toResponseModel(team);
     }
 
     public List<UserResponseModel> getAllTeamUsers(Long teamId) {
         Team team = this.teamRepository.findById(teamId).orElseThrow();
         return team.getUsers()
                 .stream()
-                .map(user -> userMapper.userToModel(user))
+                .map(userMapper::userToModel)
                 .toList();
     }
 
     public TeamResponseModel removeUserFromTeam(Long userId, Long teamId) {
         Team team = this.teamRepository.findById(teamId).orElseThrow();
         User user = this.userRepository.findById(userId).orElseThrow();
+        if(user.getTeam() == null) throw new UserHasNoTeamException();
         team.getUsers().remove(user);
-        //user.setTeam(null);
+        user.setTeam(null);
         this.userRepository.save(user);
         this.teamRepository.save(team);
-        return this.mapper.toResponseModel(team);
+        return this.teamMapper.toResponseModel(team);
     }
 
     public void removeTeam(Long teamId) {
+        // get the team by id
+        Team team = this.teamRepository.findById(teamId).orElseThrow();
+        // get all team users and set the users team to null
+        team.getUsers().forEach(user -> user.setTeam(null));
         this.teamRepository.deleteById(teamId);
     }
 
-    public TeamResponseModel getById(Long id) {
-        return this.mapper.toResponseModel(this.teamRepository.findById(id).orElseThrow());
-    }
+
 }
 
