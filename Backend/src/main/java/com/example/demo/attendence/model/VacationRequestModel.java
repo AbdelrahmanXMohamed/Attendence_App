@@ -1,22 +1,24 @@
 package com.example.demo.attendence.model;
 
-import com.example.demo.attendence.utils.VacationStatus;
 import com.example.demo.attendence.utils.VacationType;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
 
 import java.time.LocalDate;
 
-
+@Data
 public class VacationRequestModel {
 
-    @NotNull
+    @NotNull(message = "Type of vacation request mustn't be null.")
     private VacationType type;
 
-    private VacationStatus status;
+   @NotNull(message = "Start date mustn't be null.")
+    private LocalDate stratDate;
 
-    private LocalDate stratTime;
-
-    private LocalDate endTime;
+    private LocalDate endDate=LocalDate.now();
 
     private String comment;
 }

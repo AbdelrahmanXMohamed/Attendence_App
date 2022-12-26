@@ -7,18 +7,14 @@ import com.example.demo.attendence.exception.UserDoesNotExistException;
 import com.example.demo.attendence.model.StatusRequestModel;
 import com.example.demo.attendence.repository.StatusRepository;
 import com.example.demo.attendence.repository.UserRepository;
-import com.example.demo.attendence.services.StatusService;
 import com.example.demo.attendence.services.impl.StatusServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
 import java.util.Optional;

@@ -3,7 +3,7 @@ package com.example.demo.attendence.services.impl;
 import com.example.demo.attendence.model.UserModel;
 import com.example.demo.attendence.entity.User;
 import com.example.demo.attendence.mapper.UserMapper;
-import com.example.demo.attendence.repository.UserRepo;
+import com.example.demo.attendence.repository.UserRepository;
 import com.example.demo.attendence.services.UserSevice;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +17,20 @@ import java.util.NoSuchElementException;
 @Transactional
 public class UserSeviceImpl implements UserSevice {
 
-    private UserRepo userRepo ;
+    private UserRepository userRepo ;
     private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
 
     @Autowired
-    public UserSeviceImpl(UserRepo userRepo){
+    public UserSeviceImpl(UserRepository userRepo){
         this.userRepo = userRepo;
     }
 
     @Override
     public void createUser(UserModel userModel) {
+        System.out.println(userModel);
+        User user =userMapper.userToEntity(userModel);
+        System.out.println(user);
+        userRepo.save(user);
 
     }
 

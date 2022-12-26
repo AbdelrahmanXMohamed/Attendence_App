@@ -1,5 +1,8 @@
 package com.example.demo.attendence.entity;
 
+import com.example.demo.attendence.utils.VacationStatus;
+import com.example.demo.attendence.utils.VacationType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,27 +14,23 @@ import java.time.LocalDate;
 public class VacationRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId")
-    private User user;
+    private VacationType type;
 
-    @Column(name = "type")
-    private Short type;
+    private VacationStatus status;
 
-    @Column(name = "status")
-    private Short status;
-
-    @Column(name = "startDate")
     private LocalDate startDate;
 
-    @Column(name = "endDate")
     private LocalDate endDate;
 
-    @Column(name = "comment")
     private String comment;
 
+    private Long numberOfDays ;
+
+    @ManyToOne
+    @JoinColumn(name ="user_id",referencedColumnName = "id")
+    @JsonIgnore
+    private User user;
 
 }

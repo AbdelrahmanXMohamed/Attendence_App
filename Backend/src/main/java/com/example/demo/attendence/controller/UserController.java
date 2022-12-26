@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserController {
 
     private UserSeviceImpl userSevice ;
@@ -18,6 +18,7 @@ public class UserController {
 
     @PostMapping
     public void createUser(@RequestBody UserModel userModel){
+        userSevice.createUser(userModel);
 
     }
 
