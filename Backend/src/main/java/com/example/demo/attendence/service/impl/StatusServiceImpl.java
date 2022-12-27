@@ -50,41 +50,44 @@ public class StatusServiceImpl implements StatusService {
     }
 
     @Override
-    public List<StatusModel> getReportForUser(Long id, StatusBetweenTwoDateRequestModel statusBetweenTwoDateRequestModel) {
-        statusGuard();
+    public List<StatusModel> getReportForUser(Long userId, StatusBetweenTwoDateRequestModel statusBetweenTwoDateRequestModel) {
+        userStatusGuard(userId);
         if (isValidRange(statusBetweenTwoDateRequestModel)) {
             throw new StatusInvalidDateException("Start date can't be after end date");
         }
         List<StatusModel> result = new ArrayList<>();
         for (LocalDate starter = statusBetweenTwoDateRequestModel.getStarterDate(); isValidStarter(statusBetweenTwoDateRequestModel, starter); starter = starter.plusDays(1)) {
-            result.add(getStatusForUser(id, starter));
+            result.add(getStatusForUser(userId, starter));
         }
         return result;
     }
 
     @Override
     public StatusModel getReportPerDayForUser(Long userId, LocalDate date) {
-        statusGuard();
+        userStatusGuard(userId);
         return getStatusForUser(userId, date);
     }
 
     @Override
     public List<StatusModel> getReportPerDayForTeam(Long teamId, LocalDate date) {
+        teamStatusGuard(teamId);
         Team team = teamRepository.findById(teamId).orElseThrow(TeamDoesNotExistException::new);
-        return Collections.emptyList();
+        return team.getUsers().stream().map(user -> getStatusForUser(user.getId(), date)).toList();
     }
 
     @Override
     public List<StatusModel> getReportForCurrentWeekForUser(Long userId) {
-        statusGuard();
+        userStatusGuard(userId);
         List<LocalDate> allDaysOfWeek = Arrays.stream(DayOfWeek.values()).map(LocalDate.now()::with).toList();
         return allDaysOfWeek.stream().map(day -> getStatusForUser(userId, day)).toList();
     }
 
     @Override
-    public List<StatusModel> getReportForCurrentForTeam(Long teamId) {
+    public List<StatusModel> getReportForCurrentWeekForTeam(Long teamId) {
+        teamStatusGuard(teamId);
         Team team = teamRepository.findById(teamId).orElseThrow(TeamDoesNotExistException::new);
-        return Collections.emptyList();
+        List<LocalDate> allDaysOfWeek = Arrays.stream(DayOfWeek.values()).map(LocalDate.now()::with).toList();
+        return team.getUsers().stream().flatMap(user -> allDaysOfWeek.stream().map(day -> getStatusForUser(user.getId(), day))).toList();
     }
 
     private static boolean isValidStarter(StatusBetweenTwoDateRequestModel statusBetweenTwoDateRequestModel, LocalDate starter) {
@@ -98,7 +101,7 @@ public class StatusServiceImpl implements StatusService {
 
     private StatusModel getStatusForUser(Long userId, LocalDate starter) {
         User user = userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
-        if (starter.isAfter(LocalDate.now()) && !starter.isEqual(LocalDate.now())) {
+        if (starter.isAfter(LocalDate.now())) {
             return statusMapper.statusToStatusModel(statusRepository.findByUserAndDate(userId, starter)
                     .orElse(new Status(0L, starter, user, DailyStatus.UNKNOWN)));
         }
@@ -107,7 +110,13 @@ public class StatusServiceImpl implements StatusService {
                         .orElse(new Status(0L, starter, user, DailyStatus.ABSENCE)));
     }
 
-    private void statusGuard() {
+    private void userStatusGuard(Long userId) {
         // TODO document why this method is empty
+        System.err.println(userId);
+    }
+
+    private void teamStatusGuard(Long teamId) {
+        // TODO document why this method is empty
+        System.err.println(teamId);
     }
 }
