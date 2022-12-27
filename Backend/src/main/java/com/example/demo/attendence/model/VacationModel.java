@@ -17,7 +17,7 @@ public class VacationModel {
 
     private LocalDate endDate;
 
-    private Long numberOfDay;
+    private int numberOfDay;
 
     private String comment;
 }
