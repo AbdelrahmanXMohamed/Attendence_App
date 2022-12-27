@@ -17,6 +17,7 @@ import com.example.demo.attendence.service.VacationRequestService;
 import com.example.demo.attendence.utils.DailyStatus;
 import com.example.demo.attendence.utils.VacationStatus;
 import com.example.demo.attendence.utils.VacationType;
+import org.jetbrains.annotations.NotNull;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -108,7 +109,7 @@ public class VacationRequestImpl implements VacationRequestService {
 
     }
 
-    public void setStatus(VacationRequest vacationRequest){
+    public void setStatus(@NotNull VacationRequest vacationRequest){
         StatusRequestModel statusRequestModel =new StatusRequestModel();
         statusRequestModel.setUserId(vacationRequest.getUser().getId());
         statusRequestModel.setStatus(DailyStatus.ABSENCE);
