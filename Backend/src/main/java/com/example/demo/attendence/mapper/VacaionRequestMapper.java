@@ -31,7 +31,7 @@ public interface VacaionRequestMapper {
             vacationRequest.setEndDate(vacationRequestModel.getEndDate());
 
        vacationRequest.setComment(vacationRequestModel.getComment());
-        vacationRequest.setNumberOfDays( Long.valueOf(vacationRequest.getEndDate().getDayOfMonth()-vacationRequest.getStartDate().getDayOfMonth()));
+        vacationRequest.setNumberOfDays( vacationRequest.getEndDate().getDayOfMonth()-vacationRequest.getStartDate().getDayOfMonth());
         return vacationRequest;
     }
 

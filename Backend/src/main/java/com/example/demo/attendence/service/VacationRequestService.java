@@ -10,7 +10,7 @@ public interface VacationRequestService {
 
     public void requestVacation(Long id, VacationRequestModel vacationRequestModel);
 
-    public List<VacationModel> allVacationRequestPerTeam(Long userId , Long teamId);
+    public List<VacationModel> getAllVacationRequestPerTeam(Long userId , Long teamId);
 
     public void approveRequest(Long userId, Long vacationId, ApproveRequuestModel approveRequuestModel);
 

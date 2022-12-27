@@ -28,7 +28,7 @@ public class VacationRequest {
 
     private String comment;
 
-    private Long numberOfDays ;
+    private int numberOfDays ;
 
     @ManyToOne
     @JoinColumn(name ="user_id",referencedColumnName = "id")

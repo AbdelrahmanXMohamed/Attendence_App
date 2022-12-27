@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @Validated
-@RequestMapping("/vacation")
+@RequestMapping("/vacations")
 public class VacationRequestController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class VacationRequestController {
 
     @GetMapping("/{userId}/{teamId}")
     public List<VacationModel> allVacationRequestperTeam(@PathVariable Long userId , @PathVariable Long teamId){
-        return vacationRequestService.allVacationRequestPerTeam(userId,teamId);
+        return vacationRequestService.getAllVacationRequestPerTeam(userId,teamId);
     }
 
     @PostMapping("/{userId}/{vacationId}")
