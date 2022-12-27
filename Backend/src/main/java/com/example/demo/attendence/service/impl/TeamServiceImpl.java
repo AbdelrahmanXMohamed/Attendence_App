@@ -35,7 +35,14 @@ public class TeamServiceImpl implements TeamService {
 
     public TeamResponseModel createTeam(TeamRequestModel requestModel){
         if(requestModel.getManager() == null) throw new TeamMustHaveManagerException();
-        if (userRepository.findById(requestModel.getManager().getId()).isPresent() && (userRepository.findById(requestModel.getManager().getId()).get().getTeam() != null)) throw new MemberCannotManagerTeamException();
+        // check if the manager exists
+        if (userRepository.findById(requestModel.getManager().getId()).isPresent()) {
+            throw new UserDoesNotExistException();
+        }
+        // check if the manager is member
+        if (userRepository.findById(requestModel.getManager().getId()).get().getTeam() != null){
+            throw new MemberCannotManageTeamException();
+        }
         return this.teamMapper.toResponseModel(this.teamRepository.save(this.teamMapper.toTeam(requestModel)));
     }
 
