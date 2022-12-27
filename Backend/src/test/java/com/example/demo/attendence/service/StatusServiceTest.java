@@ -51,7 +51,7 @@ public class StatusServiceTest {
      * Test Cases of Set Status
      */
     @Test(expected = StatusInvalidDateException.class)
-    public void testSetStatusDateErrorTestCase() {
+    public void testSetStatusForFutureDateErrorTestCase() {
         // create mock inputs
         LocalDate day = LocalDate.now().minusDays(10);
         Long userId = 1L;
@@ -69,6 +69,7 @@ public class StatusServiceTest {
         Long userId = 1L;
         DailyStatus status = DailyStatus.ONSITE;
         when(userRepository.findById(userId)).thenReturn(Optional.empty());
+
         // execute the method being tested
         statusService.setStatus(new StatusRequestModel(day, userId, status));
     }
@@ -82,9 +83,11 @@ public class StatusServiceTest {
         Status expectedStatus = new Status(userId, day, new User(), status);
         when(userRepository.findById(userId)).thenReturn(Optional.of(new User()));
         when(statusRepository.save(any(Status.class))).thenReturn(expectedStatus);
+
         // execute the method being tested
         Status resultStatus =
                 statusService.setStatus(new StatusRequestModel(day, userId, status));
+
         // assert the output is as expected
         Assert.assertEquals(expectedStatus, resultStatus);
     }
@@ -110,6 +113,7 @@ public class StatusServiceTest {
         LocalDate starterDate = LocalDate.now().minusDays(5);
         LocalDate enderDate = LocalDate.now().minusDays(10);
         Long userId = 1L;
+
         // execute the method being tested
         statusService.getReportForUser(userId, new StatusBetweenTwoDateRequestModel(starterDate, enderDate));
     }
@@ -126,14 +130,12 @@ public class StatusServiceTest {
         int i = 0;
         for (LocalDate start = starterDate; start.isBefore(enderDate) || start.isEqual(enderDate); start = start.plusDays(1)) {
             if (start.isAfter(LocalDate.now()) && !start.isEqual(LocalDate.now())) {
-                expected.add(statusMapper.statusToStatusModel(
-                        new Status(0L, start, user, DailyStatus.UNKNOWN)));
-                continue;
+                expected.add(statusMapper.statusToStatusModel(new Status(0L, start, user, DailyStatus.UNKNOWN)));
+            } else {
+                Status status = new Status(0L, start, user, DailyStatus.REMOTE);
+                expected.add(statusMapper.statusToStatusModel(status));
+                when(statusRepository.findByUserAndDate(userId, start)).thenReturn(Optional.of(status));
             }
-            expected.add(statusMapper.statusToStatusModel(
-                    new Status(0L, start, user, Math.random() % 2 == 0 ? DailyStatus.ONSITE : DailyStatus.REMOTE)));
-            when(statusRepository.findByUserAndDate(userId, start))
-                    .thenReturn(Optional.of(statusMapper.statusModelToStatus(expected.get(i))));
             i++;
         }
         // execute the method being tested
@@ -311,7 +313,9 @@ public class StatusServiceTest {
             DailyStatus status = DailyStatus.VACATION;
             expected.add(new StatusModel(start, memberUser1, status));
             expected.add(new StatusModel(start, memberUser2, status));
+
             when(statusRepository.findByUserAndDate(memberUserId1, start)).thenReturn(Optional.of(new Status(0L, start, memberUser1, status)));
+            when(statusRepository.findByUserAndDate(memberUserId2, start)).thenReturn(Optional.of(new Status(0L, start, memberUser2, status)));
         }
 
         expected = expected.stream().filter(status -> allDaysOfWeek.contains(status.getDay())).collect(Collectors.toList());
@@ -327,9 +331,9 @@ public class StatusServiceTest {
                 expected.add(new StatusModel(day, memberUser2, DailyStatus.ABSENCE));
             }
         }
-
+        System.out.println(expected);
         // execute the method being tested
-        List<StatusModel> actual = statusService.getReportForCurrentWeekForUser(teamId);
+        List<StatusModel> actual = statusService.getReportForCurrentWeekForTeam(teamId);
         Assert.assertTrue(expected.containsAll(actual));
     }
 
@@ -384,7 +388,71 @@ public class StatusServiceTest {
         List<StatusModel> actual = statusService.getReportForCurrentWeekForUser(userId);
         Assert.assertTrue(expected.containsAll(actual));
     }
+
     /*
-     * Test Cases of Get Report For Current Week For User
+     * Test Cases of Get Report For Current Week For Team
      */
+    @Test
+    public void testGetReportPerWeekForTeamWithValidDateTestCase() {
+        // create mock inputs
+        LocalDate date = LocalDate.now();
+        Long teamId = 1L;
+        Long managerUserId = 2L;
+        Long memberUserId1 = 3L;
+        Long memberUserId2 = 4L;
+
+        User managerUser = new User();
+        User memberUser1 = new User();
+        User memberUser2 = new User();
+
+        Team team = new Team();
+        team.setManager(managerUser);
+        team.setUsers(List.of(memberUser1, memberUser2));
+
+        List<LocalDate> allDaysOfWeek = Arrays.stream(DayOfWeek.values()).map(LocalDate.now()::with).toList();
+        when(userRepository.findById(managerUserId)).thenReturn(Optional.of(managerUser));
+        when(userRepository.findById(memberUserId1)).thenReturn(Optional.of(memberUser1));
+        when(userRepository.findById(memberUserId2)).thenReturn(Optional.of(memberUser2));
+        when(teamRepository.findById(teamId)).thenReturn(Optional.of(team));
+
+        List<StatusModel> expected = new ArrayList<>();
+
+        for (LocalDate start = date; start.isAfter(date.minusDays(2)) || start.isEqual(date.minusDays(2)); start = start.minusDays(1)) {
+            DailyStatus status1 = Math.random() % 2 == 0 ? DailyStatus.REMOTE : DailyStatus.ONSITE;
+            DailyStatus status2 = Math.random() % 2 == 0 ? DailyStatus.REMOTE : DailyStatus.ONSITE;
+
+            expected.add(new StatusModel(start, memberUser1, status1));
+            expected.add(new StatusModel(start, memberUser2, status2));
+
+            when(statusRepository.findByUserAndDate(memberUserId1, start)).thenReturn(Optional.of(new Status(0L, start, memberUser1, status1)));
+            when(statusRepository.findByUserAndDate(memberUserId2, start)).thenReturn(Optional.of(new Status(0L, start, memberUser2, status2)));
+        }
+
+        for (LocalDate start = date.plusDays(1); start.isBefore(date.plusDays(3)); start = start.plusDays(1)) {
+            DailyStatus status = DailyStatus.VACATION;
+            expected.add(new StatusModel(start, memberUser1, status));
+            expected.add(new StatusModel(start, memberUser2, status));
+
+            when(statusRepository.findByUserAndDate(memberUserId1, start)).thenReturn(Optional.of(new Status(0L, start, memberUser1, status)));
+            when(statusRepository.findByUserAndDate(memberUserId2, start)).thenReturn(Optional.of(new Status(0L, start, memberUser2, status)));
+        }
+
+        expected = expected.stream().filter(status -> allDaysOfWeek.contains(status.getDay())).collect(Collectors.toList());
+
+        for (LocalDate day : allDaysOfWeek) {
+            if (expected.stream().noneMatch(expectedItem -> expectedItem.getDay().isEqual(day))) {
+                if (day.isAfter(LocalDate.now())) {
+                    expected.add(new StatusModel(day, memberUser1, DailyStatus.UNKNOWN));
+                    expected.add(new StatusModel(day, memberUser2, DailyStatus.UNKNOWN));
+                    continue;
+                }
+                expected.add(new StatusModel(day, memberUser1, DailyStatus.ABSENCE));
+                expected.add(new StatusModel(day, memberUser2, DailyStatus.ABSENCE));
+            }
+        }
+        System.out.println(expected);
+        // execute the method being tested
+        List<StatusModel> actual = statusService.getReportForCurrentWeekForTeam(teamId);
+        Assert.assertTrue(expected.containsAll(actual));
+    }
 }

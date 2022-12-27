@@ -8,8 +8,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "status")
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Status {
