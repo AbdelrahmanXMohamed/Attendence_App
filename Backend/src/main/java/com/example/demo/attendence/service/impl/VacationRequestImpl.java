@@ -18,13 +18,11 @@ import com.example.demo.attendence.utils.DailyStatus;
 import com.example.demo.attendence.utils.VacationStatus;
 import com.example.demo.attendence.utils.VacationType;
 import org.jetbrains.annotations.NotNull;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class VacationRequestImpl implements VacationRequestService {
@@ -67,8 +65,8 @@ public class VacationRequestImpl implements VacationRequestService {
 
     @Override
     public List<VacationModel> allVacationRequestPerTeam(Long userId, Long teamId) {
-        User user =userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
-        Team team =teamRepository.findById(teamId).orElseThrow(TeamDoesNotException::new);
+        userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+        Team team =teamRepository.findById(teamId).orElseThrow(TeamDoesNotExistException::new);
         if(!team.getManager().getId().equals(userId))
             throw new NotTeamManager();
 
@@ -85,7 +83,7 @@ public class VacationRequestImpl implements VacationRequestService {
 
     @Override
     public void approveRequest(Long userId, Long vacationId,  ApproveRequuestModel approveRequuestModel) {
-        User user =userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+        userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
 
         VacationRequest vacationRequest =vacationRequestRepo.findById(vacationId).orElseThrow(VacationNotExistException::new);
 
