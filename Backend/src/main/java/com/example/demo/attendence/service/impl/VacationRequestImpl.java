@@ -17,6 +17,7 @@ import com.example.demo.attendence.service.VacationRequestService;
 import com.example.demo.attendence.utils.DailyStatus;
 import com.example.demo.attendence.utils.VacationStatus;
 import com.example.demo.attendence.utils.VacationType;
+import org.jetbrains.annotations.NotNull;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,8 +53,7 @@ public class VacationRequestImpl implements VacationRequestService {
 
     @Override
     public void requestVacation(Long id, VacationRequestModel vacationRequestModel) {
-        Optional<User> user =userRepository.findById(id);
-        user.orElseThrow(UserDoesNotExistException::new);
+        User user =userRepository.findById(id).orElseThrow(UserDoesNotExistException::new);
        VacationRequest vacationRequest =vacaionRequestMapper.vacationRequestModelToEntity(vacationRequestModel);
 
         if(vacationRequest.getType().equals( VacationType.CASUAL))
@@ -61,17 +61,15 @@ public class VacationRequestImpl implements VacationRequestService {
         else
             vacationRequest.setStatus(VacationStatus.PENDING);
 
-        vacationRequest.setUser(user.get());
+        vacationRequest.setUser(user);
         vacationRequestRepo.save(vacationRequest);
     }
 
     @Override
     public List<VacationModel> allVacationRequestPerTeam(Long userId, Long teamId) {
-        Optional<User> user =userRepository.findById(userId);
-        user.orElseThrow(UserDoesNotExistException::new);
-        Optional<Team> team =teamRepository.findById(teamId);
-        team.orElseThrow(TeamDoesNotException::new);
-        if(!team.get().getManager().getId().equals(userId))
+        User user =userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+        Team team =teamRepository.findById(teamId).orElseThrow(TeamDoesNotException::new);
+        if(!team.getManager().getId().equals(userId))
             throw new NotTeamManager();
 
         List<VacationRequest> vacationRequestList =vacationRequestRepo.findAll();
@@ -87,28 +85,26 @@ public class VacationRequestImpl implements VacationRequestService {
 
     @Override
     public void approveRequest(Long userId, Long vacationId,  ApproveRequuestModel approveRequuestModel) {
-        Optional<User> user =userRepository.findById(userId);
-        user.orElseThrow(UserDoesNotExistException::new);
+        User user =userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
 
-        Optional<VacationRequest> vacationRequest =vacationRequestRepo.findById(vacationId);
-        vacationRequest.orElseThrow(VacationNotExistException::new);
+        VacationRequest vacationRequest =vacationRequestRepo.findById(vacationId).orElseThrow(VacationNotExistException::new);
 
-        if(!vacationRequest.get().getUser().getTeam().getManager().getId().equals(userId))
+        if(!vacationRequest.getUser().getTeam().getManager().getId().equals(userId))
             throw new NotTeamManager();
 
-        if (!vacationRequest.get().getStatus().equals(VacationStatus.PENDING))
+        if (!vacationRequest.getStatus().equals(VacationStatus.PENDING))
             throw new VacationApprove();
 
-        vacationRequest.get().setStatus(VacationStatus.values()[approveRequuestModel.getApprove()]);
-        vacationRequestRepo.save(vacationRequest.get());
+        vacationRequest.setStatus(VacationStatus.values()[approveRequuestModel.getApprove()]);
+        vacationRequestRepo.save(vacationRequest);
 
-        if (vacationRequest.get().getStatus().equals(VacationStatus.ACCEPT))
-            setStatus(vacationRequest.get());
+        if (vacationRequest.getStatus().equals(VacationStatus.ACCEPT))
+            setStatus(vacationRequest);
 
 
     }
 
-    public void setStatus(VacationRequest vacationRequest){
+    public void setStatus(@NotNull VacationRequest vacationRequest){
         StatusRequestModel statusRequestModel =new StatusRequestModel();
         statusRequestModel.setUserId(vacationRequest.getUser().getId());
         statusRequestModel.setStatus(DailyStatus.ABSENCE);
