@@ -6,12 +6,15 @@ import com.example.demo.attendence.entity.VacationRequest;
 import com.example.demo.attendence.exception.*;
 import com.example.demo.attendence.mapper.VacaionRequestMapper;
 import com.example.demo.attendence.model.ApproveRequuestModel;
+import com.example.demo.attendence.model.StatusRequestModel;
 import com.example.demo.attendence.model.VacationModel;
 import com.example.demo.attendence.model.VacationRequestModel;
 import com.example.demo.attendence.repository.TeamRepository;
 import com.example.demo.attendence.repository.UserRepository;
 import com.example.demo.attendence.repository.VacationRequestRepository;
+import com.example.demo.attendence.service.StatusService;
 import com.example.demo.attendence.service.VacationRequestService;
+import com.example.demo.attendence.utils.DailyStatus;
 import com.example.demo.attendence.utils.VacationStatus;
 import com.example.demo.attendence.utils.VacationType;
 import org.mapstruct.factory.Mappers;
@@ -36,11 +39,15 @@ public class VacationRequestImpl implements VacationRequestService {
 
     private VacaionRequestMapper vacaionRequestMapper;
 
-    public VacationRequestImpl(VacationRequestRepository vacationRequestRepo, UserRepository userRepository, TeamRepository teamRepository, VacaionRequestMapper vacaionRequestMapper) {
+    @Autowired
+    private final StatusService statusService;
+
+    public VacationRequestImpl(VacationRequestRepository vacationRequestRepo, UserRepository userRepository, TeamRepository teamRepository, VacaionRequestMapper vacaionRequestMapper, StatusService statusService) {
         this.vacationRequestRepo = vacationRequestRepo;
         this.userRepository = userRepository;
         this.teamRepository = teamRepository;
         this.vacaionRequestMapper = vacaionRequestMapper;
+        this.statusService = statusService;
     }
 
     @Override
@@ -92,8 +99,25 @@ public class VacationRequestImpl implements VacationRequestService {
         if (!vacationRequest.get().getStatus().equals(VacationStatus.PENDING))
             throw new VacationApprove();
 
-
         vacationRequest.get().setStatus(VacationStatus.values()[approveRequuestModel.getApprove()]);
-          vacationRequestRepo.save(vacationRequest.get());
+        vacationRequestRepo.save(vacationRequest.get());
+
+        if (vacationRequest.get().getStatus().equals(VacationStatus.ACCEPT))
+            setStatus(vacationRequest.get());
+
+
     }
+
+    public void setStatus(VacationRequest vacationRequest){
+        StatusRequestModel statusRequestModel =new StatusRequestModel();
+        statusRequestModel.setUserId(vacationRequest.getUser().getId());
+        statusRequestModel.setStatus(DailyStatus.ABSENCE);
+
+        for (Long i = Long.valueOf(0); i<vacationRequest.getNumberOfDays(); i++) {
+            statusRequestModel.setDay(vacationRequest.getStartDate().plusDays(i));
+            statusService.setStatus(statusRequestModel);
+        }
+    }
+
+
 }
