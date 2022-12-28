@@ -29,18 +29,28 @@ public class StatusController {
         return statusService.setStatus(statusRequest);
     }
 
-    @GetMapping("/user-report/{id}")
+    @GetMapping("/users-report/{id}")
     public List<StatusModel> getReportForUser(@PathVariable Long id, @RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
         return statusService.getReportForUser(id, new StatusBetweenTwoDateRequestModel(startDate, endDate));
     }
 
-    @GetMapping("/report-per-day-for-user/{userId}")
+    @GetMapping("/report-per-day-for-users/{userId}")
     public StatusModel getReportPerDayForUser(@PathVariable Long userId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate day) {
         return statusService.getReportPerDayForUser(userId, day);
     }
 
-    @GetMapping("/report-per-day-for-team/{teamId}")
+    @GetMapping("/report-per-day-for-teams/{teamId}")
     public List<StatusModel> getReportPerDayForTeam(@PathVariable Long teamId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate day) {
         return statusService.getReportPerDayForTeam(teamId, day);
+    }
+
+    @GetMapping("/report-for-current-week-for-users/{userId}")
+    public List<StatusModel> getReportForCurrentWeekForUser(@PathVariable Long userId) {
+        return statusService.getReportForCurrentWeekForUser(userId);
+    }
+
+    @GetMapping("/report-for-current-week-for-teams/{teamId}")
+    public List<StatusModel> getReportForCurrentWeekForTeam(@PathVariable Long teamId) {
+        return statusService.getReportForCurrentWeekForTeam(teamId);
     }
 }
