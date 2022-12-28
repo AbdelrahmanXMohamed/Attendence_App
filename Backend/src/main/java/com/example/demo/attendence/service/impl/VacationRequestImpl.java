@@ -17,7 +17,7 @@ import com.example.demo.attendence.service.VacationRequestService;
 import com.example.demo.attendence.utils.DailyStatus;
 import com.example.demo.attendence.utils.VacationStatus;
 import com.example.demo.attendence.utils.VacationType;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
