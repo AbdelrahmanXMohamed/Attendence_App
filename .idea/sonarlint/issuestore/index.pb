@@ -1,0 +1,25 @@
+
+Ä
+PBackend/src/test/java/com/example/demo/attendence/service/StatusServiceTest.java,1\2\12e46e68e39e865330622844c11928a42ac99c99
+{
+KBackend/src/main/java/com/example/demo/attendence/utils/VacationStatus.java,a\0\a0d4ec1d019883cfd88af832153ebdd8fd54f3df
+
+OBackend/src/main/java/com/example/demo/attendence/AttendenceAppApplication.java,a\4\a4e6bac5f7838826006db79b5563b8c3d03d94f9
+Å
+QBackend/src/main/java/com/example/demo/attendence/annotation/EnumNamePattern.java,7\2\720d63caa1f79bb2cf590a78dbc342426925f6ae
+ä
+ZBackend/src/main/java/com/example/demo/attendence/annotation/EnumNamePatternValidator.java,f\b\fb9ca1c104072b7b38820f7305cbed8ebef37624
+x
+HBackend/src/main/java/com/example/demo/attendence/utils/DailyStatus.java,a\8\a85f71499171e827fbf22c5f93ae835bf97f8afb
+?
+Backend/pom.xml,6\f\6f5a34a61856e01a5e5abd8b3142ee6665a5d397
+ö
+jBackend/src/main/java/com/example/demo/attendence/exception/controller/ValidationsExceptionController.java,7\2\72a8a2e5e09d1663cd271de4c1219d46942c9c08
+ä
+ZBackend/src/main/java/com/example/demo/attendence/exception/TeamDoesNotExistException.java,9\0\90a2b04bc9b467587776823278a3d708fa2949f3
+?
+UI/angular.json,4\9\493dff2edd5720f184098a9672b7d6d0a0e68da1
+P
+ UI/src/app/app-routing.module.ts,a\8\a81f01a8875be7cb22f14be2e830b142f7af9119
+`
+0UI/src/app/modules/login/login-routing.module.ts,5\0\50679dbc00fe5ba330b77b8fee949fb644a30471

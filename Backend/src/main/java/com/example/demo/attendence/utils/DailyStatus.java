@@ -6,5 +6,6 @@ public enum DailyStatus {
     ONSITE,
     VACATION,
     UNKNOWN,
+
     NOT_EXIST
 }

@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class StatusModel {
     private LocalDate day;
     private User user;

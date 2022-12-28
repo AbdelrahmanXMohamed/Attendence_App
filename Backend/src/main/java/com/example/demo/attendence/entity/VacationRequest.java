@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "vacation_request")
+@Table(name = "vacation_requests")
 @Getter
 @Setter
 public class VacationRequest {
@@ -28,7 +28,7 @@ public class VacationRequest {
 
     private String comment;
 
-    private Long numberOfDays ;
+    private int numberOfDays ;
 
     @ManyToOne
     @JoinColumn(name ="user_id",referencedColumnName = "id")

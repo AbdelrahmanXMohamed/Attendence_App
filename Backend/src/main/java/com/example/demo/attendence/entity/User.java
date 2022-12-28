@@ -20,8 +20,6 @@ public class User {
 
     private String password;
 
-    private Short type;
-
     private String email;
 
     private String phone;
