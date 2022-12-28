@@ -5,19 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="init">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/2/22aa07fddafc1aa35043c83319689eb712bcc068" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/exception/UserCannotTakeVacationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47ddbd92ba311109ea6228db06035d2646c351ef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/1/c17133780decb8fb23c2812e4377c52dec5505f5" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/VacationRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/VacationRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/entity/VacationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/entity/VacationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/mapper/VacaionRequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/mapper/VacaionRequestMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/VacationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/VacationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/repository/VacationRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/repository/VacationRequestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/VacationRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/VacationRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/TeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/TeamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/entity/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/entity/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/exception/NotTeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/exception/NotTeamManagerException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/exception/VacationApprove.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/exception/VacationApproveException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/exception/controller/TeamExecptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/exception/controller/TeamExecptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/exception/controller/VacationRequestExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/exception/controller/VacationRequestExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/mapper/TeamMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/mapper/TeamMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/StatusModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/StatusModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/StatusRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/StatusRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/TeamRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/TeamRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/TeamResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/TeamResponseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/UserResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/UserResponseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/VacationRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/VacationRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/TeamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/TeamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/VacationRequestImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/VacationRequestImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/UI/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/login/login-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/login/login-routing.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +124,7 @@
       <workItem from="1672044998357" duration="2590000" />
       <workItem from="1672058990948" duration="750000" />
       <workItem from="1672125091493" duration="4563000" />
+      <workItem from="1672221853878" duration="1692000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1672058705344</created>

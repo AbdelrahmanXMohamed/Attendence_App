@@ -9,10 +9,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface TeamMapper {
 
-
-
     Team toTeam (TeamRequestModel requestModel);
-
 
     TeamResponseModel toResponseModel(Team team);
 }

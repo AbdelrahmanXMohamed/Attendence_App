@@ -18,9 +18,6 @@ import java.util.Optional;
 
 @Service
 public class TeamServiceImpl implements TeamService {
-
-
-
     private final TeamRepository teamRepository;
     private final TeamMapper teamMapper;
     private final UserMapper userMapper;
@@ -78,7 +75,5 @@ public class TeamServiceImpl implements TeamService {
         team.getUsers().forEach(user -> user.setTeam(null));
         this.teamRepository.deleteById(teamId);
     }
-
-
 }
 

@@ -18,14 +18,11 @@ public class TeamController {
     public TeamController(TeamServiceImpl teamService) {
         this.teamService = teamService;
     }
-
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public TeamResponseModel createTeam(@RequestBody TeamRequestModel requestModel){
         return this.teamService.createTeam(requestModel);
     }
-
     @PostMapping("{teamId}/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public TeamResponseModel addUserToTeam(@PathVariable Long teamId,@PathVariable Long userId){

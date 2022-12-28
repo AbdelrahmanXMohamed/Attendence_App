@@ -19,6 +19,7 @@ import java.util.NoSuchElementException;
 public class UserServiceImpl implements UserSevice {
 
     private UserRepository userRepository;
+
     private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
 
     @Autowired
@@ -32,9 +33,7 @@ public class UserServiceImpl implements UserSevice {
         User user = userMapper.userToEntity(userModel);
         System.out.println(user);
         return userMapper.userToModel(userRepository.save(user));
-
     }
-
     @Override
     public UserResponseModel updateUser(UserRequestModel userModel) {
         return null;
@@ -46,7 +45,6 @@ public class UserServiceImpl implements UserSevice {
                 .orElseThrow(() -> new NoSuchElementException("Not fond this product"));
         return userMapper.userToModel(userGot);
     }
-
     @Override
     public List<UserResponseModel> getAllUsers() {
         return null;

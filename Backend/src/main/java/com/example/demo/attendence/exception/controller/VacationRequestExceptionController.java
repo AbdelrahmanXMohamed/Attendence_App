@@ -1,6 +1,7 @@
 package com.example.demo.attendence.exception.controller;
 
-import com.example.demo.attendence.exception.VacationApprove;
+import com.example.demo.attendence.exception.UserCannotTakeVacationException;
+import com.example.demo.attendence.exception.VacationApproveException;
 import com.example.demo.attendence.exception.VacationNotExistException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,11 +22,19 @@ public class VacationRequestExceptionController {
         return response;
     }
 
-    @ExceptionHandler(value = VacationApprove.class)
+    @ExceptionHandler(value = VacationApproveException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, String> vacationApprove() {
         Map<String, String> response = new HashMap<>();
         response.put("message", "Vacation was approved. ");
+        return response;
+    }
+
+    @ExceptionHandler(value = UserCannotTakeVacationException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> userCannotTakeVacationException() {
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "You cannot take vacation, you not in team yet. ");
         return response;
     }
 

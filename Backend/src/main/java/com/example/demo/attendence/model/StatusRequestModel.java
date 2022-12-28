@@ -12,8 +12,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class StatusRequestModel {
     @NotNull(message = "Day is required")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

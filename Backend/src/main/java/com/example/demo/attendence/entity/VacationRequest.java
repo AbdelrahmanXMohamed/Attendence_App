@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "vacation_request")
+@Table(name = "vacation_requests")
 @Getter
 @Setter
 public class VacationRequest {
