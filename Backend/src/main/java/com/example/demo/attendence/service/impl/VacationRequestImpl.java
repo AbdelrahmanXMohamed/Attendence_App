@@ -5,10 +5,7 @@ import com.example.demo.attendence.entity.User;
 import com.example.demo.attendence.entity.VacationRequest;
 import com.example.demo.attendence.exception.*;
 import com.example.demo.attendence.mapper.VacaionRequestMapper;
-import com.example.demo.attendence.model.ApproveRequuestModel;
-import com.example.demo.attendence.model.StatusRequestModel;
-import com.example.demo.attendence.model.VacationModel;
-import com.example.demo.attendence.model.VacationRequestModel;
+import com.example.demo.attendence.model.*;
 import com.example.demo.attendence.repository.TeamRepository;
 import com.example.demo.attendence.repository.UserRepository;
 import com.example.demo.attendence.repository.VacationRequestRepository;
@@ -41,7 +38,7 @@ public class VacationRequestImpl implements VacationRequestService {
     }
 
     @Override
-    public void requestVacation(Long id, VacationRequestModel vacationRequestModel) {
+    public void addRequestVacation(Long id, VacationRequestModel vacationRequestModel) {
         User user =userRepository.findById(id).orElseThrow(UserDoesNotExistException::new);
         if (user.getTeam()==null) {
             throw new UserCannotTakeVacationException();
@@ -99,6 +96,18 @@ public class VacationRequestImpl implements VacationRequestService {
         if (vacationRequest.getStatus().equals(VacationStatus.ACCEPT)){
             setStatus(vacationRequest);
         }
+    }
+
+    @Override
+    public List<VacationRequestResponseModel> getAllVacationRequestPerUser(Long userId) {
+        userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+        List<VacationRequestResponseModel> vacationRequestResponseModels=new ArrayList<>();
+        List<VacationRequest> vacationRequests=vacationRequestRepo.getAllVacationRequestPerUser(userId);
+        vacationRequests.forEach(v->{
+            vacationRequestResponseModels.add(vacaionRequestMapper.entityToVacationResponseModel(v));
+        });
+
+        return vacationRequestResponseModels;
     }
 
     public void setStatus(@NotNull VacationRequest vacationRequest){

@@ -14,4 +14,6 @@ public interface VacationRequestRepository extends JpaRepository<VacationRequest
     @Query("select r from VacationRequest r inner JOIN User u on r.user.id = u.id  and u.team.id =:teamId")
     public List<VacationRequest> getAllVacationRequestPerTeam(@Param(("teamId")) Long teamId);
 
+    @Query("select r from VacationRequest r where r.user.id=:id")
+    public List<VacationRequest> getAllVacationRequestPerUser(@Param(("id")) Long id);
 }

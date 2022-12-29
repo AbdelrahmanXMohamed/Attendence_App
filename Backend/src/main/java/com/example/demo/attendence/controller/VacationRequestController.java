@@ -3,6 +3,7 @@ package com.example.demo.attendence.controller;
 import com.example.demo.attendence.model.ApproveRequuestModel;
 import com.example.demo.attendence.model.VacationModel;
 import com.example.demo.attendence.model.VacationRequestModel;
+import com.example.demo.attendence.model.VacationRequestResponseModel;
 import com.example.demo.attendence.service.VacationRequestService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,12 @@ public class VacationRequestController {
     private VacationRequestService vacationRequestService;
 
     @PostMapping("/{id}")
-    public void requestVacation(@PathVariable Long id, @Valid @RequestBody VacationRequestModel vacationRequestModel){
-        vacationRequestService.requestVacation(id,vacationRequestModel);
+    public void createRequestVacation(@PathVariable Long id, @Valid @RequestBody VacationRequestModel vacationRequestModel){
+        vacationRequestService.addRequestVacation(id,vacationRequestModel);
     }
 
     @GetMapping("/{userId}/{teamId}")
-    public List<VacationModel> allVacationRequestperTeam(@PathVariable Long userId , @PathVariable Long teamId){
+    public List<VacationModel> getAllVacationRequestperTeam(@PathVariable Long userId , @PathVariable Long teamId){
         return vacationRequestService.getAllVacationRequestPerTeam(userId,teamId);
     }
 
@@ -33,4 +34,11 @@ public class VacationRequestController {
     public void approveRequest(@PathVariable Long userId ,@PathVariable Long vacationId,@Valid @RequestBody ApproveRequuestModel approve){
         vacationRequestService.approveRequest(userId,vacationId,approve);
     }
+    @GetMapping("/{userId}")
+    public List<VacationRequestResponseModel> getAllVacationRequestperUser(@PathVariable Long userId ){
+        return vacationRequestService.getAllVacationRequestPerUser(userId);
+    }
+
+
+
 }

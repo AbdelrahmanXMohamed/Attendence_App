@@ -3,11 +3,16 @@ package com.example.demo.attendence.mapper;
 import com.example.demo.attendence.entity.VacationRequest;
 import com.example.demo.attendence.model.VacationModel;
 import com.example.demo.attendence.model.VacationRequestModel;
+import com.example.demo.attendence.model.VacationRequestResponseModel;
 import com.example.demo.attendence.utils.VacationType;
 import org.mapstruct.Mapper;
 
 @Mapper
 public interface VacaionRequestMapper {
+
+
+    public VacationRequestResponseModel entityToVacationResponseModel(VacationRequest vacationRequest);
+
 
     default VacationModel toVacationModel(VacationRequest vacationRequest){
         VacationModel vacationModel=new VacationModel();
