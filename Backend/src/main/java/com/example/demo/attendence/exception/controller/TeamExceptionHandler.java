@@ -49,9 +49,9 @@ public class TeamExceptionHandler {
         response.put("message", ex.getMessage());
         return response;
     }
-    @ExceptionHandler(value = MemberCannotManagerTeamException.class)
+    @ExceptionHandler(value = MemberCannotManageTeamException.class)
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
-    public Map<String, String> memeberCannotManageException(MemberCannotManagerTeamException ex, WebRequest request) {
+    public Map<String, String> memeberCannotManageException(MemberCannotManageTeamException ex, WebRequest request) {
         Map<String, String> response = new HashMap<>();
         response.put("message", ex.getMessage());
         return response;
