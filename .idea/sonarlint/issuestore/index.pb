@@ -17,8 +17,6 @@ jBackend/src/main/java/com/example/demo/attendence/exception/controller/Validati
 ZBackend/src/main/java/com/example/demo/attendence/exception/TeamDoesNotExistException.java,9\0\90a2b04bc9b467587776823278a3d708fa2949f3
 ?
 UI/angular.json,4\9\493dff2edd5720f184098a9672b7d6d0a0e68da1
-P
- UI/src/app/app-routing.module.ts,a\8\a81f01a8875be7cb22f14be2e830b142f7af9119
 `
 0UI/src/app/modules/login/login-routing.module.ts,5\0\50679dbc00fe5ba330b77b8fee949fb644a30471
 y
