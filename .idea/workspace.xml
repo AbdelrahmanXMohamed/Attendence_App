@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/UI/proxy.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/models/userRequestModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/2/22aa07fddafc1aa35043c83319689eb712bcc068" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9bb750a721dc51419a74ed25cec0e333c9023d8b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0d4ec1d019883cfd88af832153ebdd8fd54f3df" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c7295d61a4d3ea38ccbd015f54b54200c8ea406d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/2/f21301d1d68093e929034a4535e624dcbbc6a5ca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/3/f37ac21e717e2a4e9f2178ad0735ebef5295c747" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/app.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +121,7 @@
       <workItem from="1672058990948" duration="750000" />
       <workItem from="1672125091493" duration="4563000" />
       <workItem from="1672221853878" duration="1692000" />
-      <workItem from="1672300697926" duration="3862000" />
+      <workItem from="1672300697926" duration="10289000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1672058705344</created>
@@ -150,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672336667282</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="init">
+      <created>1672387488018</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672387488018</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

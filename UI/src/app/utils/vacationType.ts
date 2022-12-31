@@ -1,0 +1,4 @@
+enum VacationType{
+    CASUAL,
+    PLANNED
+}
