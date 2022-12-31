@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TeamRequestModel } from 'src/app/models/TeamRequestModel';
 import { TeamResponseModel } from 'src/app/models/TeamResponseModel';
-import { User } from 'src/app/models/User';
+import { UserModel } from 'src/app/models/UserModel';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,8 @@ export class TeamService {
     return this.http.post<TeamResponseModel>(`${this.baseUrl}/teams/${teamId}/users/${userId}`, {});
   }
 
-  getAllTeamUsers(teamId: number): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}/teams/users/${teamId}`);
+  getAllTeamUsers(teamId: number): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>(`${this.baseUrl}/teams/users/${teamId}`);
   }
 
   removeUserFromTeam(userId: number, teamId: number): Observable<TeamResponseModel> {

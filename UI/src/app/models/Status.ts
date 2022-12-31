@@ -1,10 +1,9 @@
 import { DailyStatus } from "./DailyStatus";
-import { User } from "./User";
+import { UserModel } from "./UserModel";
 
 export interface Status {
     id: number;
     day: Date;
-    user: User;
+    user: UserModel;
     status: DailyStatus;
   }
-  

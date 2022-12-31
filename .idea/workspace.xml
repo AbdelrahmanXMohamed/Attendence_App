@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/UI/proxy.config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/src/app/models/userRequestModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/2/22aa07fddafc1aa35043c83319689eb712bcc068" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9bb750a721dc51419a74ed25cec0e333c9023d8b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0d4ec1d019883cfd88af832153ebdd8fd54f3df" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c7295d61a4d3ea38ccbd015f54b54200c8ea406d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/2/f21301d1d68093e929034a4535e624dcbbc6a5ca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/3/f37ac21e717e2a4e9f2178ad0735ebef5295c747" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="ayaa ui 0.1% done">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/models/Status.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/Status.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/models/StatusModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/StatusModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/models/TeamRequestModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/TeamRequestModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/models/TeamResponseModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/TeamResponseModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/UserModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/models/UserRequestModel.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/services/team/team.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/services/team/team.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/services/user/userServices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/services/user/userServices.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +29,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/mostafaUI" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -81,7 +84,7 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "spring.configuration.checksum": "fe01ce2a7fbac8fafaed7c982a04e229",
-    "ts.external.directory.path": "D:\\fawry\\Attendence App\\UI\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2.3\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -165,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672387488018</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ayaa ui 0.1% done">
+      <created>1672496487414</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672496487414</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,7 +195,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="ayaa ui 0.1% done" />
+    <option name="LAST_COMMIT_MESSAGE" value="ayaa ui 0.1% done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

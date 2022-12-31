@@ -1,9 +1,9 @@
-import { User } from './User'
+import { UserModel } from './UserModel'
 
 export interface TeamResponseModel {
   id: number;
   name: string;
   description: string;
-  manager: User;
-  users: User[];
+  manager: UserModel;
+  users: UserModel[];
 }

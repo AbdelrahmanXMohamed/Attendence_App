@@ -1,8 +1,7 @@
-import {  User } from "./User";
+import {  UserModel } from "./UserModel";
 
 export interface TeamRequestModel {
     name: string;
     description: string;
-    manager: User;
+    manager: UserModel;
   }
-  
