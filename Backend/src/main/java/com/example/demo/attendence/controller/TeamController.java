@@ -23,7 +23,7 @@ public class TeamController {
     public TeamResponseModel createTeam(@RequestBody TeamRequestModel requestModel){
         return this.teamService.createTeam(requestModel);
     }
-    @PostMapping("{teamId}/{userId}")
+    @PostMapping("{teamId}/users/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public TeamResponseModel addUserToTeam(@PathVariable Long teamId,@PathVariable Long userId){
         return this.teamService.addUserToTeam(userId,teamId);
@@ -32,17 +32,12 @@ public class TeamController {
     public List<UserResponseModel> getAllTeamUsers(@PathVariable Long teamId){
         return this.teamService.getAllTeamUsers(teamId);
     }
-    @PutMapping("{teamId}/{userId}")
+    @DeleteMapping("{teamId}/users/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public TeamResponseModel removeUserFromTeam(@PathVariable Long teamId,@PathVariable Long userId){
         return this.teamService.removeUserFromTeam(userId,teamId);
     }
 
-    @DeleteMapping("{teamId}")
-    @ResponseStatus(HttpStatus.OK)
-    public void removeTeam(@PathVariable Long teamId){
-        this.teamService.removeTeam(teamId);
-    }
 
 
 }
