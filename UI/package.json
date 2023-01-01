@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "@fortawesome/fontawesome-free": "^6.2.1",
     "@ng-bootstrap/ng-bootstrap": "^14.0.0",
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "@popperjs/core": "^2.11.6",

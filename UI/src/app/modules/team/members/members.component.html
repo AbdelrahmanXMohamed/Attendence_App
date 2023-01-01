@@ -1,0 +1,32 @@
+<div class="bg-light h-100 container p-4 overflow-auto" style="min-height:84vh; max-height: 84vh;">
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-outline-primary" (click)="open(mymodal)">
+            <i class="fas fa-plus mr-2"></i> Add new member</button>
+    </div>
+    <a [routerLink]="'/member/'+1" class="text-decoration-none">
+        <div class="shadow p-3 mb-2 bg-white rounded">
+            <p class="mb-0">Username</p>
+            <p class="mb-0">UserId</p>
+        </div>
+    </a>
+</div>
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add new member</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+
+    <form class="modal-body d-flex flex-row">
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" placeholder="Member username" name="Username" type="text">
+            </div>
+        </div>
+    </form>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="submit()">Ok</button>
+    </div>
+</ng-template>

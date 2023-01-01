@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+ngb-modal-backdrop {
+    z-index: 1050 !important;
+}
+
+.header {
+    background: #D6D6D6;
+    padding: 10px;
+    margin: 0px 0px 10px 0px;
+}
+
+.shadow {
+    margin-top: 10px;
+}

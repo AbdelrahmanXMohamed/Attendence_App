@@ -1,0 +1,35 @@
+<br />
+<div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-outline-primary" (click)="open(mymodal)">
+        <i class="fas fa-plus mr-2"></i> Create new team</button>
+</div>
+<br />
+<a routerLink="/teams/1" class="text-decoration-none">
+    <div class="shadow-sm p-3 mb-2 bg-white rounded">Team</div>
+</a>
+<br />
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Create team</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+
+    <form class="modal-body d-flex flex-column">
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" placeholder="Team name" name="teamname" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" placeholder="Description" name="description" type="text">
+            </div>
+        </div>
+    </form>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="submit()">Ok</button>
+    </div>
+</ng-template>
