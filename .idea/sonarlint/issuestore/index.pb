@@ -1,20 +1,14 @@
 
-
-OBackend/src/main/java/com/example/demo/attendence/AttendenceAppApplication.java,a\4\a4e6bac5f7838826006db79b5563b8c3d03d94f9
 Å
 QBackend/src/main/java/com/example/demo/attendence/annotation/EnumNamePattern.java,7\2\720d63caa1f79bb2cf590a78dbc342426925f6ae
 ä
 ZBackend/src/main/java/com/example/demo/attendence/annotation/EnumNamePatternValidator.java,f\b\fb9ca1c104072b7b38820f7305cbed8ebef37624
 x
 HBackend/src/main/java/com/example/demo/attendence/utils/DailyStatus.java,a\8\a85f71499171e827fbf22c5f93ae835bf97f8afb
-?
-Backend/pom.xml,6\f\6f5a34a61856e01a5e5abd8b3142ee6665a5d397
 ö
 jBackend/src/main/java/com/example/demo/attendence/exception/controller/ValidationsExceptionController.java,7\2\72a8a2e5e09d1663cd271de4c1219d46942c9c08
 ä
 ZBackend/src/main/java/com/example/demo/attendence/exception/TeamDoesNotExistException.java,9\0\90a2b04bc9b467587776823278a3d708fa2949f3
-?
-UI/angular.json,4\9\493dff2edd5720f184098a9672b7d6d0a0e68da1
 `
 0UI/src/app/modules/login/login-routing.module.ts,5\0\50679dbc00fe5ba330b77b8fee949fb644a30471
 ä
@@ -41,8 +35,6 @@ PBackend/src/main/java/com/example/demo/attendence/repository/TeamRepository.jav
 PBackend/src/main/java/com/example/demo/attendence/repository/UserRepository.java,4\7\47ddbd92ba311109ea6228db06035d2646c351ef
 |
 LBackend/src/main/java/com/example/demo/attendence/service/StatusService.java,6\a\6a7598346a56fb25f0496684494cce0ea6a63438
-r
-BBackend/src/main/java/com/example/demo/attendence/entity/Team.java,d\5\d500b26d0229f5fdedd69c0d628d4469b8bc9855
 x
 HBackend/src/main/java/com/example/demo/attendence/model/StatusModel.java,2\0\20d465c487d7f9b038858c73ec7f6371adde9473
 
@@ -57,16 +49,8 @@ MBackend/src/main/java/com/example/demo/attendence/model/TeamRequestModel.java,
 NBackend/src/main/java/com/example/demo/attendence/model/TeamResponseModel.java,8\4\841199e252fe81b3889d0b1418cc0f125e1eec58
 û
 nBackend/src/main/java/com/example/demo/attendence/exception/controller/VacationRequestExceptionController.java,c\9\c9790b7df0c97b801ec4f2a455d85a3059eafbcc
-r
-BBackend/src/main/java/com/example/demo/attendence/entity/User.java,6\d\6d1221b5bd8d703f799a9d7492bc4ca29d9d5d3e
-É
-SBackend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java,7\5\75429fdcbee264a6d75018cd65ec5475777571db
-t
-DBackend/src/main/java/com/example/demo/attendence/entity/Status.java,2\1\21577674d0f4b507a29cf2fa149d24f225e1e13b
 Ä
 PBackend/src/test/java/com/example/demo/attendence/service/StatusServiceTest.java,1\2\12e46e68e39e865330622844c11928a42ac99c99
-Ö
-UBackend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java,8\7\87e270f988fd745554135c48b1e5f1ef7f89df6f
 z
 JBackend/src/main/java/com/example/demo/attendence/service/TeamService.java,a\9\a9d6c7e97d20031c2c76d555a2360e46dcac412d
 É

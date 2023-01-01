@@ -1,131 +1,27 @@
 package com.example.demo.attendence.service.impl;
 
-import com.example.demo.attendence.model.UserRequestModel;
-import com.example.demo.attendence.model.UserResponseModel;
-import com.example.demo.attendence.entity.User;
-import com.example.demo.attendence.mapper.UserMapper;
-import com.example.demo.attendence.repository.UserRepository;
+import com.example.demo.attendence.appuser.AppUser;
+import com.example.demo.attendence.appuser.AppUserRole;
+import com.example.demo.attendence.entity.ConfirmationToken;
+import com.example.demo.attendence.registration.RegistrationRequest;
 import com.example.demo.attendence.service.EmailSender;
-import com.example.demo.attendence.service.UserSevice;
 import lombok.AllArgsConstructor;
-import org.mapstruct.factory.Mappers;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.UUID;
 
 @Service
-@Transactional
 @AllArgsConstructor
-public class UserServiceImpl implements UserSevice  {
+@Transactional
+public class RegistrationService {
 
-    private final static String USER_NOT_FOUND_MSG =
-            "user with email %s not found";
+    private final UserService appUserService ;
     private final ConfirmationTokenService confirmationTokenService ;
     private final EmailSender emailSender ;
-    private final AppUserRepository appUserRepository ;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final ConfirmationTokenService confirmationTokenService ;
-
-    private UserRepository userRepository;
-
-    private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
-
-
-    @Override
-    public UserResponseModel createUser(UserRequestModel userModel) {
-        System.out.println(userModel);
-        User user = userMapper.userToEntity(userModel);
-        System.out.println(user);
-        return userMapper.userToModel(userRepository.save(user));
-    }
-    @Override
-    public UserResponseModel updateUser(UserRequestModel userModel) {
-        return null;
-    }
-
-    @Override
-    public UserResponseModel getUser(Long id) {
-        User userGot = userRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Not fond this product"));
-        return userMapper.userToModel(userGot);
-    }
-    @Override
-    public List<UserResponseModel> getAllUsers() {
-        return null;
-    }
-
-    @Override
-    public void deleteUser(Long id) {
-
-    }
-
-
-    @Override
-    public UserDetails loadUserByUsername(String email)
-            throws UsernameNotFoundException {
-        return appUserRepository
-                .findByEmail(email)
-                .orElseThrow(() ->
-                        new UsernameNotFoundException(
-                                String.format(USER_NOT_FOUND_MSG , email)));
-
-    }
-    @Transactional
-    public String signUpUser(AppUser appUser){
-        boolean existEmail = appUserRepository
-                .findByEmail(appUser.getEmail())
-                .isPresent();
-
-        if(existEmail){
-            throw new IllegalStateException("Email aready taken");
-        }
-
-        String encededPassword = bCryptPasswordEncoder
-                .encode(appUser.getPassword());
-
-        appUser.setPassword(encededPassword);
-
-        appUserRepository.save(appUser);
-
-//        TODO: send confirmation token
-
-        String token = UUID.randomUUID().toString();
-
-        ConfirmationToken confirmationToken =
-                new ConfirmationToken(
-                        token,
-                        LocalDateTime.now(),
-                        LocalDateTime.now().plusMinutes(15),
-                        appUser
-                );
-
-        confirmationTokenService.saveConfirmationToken(
-                confirmationToken);
-
-//        TODO: send email
-
-        return token ;
-    }
-
-    public int enableAppUser(String email) {
-        return appUserRepository.enableAppUser(email);
-    }
-
-    //////////////////////////////////////////////////////////
-
-
-
-
     public String register(RegistrationRequest request) {
 
-        String token = appUserService.signUpUser(
+       String token = appUserService.signUpUser(
                 new AppUser(
                         request.getFirstName(),
                         request.getLastName(),
@@ -235,5 +131,4 @@ public class UserServiceImpl implements UserSevice  {
                 "\n" +
                 "</div></div>";
     }
-
 }
