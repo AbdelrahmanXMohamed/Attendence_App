@@ -1,0 +1,35 @@
+<br />
+<div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-outline-primary" (click)="open(mymodal)">
+        <i class="fas fa-plus mr-2"></i> Vacation request</button>
+</div>
+<br />
+<div class="shadow-sm p-3 mb-2 bg-white rounded d-flex justify-content-between">
+    <p class="mb-0">Vacation ID</p>
+    <p class="mb-0">Vacation Status</p>
+</div>
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Vacation request</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+
+    <form class="modal-body d-flex flex-row">
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" placeholder="Start date" name="startdate" type="date">
+            </div>
+            <br />
+            <div class="input-group">
+                <input class="form-control" placeholder="End date" name="enddate" type="date">
+            </div>
+        </div>
+    </form>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="submit()">Ok</button>
+    </div>
+</ng-template>

@@ -4,17 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="ayaa ui 0.1% done">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="mostafa ui 0.1% done">
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/teams/teams.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/teams/teams.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/teams/teams.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/teams/teams.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/vacations/vacations.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/vacations/vacations.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/vacations/vacations.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/vacations/vacations.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/Status.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/Status.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/StatusModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/StatusModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/TeamRequestModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/TeamRequestModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/TeamResponseModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/TeamResponseModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/UserModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/UserRequestModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/services/team/team.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/services/team/team.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/services/user/userServices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/services/user/userServices.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/UI/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/UI/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/UI/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/login/login-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/login/login-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +97,7 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "spring.configuration.checksum": "fe01ce2a7fbac8fafaed7c982a04e229",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2.3\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "G:\\Library\\Fawry Intership\\Final\\UI\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -175,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672496487414</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="mostafa ui 0.1% done">
+      <created>1672496834026</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672496834026</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,7 +216,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init" />
     <MESSAGE value="ayaa ui 0.1% done" />
-    <option name="LAST_COMMIT_MESSAGE" value="ayaa ui 0.1% done" />
+    <MESSAGE value="mostafa ui 0.1% done" />
+    <option name="LAST_COMMIT_MESSAGE" value="mostafa ui 0.1% done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
