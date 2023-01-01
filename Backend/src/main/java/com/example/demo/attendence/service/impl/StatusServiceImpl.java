@@ -2,9 +2,7 @@ package com.example.demo.attendence.service.impl;
 
 import com.example.demo.attendence.entity.Status;
 import com.example.demo.attendence.entity.Team;
-import com.example.demo.attendence.exception.StatusInvalidDateException;
-import com.example.demo.attendence.exception.TeamDoesNotExistException;
-import com.example.demo.attendence.exception.UserDoesNotExistException;
+import com.example.demo.attendence.exception.*;
 import com.example.demo.attendence.model.StatusBetweenTwoDateRequestModel;
 import com.example.demo.attendence.model.StatusModel;
 import com.example.demo.attendence.model.StatusRequestModel;
@@ -28,6 +26,7 @@ public class StatusServiceImpl implements StatusService {
     StatusRepository statusRepository;
     final
     UserRepository userRepository;
+    final
     TeamRepository teamRepository;
     final StatusMapper statusMapper =
             Mappers.getMapper(StatusMapper.class);
@@ -41,17 +40,35 @@ public class StatusServiceImpl implements StatusService {
     @Override
     public Status setStatus(StatusRequestModel statusRequest) {
         User user = userRepository.findById(statusRequest.getUserId()).orElseThrow(UserDoesNotExistException::new);
-        if (!statusRequest.getDay().isAfter(LocalDate.now())) {
-            throw new StatusInvalidDateException("Date must be up coming date");
+        if (statusRequest.getStatus().equals(DailyStatus.VACATION)) {
+            userManagerStatusGuard(user.getId());
+        } else {
+            userStatusGuard(user.getId());
         }
+        if ((statusRequest.getDay().isAfter(LocalDate.now()) || statusRequest.getDay().isBefore(LocalDate.now())) && !statusRequest.getStatus().equals(DailyStatus.VACATION)) {
+            throw new StatusInvalidDateException("Date must be current date only");
+        }
+        statusRepository.findByUserAndDate(statusRequest.getUserId(), statusRequest.getDay()).orElseThrow(StatusCanNotBeChangedException::new);
         StatusModel statusModel = statusMapper.statusRequestModelToStatusModel(statusRequest);
         statusModel.setUser(user);
         return statusRepository.save(statusMapper.statusModelToStatus(statusModel));
     }
 
     @Override
+    public StatusModel todayStatus() {
+//        User currentLoginUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//        return statusMapper.statusToStatusModel(statusRepository.findByUserAndDate(currentLoginUser.getId(),LocalDate.now())
+//                .orElse(new Status(0L,LocalDate.now(),currentLoginUser,DailyStatus.ABSENCE)));
+        return null;
+    }
+
+    @Override
     public List<StatusModel> getReportForUser(Long userId, StatusBetweenTwoDateRequestModel statusBetweenTwoDateRequestModel) {
-        userStatusGuard(userId);
+        try {
+            userStatusGuard(userId);
+        } catch (StatusAccessIsForbiddenException ex) {
+            userManagerStatusGuard(userId);
+        }
         if (isValidRange(statusBetweenTwoDateRequestModel)) {
             throw new StatusInvalidDateException("Start date can't be after end date");
         }
@@ -64,20 +81,28 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public StatusModel getReportPerDayForUser(Long userId, LocalDate date) {
-        userStatusGuard(userId);
+        try {
+            userStatusGuard(userId);
+        } catch (StatusAccessIsForbiddenException ex) {
+            userManagerStatusGuard(userId);
+        }
         return getStatusForUser(userId, date);
     }
 
     @Override
     public List<StatusModel> getReportPerDayForTeam(Long teamId, LocalDate date) {
         teamStatusGuard(teamId);
-        Team team = teamRepository.findById(teamId).orElseThrow(TeamDoesNotExistException::new);
+        Team team = teamRepository.getReferenceById(teamId);
         return team.getUsers().stream().map(user -> getStatusForUser(user.getId(), date)).toList();
     }
 
     @Override
     public List<StatusModel> getReportForCurrentWeekForUser(Long userId) {
-        userStatusGuard(userId);
+        try {
+            userStatusGuard(userId);
+        } catch (StatusAccessIsForbiddenException ex) {
+            userManagerStatusGuard(userId);
+        }
         List<LocalDate> allDaysOfWeek = Arrays.stream(DayOfWeek.values()).map(LocalDate.now()::with).toList();
         return allDaysOfWeek.stream().map(day -> getStatusForUser(userId, day)).toList();
     }
@@ -85,7 +110,7 @@ public class StatusServiceImpl implements StatusService {
     @Override
     public List<StatusModel> getReportForCurrentWeekForTeam(Long teamId) {
         teamStatusGuard(teamId);
-        Team team = teamRepository.findById(teamId).orElseThrow(TeamDoesNotExistException::new);
+        Team team = teamRepository.getReferenceById(teamId);
         List<LocalDate> allDaysOfWeek = Arrays.stream(DayOfWeek.values()).map(LocalDate.now()::with).toList();
         return team.getUsers().stream().flatMap(user -> allDaysOfWeek.stream().map(day -> getStatusForUser(user.getId(), day))).toList();
     }
@@ -111,12 +136,30 @@ public class StatusServiceImpl implements StatusService {
     }
 
     private void userStatusGuard(Long userId) {
-        // TODO document why this method is empty
-        System.err.println(userId);
+//        User currentLoginUser = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//        if (!currentLoginUser.getId().equals(userId))
+//        {
+//            throw new StatusAccessIsForbidden();
+//        }
+
     }
 
     private void teamStatusGuard(Long teamId) {
-        // TODO document why this method is empty
-        System.err.println(teamId);
+//        User currentLoginUser = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//        Team team =teamRepository.findById(teamId).orElseThrow(TeamDoesNotExistException::new);
+//        if (!team.getManager().equals(currentLoginUser))
+//        {
+//            throw new StatusAccessIsForbidden();
+//        }
+
+    }
+
+    private void userManagerStatusGuard(Long userId) {
+//        User currentLoginUser = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//        User accessUser=userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+//        if (accessUser.getTeam()==null||accessUser.getTeam().getManager().equals(currentLoginUser))
+//        {
+//            throw new StatusAccessIsForbidden();
+//        }
     }
 }

@@ -22,6 +22,7 @@ public interface StatusService {
     List<StatusModel> getReportForCurrentWeekForUser(Long userId);
 
     List<StatusModel> getReportForCurrentWeekForTeam(Long teamId);
+    StatusModel todayStatus();
 }
 
 

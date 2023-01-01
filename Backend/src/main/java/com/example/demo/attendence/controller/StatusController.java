@@ -19,14 +19,14 @@ public class StatusController {
     @Autowired
     StatusService statusService;
 
-    @GetMapping
-    public Status getStatus() {
-        return null;
-    }
-
     @PostMapping
     public Status setStatus(@Valid @RequestBody StatusRequestModel statusRequest) {
         return statusService.setStatus(statusRequest);
+    }
+
+    @GetMapping
+    public StatusModel todayStatus() {
+        return statusService.todayStatus();
     }
 
     @GetMapping("/users-report/{id}")
