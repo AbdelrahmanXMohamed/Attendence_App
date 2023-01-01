@@ -1,8 +1,9 @@
-import { vacationRequestResponse } from '../../models/vacationRequestResponseModel';
-import { approveVacationRequest } from '../../models/approveRequestVacationModel';
-import { VacationRequest } from '../../models/vacationRequestModel';
+
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { approveVacationRequest } from "src/app/models/ApproveRequestVacationModel";
+import { VacationRequest } from "src/app/models/VacationRequestModel";
+import { vacationRequestResponse } from "src/app/models/VacationRequestResponseModel";
 
 @Injectable({
     providedIn:"root"
