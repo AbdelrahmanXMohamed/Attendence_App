@@ -1,5 +1,5 @@
 package com.example.demo.attendence.service;
 
-public interface EmailSender {
+public interface EmailService {
     void send(String to, String email);
 }

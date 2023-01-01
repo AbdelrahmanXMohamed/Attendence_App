@@ -1,12 +1,14 @@
 package com.example.demo.attendence.service.impl;
 
+import com.example.demo.attendence.entity.ConfirmationToken;
+import com.example.demo.attendence.model.RegistrationRequestModel;
 import com.example.demo.attendence.model.UserRequestModel;
 import com.example.demo.attendence.model.UserResponseModel;
 import com.example.demo.attendence.entity.User;
 import com.example.demo.attendence.mapper.UserMapper;
 import com.example.demo.attendence.repository.UserRepository;
-import com.example.demo.attendence.service.EmailSender;
-import com.example.demo.attendence.service.UserSevice;
+import com.example.demo.attendence.service.EmailService;
+import com.example.demo.attendence.service.UserService;
 import lombok.AllArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,18 +25,15 @@ import java.util.UUID;
 @Service
 @Transactional
 @AllArgsConstructor
-public class UserServiceImpl implements UserSevice  {
+public class UserServiceImpl implements UserService {
 
     private final static String USER_NOT_FOUND_MSG =
             "user with email %s not found";
     private final ConfirmationTokenService confirmationTokenService ;
-    private final EmailSender emailSender ;
-    private final AppUserRepository appUserRepository ;
+    private final EmailService emailSender ;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final ConfirmationTokenService confirmationTokenService ;
-
+//    private final ConfirmationTokenService confirmationTokenService ;
     private UserRepository userRepository;
-
     private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
 
 
@@ -70,7 +69,7 @@ public class UserServiceImpl implements UserSevice  {
     @Override
     public UserDetails loadUserByUsername(String email)
             throws UsernameNotFoundException {
-        return appUserRepository
+        return userRepository
                 .findByEmail(email)
                 .orElseThrow(() ->
                         new UsernameNotFoundException(
@@ -78,21 +77,21 @@ public class UserServiceImpl implements UserSevice  {
 
     }
     @Transactional
-    public String signUpUser(AppUser appUser){
-        boolean existEmail = appUserRepository
-                .findByEmail(appUser.getEmail())
+    public String signUpUser(User user){
+        boolean existEmail = userRepository
+                .findByEmail(user.getEmail())
                 .isPresent();
 
         if(existEmail){
             throw new IllegalStateException("Email aready taken");
         }
 
-        String encededPassword = bCryptPasswordEncoder
-                .encode(appUser.getPassword());
+        String encodedPassword = bCryptPasswordEncoder
+                .encode(user.getPassword());
 
-        appUser.setPassword(encededPassword);
+        user.setPassword(encodedPassword);
 
-        appUserRepository.save(appUser);
+        userRepository.save(user);
 
 //        TODO: send confirmation token
 
@@ -103,11 +102,10 @@ public class UserServiceImpl implements UserSevice  {
                         token,
                         LocalDateTime.now(),
                         LocalDateTime.now().plusMinutes(15),
-                        appUser
+                        user
                 );
 
-        confirmationTokenService.saveConfirmationToken(
-                confirmationToken);
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
 
 //        TODO: send email
 
@@ -115,7 +113,7 @@ public class UserServiceImpl implements UserSevice  {
     }
 
     public int enableAppUser(String email) {
-        return appUserRepository.enableAppUser(email);
+        return userRepository.enableAppUser(email);
     }
 
     //////////////////////////////////////////////////////////
@@ -123,18 +121,9 @@ public class UserServiceImpl implements UserSevice  {
 
 
 
-    public String register(RegistrationRequest request) {
+    public String register(RegistrationRequestModel request) {
 
-        String token = appUserService.signUpUser(
-                new AppUser(
-                        request.getFirstName(),
-                        request.getLastName(),
-                        request.getEmail(),
-                        request.getPassword(),
-                        AppUserRole.USER
-                )
-        );
-
+        String token = signUpUser(userMapper.registrationRequestModelToUser(request));
         String link = "http://localhost:8080/registration/confirm?token=" + token;
         emailSender.send(
                 request.getEmail(),
@@ -162,8 +151,7 @@ public class UserServiceImpl implements UserSevice  {
         }
 
         confirmationTokenService.setConfirmedAt(token);
-        appUserService.enableAppUser(
-                confirmationToken.getAppUser().getEmail());
+        enableAppUser(confirmationToken.getUser().getEmail());
         return "confirmed";
     }
 

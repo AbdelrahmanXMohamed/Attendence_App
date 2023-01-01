@@ -1,6 +1,7 @@
 package com.example.demo.attendence.service.impl;
 
-import com.example.demo.attendence.service.EmailSender;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -8,20 +9,18 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 
 @Service
 
-public class EmailService implements EmailSender {
+public class EmailServiceImpl implements com.example.demo.attendence.service.EmailService {
 
     private final static Logger LOGGER = LoggerFactory
-            .getLogger(EmailService.class);
+            .getLogger(EmailServiceImpl.class);
 
 
-    private final JavaMailSender mailSender ;
+    private final JavaMailSender mailSender;
 
-    public EmailService(JavaMailSender mailSender) {
+    public EmailServiceImpl(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
 

@@ -1,11 +1,11 @@
 package com.example.demo.attendence.controller;
 
-import com.example.demo.attendence.Model.LoginRequestModel;
-import com.example.demo.attendence.Model.LoginResponseModel;
-import com.example.demo.attendence.registration.RegistrationRequest;
-import com.example.demo.attendence.security.config.JwtUtil;
-import com.example.demo.attendence.service.AppUserService;
-import com.example.demo.attendence.service.RegistrationService;
+
+import com.example.demo.attendence.model.LoginRequestModel;
+import com.example.demo.attendence.model.LoginResponseModel;
+import com.example.demo.attendence.model.RegistrationRequestModel;
+import com.example.demo.attendence.security.JwtUtil;
+import com.example.demo.attendence.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,29 +19,27 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class RegistrationController {
 
-    private RegistrationService registrationService ;
-    private AppUserService appUserService ;
+    private UserService userService ;
     private AuthenticationManager authenticationManager;
     private JwtUtil jwtUtil ;
 
     @PostMapping
-    public String register (@RequestBody RegistrationRequest request){
+    public String register (@RequestBody RegistrationRequestModel request){
 
-        return registrationService.register(request);
+        return userService.register(request);
     }
 
     @GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token) {
         System.out.println(token);
-        return registrationService.confirmToken(token);
+        return userService.confirmToken(token);
     }
-
-
+    
     @PostMapping("/sign-in")
     @ResponseStatus(HttpStatus.OK)
     public LoginResponseModel signIn(@RequestBody LoginRequestModel loginRequestModel) throws Exception {
 
-        final UserDetails userDetails =appUserService.loadUserByUsername(loginRequestModel.getEmail());
+        final UserDetails userDetails =userService.loadUserByUsername(loginRequestModel.getEmail());
 
 
         String jwt= jwtUtil.generateToken(userDetails);

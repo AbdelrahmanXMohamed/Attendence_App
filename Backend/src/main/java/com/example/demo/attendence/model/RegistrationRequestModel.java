@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class RegistrationRequest {
+public class RegistrationRequestModel {
 
     private final String firstName ;
     private final String lastName ;
