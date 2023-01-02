@@ -49,8 +49,10 @@ export class ProfileComponent implements OnInit {
     this.statusRequest.userId =1
     if(onsite.checked){
       this.statusRequest.status=DailyStatus.ONSITE
+      this.status = DailyStatus.ONSITE
     }else if (remote.checked){
       this.statusRequest.status=DailyStatus.REMOTE
+      this.status = DailyStatus.REMOTE
     }
     console.log(this.statusRequest)
     this.statusServices.setStatus(this.statusRequest).subscribe(data=>{

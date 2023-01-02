@@ -45,7 +45,7 @@ public class StatusServiceImpl implements StatusService {
     @Override
     public Status setStatus(StatusRequestModel statusRequest) {
         User user = userRepository.findById(statusRequest.getUserId()).orElseThrow(UserDoesNotExistException::new);
-        if (!statusRequest.getDay().isAfter(LocalDate.now())) {
+        if (!statusRequest.getDay().isAfter(LocalDate.now().minusDays(1))) {
             throw new StatusInvalidDateException("Date must be up coming date");
         }
         StatusModel statusModel = statusMapper.statusRequestModelToStatusModel(statusRequest);

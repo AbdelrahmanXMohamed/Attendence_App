@@ -33,10 +33,7 @@ public class UserController {
 
     }
 
-    @GetMapping("{userId}")
-    public UserResponseModel getUser(@PathVariable Long userId){
-        return this.userService.getUser(userId);
-    }
+
     @GetMapping("name/{username}")
     public UserResponseModel getUserByUserName(@PathVariable String username){
        return this.userService.getUserByUserName(username);

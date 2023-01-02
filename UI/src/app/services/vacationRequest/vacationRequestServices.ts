@@ -4,6 +4,7 @@ import { VacationRequest } from '../../models/VacationRequestModel';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { VacationModel } from 'src/app/models/VacationModel';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn:"root"
@@ -34,11 +35,8 @@ export class VacationRequestServices{
         })
     }
 
-    getAllVacationRequestperUser(userId: number):vacationRequestResponse[]{
-        let res =this.http.get<any>("http://localhost:8080/vacations/"+userId).subscribe(data=>{
-            this.requestRespoonse=data
-        })
-        return this.requestRespoonse
+    getAllVacationRequestperUser(userId: number):Observable<vacationRequestResponse[]>{
+        return this.http.get<any>("http://localhost:8080/vacations/"+userId);
     }
 
 }
