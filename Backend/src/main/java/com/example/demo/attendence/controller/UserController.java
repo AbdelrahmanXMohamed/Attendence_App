@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin("http://localhost:4200")
 public class UserController {
 
     private UserServiceImpl userService;
@@ -20,7 +21,11 @@ public class UserController {
     @PostMapping
     public void createUser(@RequestBody UserRequestModel userModel) {
         userService.createUser(userModel);
+    }
 
+    @GetMapping("{id}")
+    public UserResponseModel getUser(@PathVariable Long id){
+        return userService.getUser(id);
     }
 
     @PutMapping

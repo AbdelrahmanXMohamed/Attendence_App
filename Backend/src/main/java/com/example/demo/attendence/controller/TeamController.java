@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("teams")
+@CrossOrigin("http://localhost:4200")
 public class TeamController {
 
     private final TeamServiceImpl teamService;

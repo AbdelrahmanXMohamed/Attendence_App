@@ -30,7 +30,7 @@ export class VacationRequestServices{
 
     approveRequest(userId:number , vacationId:number, approveRequest:approveVacationRequest){
         this.http.post<any>("http://localhost:8080/vacations/"+userId+"/"+vacationId,approveRequest).subscribe((result:void) => {
-            
+
         })
     }
 

@@ -30,7 +30,7 @@ public interface VacaionRequestMapper {
     default VacationRequest vacationRequestModelToEntity(VacationRequestModel vacationRequestModel){
         VacationRequest vacationRequest=new VacationRequest();
         vacationRequest.setType(vacationRequestModel.getType());
-        vacationRequest.setStartDate(vacationRequestModel.getStratDate());
+        vacationRequest.setStartDate(vacationRequestModel.getStartDate());
         if(vacationRequest.getType()== VacationType.CASUAL)
             vacationRequest.setEndDate(vacationRequest.getStartDate().plusDays(1));
         else

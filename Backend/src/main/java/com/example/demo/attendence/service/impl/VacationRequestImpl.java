@@ -54,7 +54,6 @@ public class VacationRequestImpl implements VacationRequestService {
         }
 
         vacationRequest.setUser(user);
-        System.out.println(vacationRequest);
         vacationRequestRepo.save(vacationRequest);
     }
 
