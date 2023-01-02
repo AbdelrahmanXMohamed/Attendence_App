@@ -3,10 +3,29 @@
     <button type="button" class="btn btn-outline-primary" (click)="open(mymodal)">
         <i class="fas fa-plus mr-2"></i> Vacation request</button>
 </div>
-<br />
+<br/>
 <div class="shadow-sm p-3 mb-2 bg-white rounded d-flex justify-content-between">
-    <p class="mb-0">Vacation ID</p>
-    <p class="mb-0">Vacation Status</p>
+    <table class='table'
+               *ngIf='requestRespoonse.length'>
+          <thead>
+            <tr>
+              <th >Vacation type</th> 
+              <th>Vacation Statusc</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Comment </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let request of requestRespoonse'>
+              <td>{{request.type}}</td>
+              <td>{{request.status}}</td>
+              <td>{{request.startDate}}</td>
+              <td>{{request.endDate}}</td>
+              <td>{{request.comment}}</td>
+              </tr>
+            </tbody>
+        </table>
 </div>
 
 <ng-template #mymodal let-modal>
@@ -19,12 +38,36 @@
 
     <form class="modal-body d-flex flex-row">
         <div class="form-group">
-            <div class="input-group">
-                <input class="form-control" placeholder="Start date" name="startdate" type="date">
+            Type : 
+            <div class="input-group"> 
+                <form class="modal-body d-flex flex-row justify-content-around">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="optradio" id="CASUAL" value="casual">
+                      <label class="form-check-label" for="casual">
+                        CASUAL </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="optradio" id="PLANNED" value="planned">
+                      <label class="form-check-label" for="planned">
+                        PLANNED </label>
+                    </div>
+                  </form>
+              
             </div>
-            <br />
+            <br/>
+            start Date: 
+            <div class="input-group"> 
+               <input class="form-control" placeholder="Start date" name="startdate" type="date"  [(ngModel)]="startDate">
+            </div>
+            <br/>
+            End Date:
             <div class="input-group">
-                <input class="form-control" placeholder="End date" name="enddate" type="date">
+                <input class="form-control" placeholder="End date" name="enddate" type="date" [(ngModel)]="endDate">
+            </div>
+            <br/>
+            Comment :
+            <div class="input-group">
+                <input type="text" name="comment" [(ngModel)]="comment">
             </div>
         </div>
     </form>

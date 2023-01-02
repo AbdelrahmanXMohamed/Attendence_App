@@ -14,7 +14,7 @@ public class VacationRequestModel {
     private VacationType type;
 
    @NotNull(message = "Start date mustn't be null.")
-    private LocalDate stratDate;
+    private LocalDate startDate;
 
     private LocalDate endDate=LocalDate.now();
 

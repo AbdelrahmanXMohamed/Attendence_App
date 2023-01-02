@@ -1,12 +1,13 @@
 <div class="header">
-  <p class="mb-0">Username</p>
-  <p class="mb-0">UserID</p>
-  <p class="mb-0">Email</p>
+  <p class="mb-0">Username : {{userModel.username}}</p>
+  <p class="mb-0">ID : {{userModel.id}}</p>
+  <p class="mb-0">Email : {{userModel.email}}</p>
   <span class="d-flex align-items-center">
     <p class="mb-0 mr-2">{{status | titlecase}}</p><button type="button" class="btn btn-link p-0"
       *ngIf="status==='ABSENCE'" (click)="open(mymodal)">update
       status</button>
   </span>
+  
 </div>
 <ul class="nav nav-tabs">
   <li class="nav-item">

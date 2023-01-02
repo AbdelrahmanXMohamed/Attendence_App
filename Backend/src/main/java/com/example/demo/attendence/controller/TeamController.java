@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("teams")
+@CrossOrigin("http://localhost:4200")
 public class TeamController {
 
     private final TeamServiceImpl teamService;
@@ -38,6 +39,14 @@ public class TeamController {
         return this.teamService.removeUserFromTeam(userId,teamId);
     }
 
+    @GetMapping("/manager/{managerId}")
+    public List<TeamResponseModel> getTeamsOfManager(@PathVariable Long managerId){
+        return this.teamService.getTeamsOfManager(managerId);
+    }
 
+    @GetMapping("{teamId}")
+    public TeamResponseModel getTeamById(@PathVariable Long teamId){
+        return this.teamService.getTeamById(teamId);
+    }
 
 }

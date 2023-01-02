@@ -11,6 +11,6 @@ import java.time.LocalDate;
 @Data
 public class StatusModel {
     private LocalDate day;
-    private User user;
+    private UserResponseModel user;
     private DailyStatus status;
 }

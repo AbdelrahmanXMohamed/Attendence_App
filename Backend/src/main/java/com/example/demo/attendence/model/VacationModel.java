@@ -6,14 +6,17 @@ import lombok.Data;
 import java.time.LocalDate;
 @Data
 public class VacationModel {
+    private Long id;
 
+
+    private Long id;
     private Long userId;
 
     private String username;
 
     private VacationType type;
 
-    private LocalDate stratDate;
+    private LocalDate startDate;
 
     private LocalDate endDate;
 
