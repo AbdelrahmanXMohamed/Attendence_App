@@ -4,52 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="init">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/21577674d0f4b507a29cf2fa149d24f225e1e13b" beforeDir="false" />
+    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="Set status issue">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20d465c487d7f9b038858c73ec7f6371adde9473" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47800f65361b0bf74493abffd3462d63a3a867b0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5be6b20b428c50c2a64c02e90c0b0fd18fc179d6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/a/6a7598346a56fb25f0496684494cce0ea6a63438" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/2/72a8a2e5e09d1663cd271de4c1219d46942c9c08" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/75429fdcbee264a6d75018cd65ec5475777571db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/7/87e270f988fd745554135c48b1e5f1ef7f89df6f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a85f71499171e827fbf22c5f93ae835bf97f8afb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/9/c9790b7df0c97b801ec4f2a455d85a3059eafbcc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/7/d7ae93a849673b626558e89d2a519adf41dfdc10" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/StatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/StatusController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/TeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/TeamController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/VacationRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/VacationRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/mapper/VacaionRequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/mapper/VacaionRequestMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/VacationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/VacationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/VacationRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/model/VacationRequestModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/VacationRequestImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/VacationRequestImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/Status.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/Status.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/StatusBetweenTwoDateRequestModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/StatusBetweenTwoDateRequestModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/StatusModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/StatusModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/StatusRequestModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/StatusRequestModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/TeamRequestModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/TeamRequestModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/TeamResponseModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/TeamResponseModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/UserModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/UserModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/VacationModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/VacationModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/VacationRequestModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/VacationRequestModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/models/VacationRequestResponseModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/models/VacationRequestResponseModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/profile/profile.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/profile/status/status.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/status/status.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/profile/status/status.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/status/status.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/profile/vacations/vacations.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/vacations/vacations.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/profile/vacations/vacations.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/vacations/vacations.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/services/status/status.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/services/status/status.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/services/user/userServices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/services/user/userServices.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/services/vacationRequest/vacationRequestServices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/services/vacationRequest/vacationRequestServices.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/utils/vacationStatus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/utils/vacationStatus.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/utils/vacationType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/utils/vacationType.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,12 +26,12 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/mostafaUI" />
+    <option name="BRANCH" value="origin/Abdelrahman-touch" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Abdelrahman-UI" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -160,7 +120,6 @@
       <workItem from="1672125091493" duration="4563000" />
       <workItem from="1672221853878" duration="1692000" />
       <workItem from="1672300697926" duration="10289000" />
-      <workItem from="1672648471046" duration="8603000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1672058705344</created>
@@ -218,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672496834026</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Set status issue">
+      <created>1672669397549</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672669397549</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,7 +206,8 @@
     <MESSAGE value="init" />
     <MESSAGE value="ayaa ui 0.1% done" />
     <MESSAGE value="mostafa ui 0.1% done" />
-    <option name="LAST_COMMIT_MESSAGE" value="mostafa ui 0.1% done" />
+    <MESSAGE value="Set status issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set status issue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

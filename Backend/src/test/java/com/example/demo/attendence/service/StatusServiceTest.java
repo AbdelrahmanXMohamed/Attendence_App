@@ -1,167 +1,230 @@
-//package com.example.demo.attendence.service;
-//
-//import com.example.demo.attendence.entity.Status;
-//import com.example.demo.attendence.entity.Team;
-//import com.example.demo.attendence.entity.User;
-//import com.example.demo.attendence.exception.StatusInvalidDateException;
-//import com.example.demo.attendence.exception.TeamDoesNotExistException;
-//import com.example.demo.attendence.exception.UserDoesNotExistException;
-//import com.example.demo.attendence.mapper.StatusMapper;
-//import com.example.demo.attendence.model.StatusBetweenTwoDateRequestModel;
-//import com.example.demo.attendence.model.StatusModel;
-//import com.example.demo.attendence.model.StatusRequestModel;
-//import com.example.demo.attendence.repository.StatusRepository;
-//import com.example.demo.attendence.repository.TeamRepository;
-//import com.example.demo.attendence.repository.UserRepository;
-//import com.example.demo.attendence.service.impl.StatusServiceImpl;
-//import com.example.demo.attendence.utils.DailyStatus;
-//import org.junit.Assert;
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//import org.mapstruct.factory.Mappers;
-//import org.mockito.InjectMocks;
-//import org.mockito.Mock;
-//import org.mockito.junit.MockitoJUnitRunner;
-//import org.springframework.boot.test.context.SpringBootTest;
-//
-//import java.time.DayOfWeek;
-//import java.time.LocalDate;
-//import java.util.*;
-//import java.util.stream.Collectors;
-//
-//import static org.mockito.ArgumentMatchers.any;
-//import static org.mockito.Mockito.when;
-//
-//
-//@RunWith(MockitoJUnitRunner.class)
-//@SpringBootTest
-//public class StatusServiceTest {
-//    @InjectMocks
-//    private StatusServiceImpl statusService;
-//    @Mock
-//    private StatusRepository statusRepository;
-//    @Mock
-//    private UserRepository userRepository;
-//    @Mock
-//    private TeamRepository teamRepository;
-//
-//    private final StatusMapper statusMapper = Mappers.getMapper(StatusMapper.class);
-//
-//    /*
-//     * Test Cases of Set Status
-//     */
-//    @Test(expected = StatusInvalidDateException.class)
-//    public void testSetStatusDateErrorTestCase() {
-//        // create mock inputs
-//        LocalDate day = LocalDate.now().minusDays(10);
-//        Long userId = 1L;
-//        DailyStatus status = DailyStatus.ONSITE;
-//        when(userRepository.findById(userId)).thenReturn(Optional.of(new User()));
-//
-//        // execute the method being tested
-//        statusService.setStatus(new StatusRequestModel(day, userId, status));
-//    }
-//
-//    @Test(expected = UserDoesNotExistException.class)
-//    public void testSetStatusUserDoesNotExistTestCase() {
-//        // create mock inputs
-//        LocalDate day = LocalDate.now().minusDays(10);
-//        Long userId = 1L;
-//        DailyStatus status = DailyStatus.ONSITE;
-//        when(userRepository.findById(userId)).thenReturn(Optional.empty());
-//        // execute the method being tested
-//        statusService.setStatus(new StatusRequestModel(day, userId, status));
-//    }
-//
-//    @Test
-//    public void testSetStatusSuccess() {
-//        // create mock inputs
-//        LocalDate day = LocalDate.now().plusDays(5);
-//        Long userId = 1L;
-//        DailyStatus status = DailyStatus.ONSITE;
-//        Status expectedStatus = new Status(userId, day, new User(), status);
-//        when(userRepository.findById(userId)).thenReturn(Optional.of(new User()));
-//        when(statusRepository.save(any(Status.class))).thenReturn(expectedStatus);
-//        // execute the method being tested
-//        Status resultStatus =
-//                statusService.setStatus(new StatusRequestModel(day, userId, status));
-//        // assert the output is as expected
-//        Assert.assertEquals(expectedStatus, resultStatus);
-//    }
-//
-//    /*
-//     * Test Cases of Get Report For User
-//     */
-//    @Test(expected = UserDoesNotExistException.class)
-//    public void testGetReportForUserUserDoesNotExistTestCase() {
-//        // create mock inputs
-//        LocalDate starterDate = LocalDate.now().minusDays(10);
-//        LocalDate enderDate = LocalDate.now().minusDays(5);
-//        Long userId = 1L;
-//
-//        when(userRepository.findById(userId)).thenReturn(Optional.empty());
-//        // execute the method being tested
-//        statusService.getReportForUser(userId, new StatusBetweenTwoDateRequestModel(starterDate, enderDate));
-//    }
-//
-//    @Test(expected = StatusInvalidDateException.class)
-//    public void testGetReportForUserInvalidStartDateTestCase() {
-//        // create mock inputs
-//        LocalDate starterDate = LocalDate.now().minusDays(5);
-//        LocalDate enderDate = LocalDate.now().minusDays(10);
-//        Long userId = 1L;
-//        // execute the method being tested
-//        statusService.getReportForUser(userId, new StatusBetweenTwoDateRequestModel(starterDate, enderDate));
-//    }
-//
-//    @Test
-//    public void testGetReportForUserWithFutureDateTestCase() {
-//        // create mock inputs
-//        LocalDate starterDate = LocalDate.now().minusDays(5);
-//        LocalDate enderDate = LocalDate.now().plusDays(5);
-//        Long userId = 1L;
-//        User user = new User();
-//        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
-//        List<StatusModel> expected = new ArrayList<>();
-//        int i = 0;
-//        for (LocalDate start = starterDate; start.isBefore(enderDate) || start.isEqual(enderDate); start = start.plusDays(1)) {
-//            if (start.isAfter(LocalDate.now()) && !start.isEqual(LocalDate.now())) {
-//                expected.add(statusMapper.statusToStatusModel(
-//                        new Status(0L, start, user, DailyStatus.UNKNOWN)));
-//                continue;
-//            }
-//            expected.add(statusMapper.statusToStatusModel(
-//                    new Status(0L, start, user, Math.random() % 2 == 0 ? DailyStatus.ONSITE : DailyStatus.REMOTE)));
-//            when(statusRepository.findByUserAndDate(userId, start))
-//                    .thenReturn(Optional.of(statusMapper.statusModelToStatus(expected.get(i))));
-//            i++;
-//        }
-//        // execute the method being tested
-//        List<StatusModel> actual = statusService.getReportForUser(userId, new StatusBetweenTwoDateRequestModel(starterDate, enderDate));
-//        Assert.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void testGetReportForUserWithValidAllDateExistTestCase() {
-//        // create mock inputs
-//        LocalDate starterDate = LocalDate.now().minusDays(10);
-//        LocalDate enderDate = LocalDate.now().minusDays(5);
-//        Long userId = 1L;
-//        when(userRepository.findById(userId)).thenReturn(Optional.of(new User()));
-//        List<StatusModel> expected = new ArrayList<>();
-//        int i = 0;
-//        for (LocalDate start = starterDate; start.isBefore(enderDate) || start.isEqual(enderDate); start = start.plusDays(1)) {
-//            expected.add(statusMapper.statusToStatusModel(
-//                    new Status(0L, start, new User(), Math.random() % 2 == 0 ? DailyStatus.ONSITE : DailyStatus.REMOTE)));
-//            when(statusRepository.findByUserAndDate(userId, start))
-//                    .thenReturn(Optional.of(statusMapper.statusModelToStatus(expected.get(i))));
-//            i++;
-//        }
-//        // execute the method being tested
-//        List<StatusModel> actual = statusService.getReportForUser(userId, new StatusBetweenTwoDateRequestModel(starterDate, enderDate));
-//        Assert.assertEquals(expected, actual);
-//    }
-//
+package com.example.demo.attendence.service;
+
+import com.example.demo.attendence.entity.Status;
+import com.example.demo.attendence.entity.Team;
+import com.example.demo.attendence.entity.User;
+import com.example.demo.attendence.exception.StatusCanNotBeChangedException;
+import com.example.demo.attendence.exception.StatusInvalidDateException;
+import com.example.demo.attendence.exception.TeamDoesNotExistException;
+import com.example.demo.attendence.exception.UserDoesNotExistException;
+import com.example.demo.attendence.mapper.StatusMapper;
+import com.example.demo.attendence.model.StatusBetweenTwoDateRequestModel;
+import com.example.demo.attendence.model.StatusModel;
+import com.example.demo.attendence.model.StatusRequestModel;
+import com.example.demo.attendence.repository.StatusRepository;
+import com.example.demo.attendence.repository.TeamRepository;
+import com.example.demo.attendence.repository.UserRepository;
+import com.example.demo.attendence.service.impl.StatusServiceImpl;
+import com.example.demo.attendence.utils.DailyStatus;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mapstruct.factory.Mappers;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
+
+@RunWith(MockitoJUnitRunner.class)
+@SpringBootTest
+public class StatusServiceTest {
+    @InjectMocks
+    private StatusServiceImpl statusService;
+    @Mock
+    private StatusRepository statusRepository;
+    @Mock
+    private UserRepository userRepository;
+    @Mock
+    private TeamRepository teamRepository;
+
+    private final StatusMapper statusMapper = Mappers.getMapper(StatusMapper.class);
+
+    /*
+     * Test Cases of Set Status
+     */
+    @Test
+    public void testSetStatusSuccessTestCase() {
+        // create mock inputs
+        LocalDate day = LocalDate.now();
+        Long userId = 1L;
+        DailyStatus status = DailyStatus.ONSITE;
+
+        Status expectedStatus = new Status();
+        expectedStatus.setDay(day);
+        expectedStatus.setUser(new User());
+        expectedStatus.setStatus(status);
+        expectedStatus.setId(userId);
+
+        StatusRequestModel statusRequestModel = new StatusRequestModel();
+        statusRequestModel.setStatus(status);
+        statusRequestModel.setDay(day);
+        statusRequestModel.setUserId(userId);
+        when(userRepository.findById(userId)).thenReturn(Optional.of(new User()));
+        when(statusRepository.findByUserAndDate(userId, day)).thenReturn(Optional.empty());
+        when(statusRepository.save(any(Status.class))).thenReturn(expectedStatus);
+
+        // execute the method being tested
+        Assert.assertEquals(statusService.setStatus(statusRequestModel), expectedStatus);
+    }
+
+    @Test(expected = UserDoesNotExistException.class)
+    public void testSetStatusUserDoesNotExistTestCase() {
+        // create mock inputs
+        LocalDate day = LocalDate.now().minusDays(10);
+        Long userId = 1L;
+        DailyStatus status = DailyStatus.ONSITE;
+        when(userRepository.findById(userId)).thenReturn(Optional.empty());
+
+        StatusRequestModel statusRequestModel = new StatusRequestModel();
+        statusRequestModel.setStatus(status);
+        statusRequestModel.setDay(day);
+        statusRequestModel.setUserId(userId);
+        // execute the method being tested
+        statusService.setStatus(statusRequestModel);
+    }
+
+    @Test(expected = StatusInvalidDateException.class)
+    public void testSetStatusDatePastDateTestCase() {
+        // create mock inputs
+        LocalDate day = LocalDate.now().minusDays(10);
+        Long userId = 1L;
+        DailyStatus status = DailyStatus.ONSITE;
+        when(userRepository.findById(userId)).thenReturn(Optional.of(new User()));
+
+        StatusRequestModel statusRequestModel = new StatusRequestModel();
+        statusRequestModel.setStatus(status);
+        statusRequestModel.setDay(day);
+        statusRequestModel.setUserId(userId);
+        // execute the method being tested
+        statusService.setStatus(statusRequestModel);
+    }
+
+    @Test(expected = StatusInvalidDateException.class)
+    public void testSetStatusDateFutureDateSuccess() {
+        // create mock inputs
+        LocalDate day = LocalDate.now().plusDays(5);
+        Long userId = 1L;
+        DailyStatus status = DailyStatus.ONSITE;
+        Status expectedStatus = new Status();
+        expectedStatus.setStatus(status);
+        expectedStatus.setDay(day);
+        expectedStatus.setUser(new User());
+        expectedStatus.setId(userId);
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(new User()));
+
+        StatusRequestModel statusRequestModel = new StatusRequestModel();
+        statusRequestModel.setStatus(status);
+        statusRequestModel.setDay(day);
+        statusRequestModel.setUserId(userId);
+        // execute the method being tested
+        statusService.setStatus(statusRequestModel);
+    }
+
+    @Test(expected = StatusCanNotBeChangedException.class)
+    public void testSetStatusCanNotBeChangedTestCase() {
+        // create mock inputs
+        LocalDate day = LocalDate.now();
+        Long userId = 1L;
+        DailyStatus status = DailyStatus.ONSITE;
+
+        Status expectedStatus = new Status();
+        expectedStatus.setDay(day);
+        expectedStatus.setUser(new User());
+        expectedStatus.setStatus(status);
+        expectedStatus.setId(userId);
+
+        StatusRequestModel statusRequestModel = new StatusRequestModel();
+        statusRequestModel.setStatus(status);
+        statusRequestModel.setDay(day);
+        statusRequestModel.setUserId(userId);
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(new User()));
+        when(statusRepository.findByUserAndDate(userId, day)).thenReturn(Optional.of(new Status()));
+
+        // execute the method being tested
+        statusService.setStatus(statusRequestModel);
+    }
+
+    /*
+     * Test Cases of Get Report For User
+     */
+    @Test
+    public void testGetReportForUserSuccessTestCase() {
+        // create mock inputs
+        LocalDate starterDate = LocalDate.now().minusDays(5);
+        LocalDate enderDate = LocalDate.now().plusDays(5);
+        Long userId = 1L;
+
+        StatusBetweenTwoDateRequestModel statusBetweenTwoDateRequestModel=new StatusBetweenTwoDateRequestModel();
+        statusBetweenTwoDateRequestModel.setStarterDate(starterDate);
+        statusBetweenTwoDateRequestModel.setEnderDate(enderDate);
+
+        User user = new User();
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        List<StatusModel> expected = new ArrayList<>();
+
+        int i = 0;
+        for (LocalDate start = starterDate; start.isBefore(enderDate) || start.isEqual(enderDate); start = start.plusDays(1)) {
+            Status status = new Status();
+            status.setUser(user);
+            status.setId(0L);
+            status.setDay(start);
+
+            if (start.isAfter(LocalDate.now()) && !start.isEqual(LocalDate.now())) {
+                status.setStatus(DailyStatus.UNKNOWN);
+                expected.add(statusMapper.statusToStatusModel(status));
+                continue;
+            }
+
+            status.setStatus(DailyStatus.REMOTE);
+            expected.add(statusMapper.statusToStatusModel(status));
+            when(statusRepository.findByUserAndDate(userId, start))
+                    .thenReturn(Optional.of(statusMapper.statusModelToStatus(expected.get(i))));
+            i++;
+        }
+        // execute the method being tested
+        List<StatusModel> actual = statusService.getReportForUser(userId, statusBetweenTwoDateRequestModel);
+        Assert.assertEquals(expected, actual);
+    }
+    @Test(expected = UserDoesNotExistException.class)
+    public void testGetReportForUserUserDoesNotExistTestCase() {
+        // create mock inputs
+        LocalDate starterDate = LocalDate.now().minusDays(10);
+        LocalDate enderDate = LocalDate.now().minusDays(5);
+        Long userId = 1L;
+
+        when(userRepository.findById(userId)).thenReturn(Optional.empty());
+
+        StatusBetweenTwoDateRequestModel statusBetweenTwoDateRequestModel = new StatusBetweenTwoDateRequestModel();
+        statusBetweenTwoDateRequestModel.setStarterDate(starterDate);
+        statusBetweenTwoDateRequestModel.setEnderDate(enderDate);
+        // execute the method being tested
+        statusService.getReportForUser(userId, statusBetweenTwoDateRequestModel);
+    }
+    @Test(expected = StatusInvalidDateException.class)
+    public void testGetReportForUserInvalidStartDateTestCase() {
+        // create mock inputs
+        LocalDate starterDate = LocalDate.now().minusDays(5);
+        LocalDate enderDate = LocalDate.now().minusDays(10);
+        Long userId = 1L;
+
+        StatusBetweenTwoDateRequestModel statusBetweenTwoDateRequestModel = new StatusBetweenTwoDateRequestModel();
+        statusBetweenTwoDateRequestModel.setStarterDate(starterDate);
+        statusBetweenTwoDateRequestModel.setEnderDate(enderDate);
+        // execute the method being tested
+        statusService.getReportForUser(userId, statusBetweenTwoDateRequestModel);
+    }
+
 //    @Test
 //    public void testGetReportForUserWithValidSomeMissingDateExistTestCase() {
 //        // create mock inputs
@@ -387,4 +450,4 @@
 //    /*
 //     * Test Cases of Get Report For Current Week For User
 //     */
-//}
+}
