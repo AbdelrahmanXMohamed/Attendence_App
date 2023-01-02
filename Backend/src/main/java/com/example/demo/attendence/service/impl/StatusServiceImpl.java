@@ -3,6 +3,7 @@ package com.example.demo.attendence.service.impl;
 import com.example.demo.attendence.entity.Status;
 import com.example.demo.attendence.entity.Team;
 import com.example.demo.attendence.exception.*;
+import com.example.demo.attendence.mapper.UserMapper;
 import com.example.demo.attendence.model.StatusBetweenTwoDateRequestModel;
 import com.example.demo.attendence.model.StatusModel;
 import com.example.demo.attendence.model.StatusRequestModel;
@@ -30,6 +31,8 @@ public class StatusServiceImpl implements StatusService {
     TeamRepository teamRepository;
     final StatusMapper statusMapper =
             Mappers.getMapper(StatusMapper.class);
+    final UserMapper userMapper =
+            Mappers.getMapper(UserMapper.class);
 
     public StatusServiceImpl(StatusRepository statusRepository, UserRepository userRepository, TeamRepository teamRepository) {
         this.statusRepository = statusRepository;
@@ -53,7 +56,7 @@ public class StatusServiceImpl implements StatusService {
             throw new StatusCanNotBeChangedException();
         }
         StatusModel statusModel = statusMapper.statusRequestModelToStatusModel(statusRequest);
-        statusModel.setUser(user);
+        statusModel.setUser(userMapper.userToModel(user));
         return statusRepository.save(statusMapper.statusModelToStatus(statusModel));
     }
 
@@ -115,7 +118,14 @@ public class StatusServiceImpl implements StatusService {
         teamStatusGuard(teamId);
         Team team = teamRepository.getReferenceById(teamId);
         List<LocalDate> allDaysOfWeek = Arrays.stream(DayOfWeek.values()).map(LocalDate.now()::with).toList();
-        return team.getUsers().stream().flatMap(user -> allDaysOfWeek.stream().map(day -> getStatusForUser(user.getId(), day))).toList();
+        return team
+                .getUsers()
+                .stream()
+                .flatMap(user ->
+                        allDaysOfWeek
+                                .stream()
+                                .map(day -> getStatusForUser(user.getId(), day)))
+                .toList();
     }
 
     private static boolean isValidStarter(StatusBetweenTwoDateRequestModel statusBetweenTwoDateRequestModel, LocalDate starter) {

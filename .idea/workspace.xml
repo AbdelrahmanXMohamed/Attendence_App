@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="abdrahman ui 10000000000% done">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/7/87e270f988fd745554135c48b1e5f1ef7f89df6f" beforeDir="false" />
+    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="Set status issue">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20d465c487d7f9b038858c73ec7f6371adde9473" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47800f65361b0bf74493abffd3462d63a3a867b0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +26,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/mostafaUI" />
+    <option name="BRANCH" value="origin/Abdelrahman-touch" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -174,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672496834026</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Set status issue">
+      <created>1672669397549</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672669397549</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,7 +206,8 @@
     <MESSAGE value="init" />
     <MESSAGE value="ayaa ui 0.1% done" />
     <MESSAGE value="mostafa ui 0.1% done" />
-    <option name="LAST_COMMIT_MESSAGE" value="mostafa ui 0.1% done" />
+    <MESSAGE value="Set status issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set status issue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
