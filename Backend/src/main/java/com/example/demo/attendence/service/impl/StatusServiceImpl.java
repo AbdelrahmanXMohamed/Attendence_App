@@ -45,10 +45,13 @@ public class StatusServiceImpl implements StatusService {
         } else {
             userStatusGuard(user.getId());
         }
-        if ((statusRequest.getDay().isAfter(LocalDate.now()) || statusRequest.getDay().isBefore(LocalDate.now())) && !statusRequest.getStatus().equals(DailyStatus.VACATION)) {
+        if (!statusRequest.getDay().equals(LocalDate.now()) && !statusRequest.getStatus().equals(DailyStatus.VACATION)) {
             throw new StatusInvalidDateException("Date must be current date only");
         }
-        statusRepository.findByUserAndDate(statusRequest.getUserId(), statusRequest.getDay()).orElseThrow(StatusCanNotBeChangedException::new);
+        if (statusRepository.findByUserAndDate(statusRequest.getUserId(), statusRequest.getDay()).isPresent())
+        {
+            throw new StatusCanNotBeChangedException();
+        }
         StatusModel statusModel = statusMapper.statusRequestModelToStatusModel(statusRequest);
         statusModel.setUser(user);
         return statusRepository.save(statusMapper.statusModelToStatus(statusModel));

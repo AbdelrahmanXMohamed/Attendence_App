@@ -1,6 +1,4 @@
 
-
-OBackend/src/main/java/com/example/demo/attendence/AttendenceAppApplication.java,a\4\a4e6bac5f7838826006db79b5563b8c3d03d94f9
 Å
 QBackend/src/main/java/com/example/demo/attendence/annotation/EnumNamePattern.java,7\2\720d63caa1f79bb2cf590a78dbc342426925f6ae
 ä
@@ -27,8 +25,6 @@ cBackend/src/main/java/com/example/demo/attendence/exception/controller/TeamExce
 `Backend/src/main/java/com/example/demo/attendence/exception/controller/TeamExceptionHandler.java,c\f\cf5a40f89dc1f8d99f423cc7f06c89edce6f9d88
 ì
 cBackend/src/main/java/com/example/demo/attendence/exception/controller/UserExceptionController.java,5\b\5be6b20b428c50c2a64c02e90c0b0fd18fc179d6
-ï
-eBackend/src/main/java/com/example/demo/attendence/exception/controller/StatusExceptionController.java,a\1\a1fe20e0610ac4a1b430edd126db3df214295eac
 z
 JBackend/src/main/java/com/example/demo/attendence/mapper/StatusMapper.java,d\7\d7ae93a849673b626558e89d2a519adf41dfdc10
 ç
@@ -39,8 +35,6 @@ RBackend/src/main/java/com/example/demo/attendence/repository/StatusRepository.j
 PBackend/src/main/java/com/example/demo/attendence/repository/TeamRepository.java,5\b\5b3da3ce242c89b6ddf6b04ae9d803ce8a8588ac
 Ä
 PBackend/src/main/java/com/example/demo/attendence/repository/UserRepository.java,4\7\47ddbd92ba311109ea6228db06035d2646c351ef
-|
-LBackend/src/main/java/com/example/demo/attendence/service/StatusService.java,6\a\6a7598346a56fb25f0496684494cce0ea6a63438
 r
 BBackend/src/main/java/com/example/demo/attendence/entity/Team.java,d\5\d500b26d0229f5fdedd69c0d628d4469b8bc9855
 x
@@ -63,10 +57,6 @@ BBackend/src/main/java/com/example/demo/attendence/entity/User.java,6\d\6d1221b
 SBackend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java,7\5\75429fdcbee264a6d75018cd65ec5475777571db
 t
 DBackend/src/main/java/com/example/demo/attendence/entity/Status.java,2\1\21577674d0f4b507a29cf2fa149d24f225e1e13b
-Ä
-PBackend/src/test/java/com/example/demo/attendence/service/StatusServiceTest.java,1\2\12e46e68e39e865330622844c11928a42ac99c99
-Ö
-UBackend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java,8\7\87e270f988fd745554135c48b1e5f1ef7f89df6f
 z
 JBackend/src/main/java/com/example/demo/attendence/service/TeamService.java,a\9\a9d6c7e97d20031c2c76d555a2360e46dcac412d
 É
