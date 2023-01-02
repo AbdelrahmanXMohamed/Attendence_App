@@ -1,10 +1,10 @@
+import {VacationType} from '../utils/vacationType'
+
 export interface VacationRequest{
 
     type:VacationType
 
-    status:VacationStatus
-
-    startDate:Date
+    startDate: Date 
 
     endDate:Date
 

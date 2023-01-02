@@ -21,7 +21,7 @@ export class StatusService {
   }
 
   setStatus(statusRequest: StatusRequestModel): Observable<Status> {
-    return this.http.post<Status>(`${this.baseUrl}/status`, statusRequest);
+    return this.http.post<any>(`${this.baseUrl}/status`, statusRequest);
   }
 
   getReportForUser(id: number, dates: StatusBetweenTwoDateRequestModel): Observable<StatusModel[]> {

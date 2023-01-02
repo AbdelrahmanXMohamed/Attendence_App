@@ -54,7 +54,6 @@ public class VacationRequestImpl implements VacationRequestService {
         }
 
         vacationRequest.setUser(user);
-        System.out.println(vacationRequest);
         vacationRequestRepo.save(vacationRequest);
     }
 
@@ -113,7 +112,7 @@ public class VacationRequestImpl implements VacationRequestService {
     public void setStatus(@NotNull VacationRequest vacationRequest){
         StatusRequestModel statusRequestModel =new StatusRequestModel();
         statusRequestModel.setUserId(vacationRequest.getUser().getId());
-        statusRequestModel.setStatus(DailyStatus.ABSENCE);
+        statusRequestModel.setStatus(DailyStatus.VACATION);
 
         for (int i =0; i<vacationRequest.getNumberOfDays(); i++) {
             statusRequestModel.setDay(vacationRequest.getStartDate().plusDays(i));
