@@ -1,18 +1,19 @@
 <div class="header">
-    <p class="mb-0">Username</p>
-    <p class="mb-0">UserID</p>
-    <p class="mb-0">Email</p>
+    <p class="mb-0">Name : {{user.name}}</p>
+    <p class="mb-0">ID : {{user.id}}</p>
+    <p class="mb-0">Email : {{user.email}}</p>
+    <p class="mb-0">Phone : {{user.phone}}</p>
     <span class="d-flex align-items-center">
-        <p class="mb-0 mr-2">{{status | titlecase}}</p>
+        <p class="mb-0 mr-2">Today status : {{status | titlecase}}</p>
     </span>
 </div>
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a class="nav-link" routerLink="/member/1" routerLinkActive="active"
+        <a class="nav-link" routerLink="/member/{{user.id}}" routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }">Report Of Current Week</a>
     </li>
     <li clsass="nav-item">
-        <a class="nav-link" routerLink="/member/1/report-by-range" routerLinkActive="active">Report By Range</a>
+        <a class="nav-link" routerLink="/member/{{user.id}}/report-by-range" routerLinkActive="active">Report By Range</a>
     </li>
 </ul>
 <router-outlet></router-outlet>

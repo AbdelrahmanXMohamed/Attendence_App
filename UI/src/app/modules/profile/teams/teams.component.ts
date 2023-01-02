@@ -1,19 +1,31 @@
-import { Component } from '@angular/core';
-import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit,  } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { TeamRequestModel } from 'src/app/models/TeamRequestModel';
+import { TeamResponseModel } from 'src/app/models/TeamResponseModel';
+import { UserModel } from 'src/app/models/UserModel';
+import { TeamService } from 'src/app/services/team/team.service';
 
 @Component({
   selector: 'app-teams',
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.css']
 })
-export class TeamsComponent {
+export class TeamsComponent implements OnInit {
   title = 'Teams';
 
   modalRef!: NgbModalRef;
 
   closeResult: string = '';
 
-  constructor(private modalService: NgbModal) { }
+  teams:TeamResponseModel[] = [];
+  userId = 1;
+
+  constructor(private modalService: NgbModal,private teamService:TeamService) {
+    
+  }
+  ngOnInit(): void {
+    this.getTeams(this.userId);
+  }
 
 
   open(content: any) {
@@ -37,8 +49,33 @@ export class TeamsComponent {
   //     return `with: ${reason}`;
   //   }
   // }
-  submit() {
-    console.log("submit")
-    // this.modalRef.close()
+  submit(event:any) {
+    event.preventDefault();
+    const manager : UserModel = {
+      id:this.userId,
+      name:"",
+      username:"",
+      password:"",
+      email:"",
+      phone:""
+
+  };
+    const teamRequest:TeamRequestModel = {
+      name: event.target.form.name.value,
+      description:event.target.form.description.value,
+      manager: manager,
+    };
+    this.createTeam(teamRequest);
+    this.modalRef.close()
+  }
+  getTeams(managerId:number): void {
+    this.teamService.getTeamsOfManager(managerId).subscribe((result: TeamResponseModel[]) => {
+      this.teams.push(...result);
+    });
+  }
+  createTeam(team:TeamRequestModel){
+    this.teamService.createTeam(team).subscribe((result:TeamResponseModel) => {
+      this.getTeams(this.userId);
+    });
   }
 }

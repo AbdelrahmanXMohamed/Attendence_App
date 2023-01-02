@@ -1,3 +1,6 @@
+import { VacationStatus } from "../utils/vacationStatus"
+import { VacationType } from "../utils/vacationType"
+
 export interface vacationRequestResponse{
     type: VacationType
 

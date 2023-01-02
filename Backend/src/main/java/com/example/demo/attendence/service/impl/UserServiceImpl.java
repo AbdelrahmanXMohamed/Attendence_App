@@ -54,4 +54,9 @@ public class UserServiceImpl implements UserSevice {
     public void deleteUser(Long id) {
 
     }
+
+    @Override
+    public UserResponseModel getUserByUserName(String username) {
+        return this.userMapper.userToModel(this.userRepository.findByUsername(username).orElseThrow());
+    }
 }

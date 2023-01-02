@@ -14,7 +14,7 @@ public class TeamResponseModel {
 
     private String description;
 
-    private User manager;
+    private UserResponseModel manager;
 
-    private List<User> users;
+    private List<UserResponseModel> users;
 }

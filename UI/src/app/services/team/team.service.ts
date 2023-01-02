@@ -28,4 +28,11 @@ export class TeamService {
   removeUserFromTeam(userId: number, teamId: number): Observable<TeamResponseModel> {
     return this.http.delete<TeamResponseModel>(`${this.baseUrl}/teams/${teamId}/users/${userId}`);
   }
+  getTeamsOfManager(managerId:number) : Observable<TeamResponseModel[]> {
+    return this.http.get<TeamResponseModel[]>(`${this.baseUrl}/teams/manager/${managerId}`);
+  }
+  
+  getTeamById(teamId:number):Observable<TeamResponseModel>{
+    return this.http.get<TeamResponseModel>(`${this.baseUrl}/teams/${teamId}`);
+  }
 }

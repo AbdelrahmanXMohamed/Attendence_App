@@ -1,8 +1,12 @@
+import { VacationType } from "../utils/vacationType"
+
 export interface VacationModel{
+
+    id:number;
     
     userId:number
 
-    userName: string
+    username: string
 
     type: VacationType
 

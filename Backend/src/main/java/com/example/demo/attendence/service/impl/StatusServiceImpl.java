@@ -5,6 +5,7 @@ import com.example.demo.attendence.entity.Team;
 import com.example.demo.attendence.exception.StatusInvalidDateException;
 import com.example.demo.attendence.exception.TeamDoesNotExistException;
 import com.example.demo.attendence.exception.UserDoesNotExistException;
+import com.example.demo.attendence.mapper.UserMapper;
 import com.example.demo.attendence.model.StatusBetweenTwoDateRequestModel;
 import com.example.demo.attendence.model.StatusModel;
 import com.example.demo.attendence.model.StatusRequestModel;
@@ -32,10 +33,13 @@ public class StatusServiceImpl implements StatusService {
     final StatusMapper statusMapper =
             Mappers.getMapper(StatusMapper.class);
 
-    public StatusServiceImpl(StatusRepository statusRepository, UserRepository userRepository, TeamRepository teamRepository) {
+    final UserMapper userMapper;
+
+    public StatusServiceImpl(StatusRepository statusRepository, UserRepository userRepository, TeamRepository teamRepository, UserMapper userMapper) {
         this.statusRepository = statusRepository;
         this.userRepository = userRepository;
         this.teamRepository = teamRepository;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -45,7 +49,7 @@ public class StatusServiceImpl implements StatusService {
             throw new StatusInvalidDateException("Date must be up coming date");
         }
         StatusModel statusModel = statusMapper.statusRequestModelToStatusModel(statusRequest);
-        statusModel.setUser(user);
+        statusModel.setUser(this.userMapper.userToModel(user));
         return statusRepository.save(statusMapper.statusModelToStatus(statusModel));
     }
 
@@ -89,6 +93,8 @@ public class StatusServiceImpl implements StatusService {
         List<LocalDate> allDaysOfWeek = Arrays.stream(DayOfWeek.values()).map(LocalDate.now()::with).toList();
         return team.getUsers().stream().flatMap(user -> allDaysOfWeek.stream().map(day -> getStatusForUser(user.getId(), day))).toList();
     }
+
+
 
     private static boolean isValidStarter(StatusBetweenTwoDateRequestModel statusBetweenTwoDateRequestModel, LocalDate starter) {
         return starter.isBefore(statusBetweenTwoDateRequestModel.getEnderDate()) || starter.isEqual(statusBetweenTwoDateRequestModel.getEnderDate());
