@@ -6,6 +6,7 @@ import lombok.Data;
 import java.time.LocalDate;
 @Data
 public class VacationModel {
+    private Long id;
 
 
     private Long id;

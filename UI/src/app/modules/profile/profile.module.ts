@@ -6,7 +6,7 @@ import { VacationsComponent } from './vacations/vacations.component';
 import { TeamsComponent } from './teams/teams.component';
 import { StatusComponent } from './status/status.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,8 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     ProfileRoutingModule,
     NgbModule,
- 
-
+    FormsModule,
   ]
 })
 export class ProfileModule { }

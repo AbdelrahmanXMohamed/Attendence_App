@@ -1,9 +1,10 @@
-import { vacationRequestResponse } from '../../models/VacationRequestResponseModel';
-import { approveVacationRequest } from '../../models/ApproveRequestVacationModel';
-import { VacationRequest } from '../../models/VacationRequestModel';
+
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { VacationModel } from 'src/app/models/VacationModel';
+import { Observable } from "rxjs";
+import { approveVacationRequest } from "src/app/models/ApproveRequestVacationModel";
+import { VacationRequest } from "src/app/models/VacationRequestModel";
+import { vacationRequestResponse } from "src/app/models/VacationRequestResponseModel";
 
 @Injectable({
     providedIn:"root"
@@ -11,17 +12,19 @@ import { VacationModel } from 'src/app/models/VacationModel';
 
 export class VacationRequestServices{
 
-    requests: VacationModel[] = []
+    requests: VacationRequest[] = []
 
-    requestRespoonse: vacationRequestResponse[]=[]
+
 
     constructor(private http:HttpClient){}
 
     createVacationRequest(id :number, vacationRequest : VacationRequest){
-        this.http.post<VacationRequest>("http://localhost:8080/vacations/"+id,vacationRequest)
+        this.http.post<any>("http://localhost:8080/vacations/" +id, vacationRequest).subscribe(data=>{
+
+        })
     }
 
-    getAllVacationRequestperTeam(userId:number, teamId:number):VacationModel[]{
+    getAllVacationRequestperTeam(userId:number, teamId:number):VacationRequest[]{
         let res= this.http.get<any>("http://localhost:8080/vacations/"+userId+"/"+teamId).subscribe(data=>{
             this.requests=data
         })
@@ -29,16 +32,10 @@ export class VacationRequestServices{
     }
 
     approveRequest(userId:number , vacationId:number, approveRequest:approveVacationRequest){
-        this.http.post<any>("http://localhost:8080/vacations/"+userId+"/"+vacationId,approveRequest).subscribe((result:void) => {
-            
-        })
+        this.http.post<any>("http://localhost:8080/vacations/"+userId+"/"+vacationId,approveRequest)
     }
 
-    getAllVacationRequestperUser(userId: number):vacationRequestResponse[]{
-        let res =this.http.get<any>("http://localhost:8080/vacations/"+userId).subscribe(data=>{
-            this.requestRespoonse=data
-        })
-        return this.requestRespoonse
+    getAllVacationRequestperUser(userId: number):Observable< vacationRequestResponse[]>{
+        return this.http.get<any>("http://localhost:8080/vacations/"+userId)
     }
-
 }

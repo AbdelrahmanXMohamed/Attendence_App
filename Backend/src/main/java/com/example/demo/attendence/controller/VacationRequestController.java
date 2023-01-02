@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @Validated
 @RequestMapping("/vacations")
+@CrossOrigin("http://localhost:4200")
 public class VacationRequestController {
 
     @Autowired
