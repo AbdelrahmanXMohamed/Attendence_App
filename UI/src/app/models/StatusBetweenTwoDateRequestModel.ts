@@ -1,6 +1,6 @@
 
 export interface StatusBetweenTwoDateRequestModel {
-    starterDate: Date;
-    enderDate: Date;
+    startDate: Date;
+    endDate: Date;
   }
   
