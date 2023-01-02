@@ -19,4 +19,5 @@ public interface UserSevice {
     void deleteUser (Long id);
 
 
+    UserResponseModel getUserByUserName(String username);
 }

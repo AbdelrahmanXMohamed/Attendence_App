@@ -1,8 +1,9 @@
-import { vacationRequestResponse } from '../../models/vacationRequestResponseModel';
-import { approveVacationRequest } from '../../models/approveRequestVacationModel';
-import { VacationRequest } from '../../models/vacationRequestModel';
+import { vacationRequestResponse } from '../../models/VacationRequestResponseModel';
+import { approveVacationRequest } from '../../models/ApproveRequestVacationModel';
+import { VacationRequest } from '../../models/VacationRequestModel';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { VacationModel } from 'src/app/models/VacationModel';
 
 @Injectable({
     providedIn:"root"
@@ -10,7 +11,7 @@ import { Injectable } from "@angular/core";
 
 export class VacationRequestServices{
 
-    requests: VacationRequest[] = []
+    requests: VacationModel[] = []
 
     requestRespoonse: vacationRequestResponse[]=[]
 
@@ -20,7 +21,7 @@ export class VacationRequestServices{
         this.http.post<VacationRequest>("http://localhost:8080/vacations/"+id,vacationRequest)
     }
 
-    getAllVacationRequestperTeam(userId:number, teamId:number):VacationRequest[]{
+    getAllVacationRequestperTeam(userId:number, teamId:number):VacationModel[]{
         let res= this.http.get<any>("http://localhost:8080/vacations/"+userId+"/"+teamId).subscribe(data=>{
             this.requests=data
         })
@@ -28,7 +29,9 @@ export class VacationRequestServices{
     }
 
     approveRequest(userId:number , vacationId:number, approveRequest:approveVacationRequest){
-        this.http.post<any>("http://localhost:8080/vacations/"+userId+"/"+vacationId,approveRequest)
+        this.http.post<any>("http://localhost:8080/vacations/"+userId+"/"+vacationId,approveRequest).subscribe((result:void) => {
+            
+        })
     }
 
     getAllVacationRequestperUser(userId: number):vacationRequestResponse[]{

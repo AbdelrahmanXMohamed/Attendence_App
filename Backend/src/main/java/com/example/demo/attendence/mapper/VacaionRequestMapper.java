@@ -16,8 +16,9 @@ public interface VacaionRequestMapper {
 
     default VacationModel toVacationModel(VacationRequest vacationRequest){
         VacationModel vacationModel=new VacationModel();
+        vacationModel.setId(vacationRequest.getId());
         vacationModel.setUsername(vacationRequest.getUser().getUsername());
-        vacationModel.setStratDate(vacationRequest.getStartDate());
+        vacationModel.setStartDate(vacationRequest.getStartDate());
         vacationModel.setUserId(vacationRequest.getUser().getId());
         vacationModel.setNumberOfDay(vacationRequest.getNumberOfDays());
         vacationModel.setComment(vacationRequest.getComment());
