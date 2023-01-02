@@ -1,7 +1,7 @@
 package com.example.demo.attendence.service.impl;
 
 import com.example.demo.attendence.entity.ConfirmationToken;
-import com.example.demo.attendence.repository.ConfirmationTokenRepository;
+import com.example.demo.attendence.repository.StatusRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +13,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ConfirmationTokenService {
 
-    private final ConfirmationTokenRepository confirmationTokenRepository;
+    private final StatusRepository.ConfirmationTokenRepository confirmationTokenRepository;
     @Transactional
     public void saveConfirmationToken(ConfirmationToken token){
         confirmationTokenRepository.save(token);

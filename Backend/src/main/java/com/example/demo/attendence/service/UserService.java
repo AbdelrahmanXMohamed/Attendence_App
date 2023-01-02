@@ -1,12 +1,14 @@
 package com.example.demo.attendence.service;
 
+import com.example.demo.attendence.model.RegistrationRequestModel;
 import com.example.demo.attendence.model.UserRequestModel;
 import com.example.demo.attendence.model.UserResponseModel;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
 
-public interface UserSevice {
+public interface UserService  extends UserDetailsService {
 
     UserResponseModel createUser(UserRequestModel userRequestModel);
 
@@ -17,6 +19,11 @@ public interface UserSevice {
     List<UserResponseModel> getAllUsers();
 
     void deleteUser (Long id);
+    
 
+    UserResponseModel getUserByUserName(String username);
 
+    String register(RegistrationRequestModel request);
+
+    String confirmToken(String token);
 }
