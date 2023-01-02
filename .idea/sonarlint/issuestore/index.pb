@@ -35,10 +35,6 @@ JBackend/src/main/java/com/example/demo/attendence/mapper/StatusMapper.java,d\7
 ]Backend/src/main/java/com/example/demo/attendence/model/StatusBetweenTwoDateRequestModel.java,0\d\0de66ad2714e485531e951b89ceb6df3b250abb6
 ‚
 RBackend/src/main/java/com/example/demo/attendence/repository/StatusRepository.java,3\e\3e4f2e89c20ff9e1c04071c71fe32be5746f379d
-€
-PBackend/src/main/java/com/example/demo/attendence/repository/TeamRepository.java,5\b\5b3da3ce242c89b6ddf6b04ae9d803ce8a8588ac
-€
-PBackend/src/main/java/com/example/demo/attendence/repository/UserRepository.java,4\7\47ddbd92ba311109ea6228db06035d2646c351ef
 |
 LBackend/src/main/java/com/example/demo/attendence/service/StatusService.java,6\a\6a7598346a56fb25f0496684494cce0ea6a63438
 r
@@ -57,8 +53,6 @@ NBackend/src/main/java/com/example/demo/attendence/model/TeamResponseModel.java
 nBackend/src/main/java/com/example/demo/attendence/exception/controller/VacationRequestExceptionController.java,c\9\c9790b7df0c97b801ec4f2a455d85a3059eafbcc
 r
 BBackend/src/main/java/com/example/demo/attendence/entity/User.java,6\d\6d1221b5bd8d703f799a9d7492bc4ca29d9d5d3e
-ƒ
-SBackend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java,7\5\75429fdcbee264a6d75018cd65ec5475777571db
 t
 DBackend/src/main/java/com/example/demo/attendence/entity/Status.java,2\1\21577674d0f4b507a29cf2fa149d24f225e1e13b
 €
