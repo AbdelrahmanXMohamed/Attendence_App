@@ -30,10 +30,11 @@ public class TeamServiceImpl implements TeamService {
         this.userRepository = userRepository;
     }
 
+    @Override
     public TeamResponseModel createTeam(TeamRequestModel requestModel){
         if(requestModel.getManager() == null) throw new TeamMustHaveManagerException();
         // check if the manager exists
-        if (userRepository.findById(requestModel.getManager().getId()).isPresent()) {
+        if (!userRepository.findById(requestModel.getManager().getId()).isPresent()) {
             throw new UserDoesNotExistException();
         }
         // check if the manager is member
@@ -43,19 +44,21 @@ public class TeamServiceImpl implements TeamService {
         return this.teamMapper.toResponseModel(this.teamRepository.save(this.teamMapper.toTeam(requestModel)));
     }
 
+    @Override
     public TeamResponseModel addUserToTeam(Long userId,Long teamId){
         User user = this.userRepository.findById(userId).orElseThrow();
         // handle if the user is in a team
         if(user.getTeam() != null) throw new UserAlreadyIsInTeamException();
         // handle if the user is a manager
-        Optional<Team> team1 = this.teamRepository.findByManager_Id(userId);
-        if (team1.isPresent()) throw new UserIsMangerException();
+        List<Team> team1 = this.teamRepository.findByManager_Id(userId);
+        if (team1.size() > 0) throw new UserIsMangerException();
         Team team = this.teamRepository.findById(teamId).orElseThrow();
         user.setTeam(team);
         this.userRepository.save(user);
         return this.teamMapper.toResponseModel(team);
     }
 
+    @Override
     public List<UserResponseModel> getAllTeamUsers(Long teamId) {
         Team team = this.teamRepository.findById(teamId).orElseThrow();
         return team.getUsers()
@@ -64,6 +67,7 @@ public class TeamServiceImpl implements TeamService {
                 .toList();
     }
 
+    @Override
     public TeamResponseModel removeUserFromTeam(Long userId, Long teamId) {
         Team team = this.teamRepository.findById(teamId).orElseThrow();
         User user = this.userRepository.findById(userId).orElseThrow();
@@ -75,12 +79,20 @@ public class TeamServiceImpl implements TeamService {
         return this.teamMapper.toResponseModel(team);
     }
 
-    public void removeTeam(Long teamId) {
-        // get the team by id
-        Team team = this.teamRepository.findById(teamId).orElseThrow();
-        // get all team users and set the users team to null
-        team.getUsers().forEach(user -> user.setTeam(null));
-        this.teamRepository.deleteById(teamId);
+    @Override
+    public List<TeamResponseModel> getTeamsOfManager(Long managerId) {
+        List<Team> teams = this.teamRepository.findByManager_Id(managerId);
+        return  teams
+                .stream()
+                .map(this.teamMapper::toResponseModel)
+                .toList();
     }
+
+    @Override
+    public TeamResponseModel getTeamById(Long teamId) {
+        return this.teamMapper.toResponseModel(this.teamRepository.findById(teamId).orElseThrow());
+    }
+
+
 }
 

@@ -20,6 +20,7 @@ public interface UserService extends UserDetailsService {
 
     void deleteUser (Long id);
 
-    String register(RegistrationRequestModel registrationRequestModel);
+    String register(RegistrationRequestModel request);
+    UserResponseModel getUserByUserName(String username);
     String confirmToken(String token);
 }

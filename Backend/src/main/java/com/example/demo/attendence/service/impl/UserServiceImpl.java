@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+
     @Override
     public UserResponseModel getUser(Long id) {
         User userGot = userRepository.findById(id)
@@ -64,7 +65,10 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long id) {
 
     }
-
+    @Override
+    public UserResponseModel getUserByUserName(String username) {
+        return this.userMapper.userToModel(this.userRepository.findByUsername(username).orElseThrow());
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email)
@@ -115,12 +119,6 @@ public class UserServiceImpl implements UserService {
     public int enableAppUser(String email) {
         return userRepository.enableAppUser(email);
     }
-
-    //////////////////////////////////////////////////////////
-
-
-
-
     public String register(RegistrationRequestModel request) {
 
         String token = signUpUser(userMapper.registrationRequestModelToUser(request));
@@ -131,8 +129,6 @@ public class UserServiceImpl implements UserService {
 
         return token;
     }
-
-
     @Transactional
     public String confirmToken(String token) {
         ConfirmationToken confirmationToken = confirmationTokenService

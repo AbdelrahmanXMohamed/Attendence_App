@@ -67,12 +67,15 @@ public class VacationRequestImpl implements VacationRequestService {
         }
 
         List<VacationRequest> vacationRequestList =vacationRequestRepo.getAllVacationRequestPerTeam(teamId);
+        // filtering only pending vacation requests
+        vacationRequestList = vacationRequestList.stream().filter(vacationRequest -> vacationRequest.getStatus().equals(VacationStatus.PENDING)).toList();
         List<VacationModel> vacationModels=new ArrayList<>();
         vacationRequestList.forEach(v->{
             if(v.getUser().getTeam().getId().equals(teamId)){
                 vacationModels.add(vacaionRequestMapper.toVacationModel(v));
             }
         });
+
         return vacationModels;
     }
 
@@ -113,7 +116,7 @@ public class VacationRequestImpl implements VacationRequestService {
     public void setStatus(@NotNull VacationRequest vacationRequest){
         StatusRequestModel statusRequestModel =new StatusRequestModel();
         statusRequestModel.setUserId(vacationRequest.getUser().getId());
-        statusRequestModel.setStatus(DailyStatus.ABSENCE);
+        statusRequestModel.setStatus(DailyStatus.VACATION);
 
         for (int i =0; i<vacationRequest.getNumberOfDays(); i++) {
             statusRequestModel.setDay(vacationRequest.getStartDate().plusDays(i));

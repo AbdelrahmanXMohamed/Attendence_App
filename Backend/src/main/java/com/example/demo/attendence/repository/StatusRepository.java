@@ -12,6 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface StatusRepository extends JpaRepository<Status, Long> {
-    @Query("SELECT s FROM Status s WHERE s.user = ?1 And s.day = ?2")
+    @Query("SELECT s FROM Status s WHERE s.user.id = ?1 And s.day = ?2")
     Optional<Status> findByUserAndDate(Long id, LocalDate date);
 }

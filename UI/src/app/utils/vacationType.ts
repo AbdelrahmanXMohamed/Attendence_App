@@ -1,4 +1,4 @@
-enum VacationType{
+export enum VacationType{
     CASUAL,
     PLANNED
 }

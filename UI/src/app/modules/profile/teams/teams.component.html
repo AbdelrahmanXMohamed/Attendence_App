@@ -4,9 +4,15 @@
         <i class="fas fa-plus mr-2"></i> Create new team</button>
 </div>
 <br />
-<a routerLink="/teams/1" class="text-decoration-none">
-    <div class="shadow-sm p-3 mb-2 bg-white rounded">Team</div>
-</a>
+<div *ngFor="let team of teams">
+    <a routerLink="/teams/{{team.id}}" class="text-decoration-none">
+        <div class="shadow-sm p-3 mb-2 bg-white rounded">
+            <p> name : {{team.name}}</p>
+            <p>description : {{team.description}}</p>            
+        </div>
+
+    </a>
+</div>
 <br />
 <ng-template #mymodal let-modal>
     <div class="modal-header">
@@ -19,7 +25,7 @@
     <form class="modal-body d-flex flex-column">
         <div class="form-group">
             <div class="input-group">
-                <input class="form-control" placeholder="Team name" name="teamname" type="text">
+                <input class="form-control" placeholder="Team name" name="name" type="text">
             </div>
         </div>
         <div class="form-group">
@@ -27,9 +33,12 @@
                 <input class="form-control" placeholder="Description" name="description" type="text">
             </div>
         </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control"  name="submit" type="submit" value="Add Team" (click)="submit($event)">
+            </div>
+        </div>
     </form>
 
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-success" (click)="submit()">Ok</button>
-    </div>
+   
 </ng-template>

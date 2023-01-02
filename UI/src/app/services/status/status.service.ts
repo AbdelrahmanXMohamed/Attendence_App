@@ -5,6 +5,7 @@ import { StatusRequestModel } from 'src/app/models/StatusRequestModel';
 import { StatusBetweenTwoDateRequestModel } from 'src/app/models/StatusBetweenTwoDateRequestModel';
 import { StatusModel } from 'src/app/models/StatusModel';
 import { Status } from 'src/app/models/Status';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -14,11 +15,12 @@ import { Status } from 'src/app/models/Status';
 export class StatusService {
   private baseUrl = 'http://localhost:8080'; 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private datePipe: DatePipe) { }
 
   getStatus(): Observable<Status> {
     return this.http.get<Status>(`${this.baseUrl}/status`);
   }
+
 
   setStatus(statusRequest: StatusRequestModel): Observable<Status> {
     return this.http.post<Status>(`${this.baseUrl}/status`, statusRequest);
@@ -26,18 +28,19 @@ export class StatusService {
 
   getReportForUser(id: number, dates: StatusBetweenTwoDateRequestModel): Observable<StatusModel[]> {
     const params = new HttpParams()
-      .set('starterDate', dates.starterDate.toISOString())
-      .set('enderDate', dates.enderDate.toISOString());
+      .set('startDate', this.datePipe.transform(dates.startDate,'yyyy-MM-dd'))
+      .set('endDate', this.datePipe.transform(dates.endDate,'yyyy-MM-dd'));
     return this.http.get<StatusModel[]>(`${this.baseUrl}/status/users-report/${id}`, { params });
   }
 
   getReportPerDayForUser(userId: number, day: Date): Observable<StatusModel> {
-    const params = new HttpParams().set('day', day.toISOString());
+    const params = new HttpParams().set('day', this.datePipe.transform(day,'yyyy-MM-dd'));
     return this.http.get<StatusModel>(`${this.baseUrl}/status/report-per-day-for-users/${userId}`, { params });
   }
   
   getReportPerDayForTeam(teamId: number, day: Date): Observable<StatusModel[]> {
-    const params = new HttpParams().set('day', day.toISOString());
+  
+    const params = new HttpParams().set('day', this.datePipe.transform(day,'yyyy-MM-dd'));
     return this.http.get<StatusModel[]>(`${this.baseUrl}/status/report-per-day-for-teams/${teamId}`, { params });
   }
 
