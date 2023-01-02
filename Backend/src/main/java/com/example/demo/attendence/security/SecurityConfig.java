@@ -49,7 +49,7 @@ public class SecurityConfig {
                 .and()
                 .csrf()
                 .disable().authorizeHttpRequests()
-                .requestMatchers("/registration/**")
+                .requestMatchers("/registration/**","/registration")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

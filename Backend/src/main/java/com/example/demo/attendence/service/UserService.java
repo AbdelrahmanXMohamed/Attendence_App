@@ -20,11 +20,7 @@ public interface UserService extends UserDetailsService {
 
     void deleteUser (Long id);
 
-<<<<<<<<< Temporary merge branch 1:Backend/src/main/java/com/example/demo/attendence/service/UserSevice.java
-
     UserResponseModel getUserByUserName(String username);
-=========
-    String register(RegistrationRequestModel registrationRequestModel);
+    String register(UserRequestModel registrationRequestModel);
     String confirmToken(String token);
->>>>>>>>> Temporary merge branch 2:Backend/src/main/java/com/example/demo/attendence/service/UserService.java
 }

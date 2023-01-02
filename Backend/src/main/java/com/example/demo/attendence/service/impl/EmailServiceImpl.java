@@ -28,15 +28,16 @@ public class EmailServiceImpl implements com.example.demo.attendence.service.Ema
     @Async
     public void send(String to, String email) {
         try {
-            MimeMessage mimeMessage = mailSender.createMimeMessage();
-            MimeMessageHelper helper =
-                    new MimeMessageHelper(mimeMessage, "utf-8");
-            helper.setText(email, true);
-            helper.setTo(to);
-            helper.setSubject("Confirm your email");
-            helper.setFrom("hello");
-            mailSender.send(mimeMessage);
-        } catch (MessagingException e) {
+//            MimeMessage mimeMessage = mailSender.createMimeMessage();
+//            MimeMessageHelper helper =
+//                    new MimeMessageHelper(mimeMessage, "utf-8");
+//            helper.setText(email, true);
+//            helper.setTo(to);
+//            helper.setSubject("Confirm your email");
+//            helper.setFrom("hello");
+//            mailSender.send(mimeMessage);
+            System.out.println("print");
+        } catch (Exception e) {
             LOGGER.error("failed to send email", e);
             throw new IllegalStateException("failed to send email");
         }

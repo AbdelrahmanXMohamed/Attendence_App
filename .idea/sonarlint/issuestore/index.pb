@@ -45,10 +45,6 @@ MBackend/src/main/java/com/example/demo/attendence/model/TeamRequestModel.java,
 NBackend/src/main/java/com/example/demo/attendence/model/TeamResponseModel.java,8\4\841199e252fe81b3889d0b1418cc0f125e1eec58
 ž
 nBackend/src/main/java/com/example/demo/attendence/exception/controller/VacationRequestExceptionController.java,c\9\c9790b7df0c97b801ec4f2a455d85a3059eafbcc
-r
-BBackend/src/main/java/com/example/demo/attendence/entity/User.java,6\d\6d1221b5bd8d703f799a9d7492bc4ca29d9d5d3e
-t
-DBackend/src/main/java/com/example/demo/attendence/entity/Status.java,2\1\21577674d0f4b507a29cf2fa149d24f225e1e13b
 €
 PBackend/src/test/java/com/example/demo/attendence/service/StatusServiceTest.java,1\2\12e46e68e39e865330622844c11928a42ac99c99
 z

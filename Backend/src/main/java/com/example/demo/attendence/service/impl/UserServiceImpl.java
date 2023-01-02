@@ -11,6 +11,7 @@ import com.example.demo.attendence.service.EmailService;
 import com.example.demo.attendence.service.UserService;
 import lombok.AllArgsConstructor;
 import org.mapstruct.factory.Mappers;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -52,6 +53,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseModel getUser(Long id) {
+        User currentLoginUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        System.out.println(currentLoginUser.getEmail());
         User userGot = userRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Not fond this product"));
         return userMapper.userToModel(userGot);
@@ -87,7 +90,7 @@ public class UserServiceImpl implements UserService {
                 .isPresent();
 
         if(existEmail){
-            throw new IllegalStateException("Email aready taken");
+            throw new IllegalStateException("Email already taken");
         }
 
         String encodedPassword = bCryptPasswordEncoder
@@ -105,7 +108,7 @@ public class UserServiceImpl implements UserService {
                 new ConfirmationToken(
                         token,
                         LocalDateTime.now(),
-                        LocalDateTime.now().plusMinutes(15),
+                        LocalDateTime.now().plusYears(1),
                         user
                 );
 
@@ -119,13 +122,13 @@ public class UserServiceImpl implements UserService {
     public int enableAppUser(String email) {
         return userRepository.enableAppUser(email);
     }
-    public String register(RegistrationRequestModel request) {
+    public String register(UserRequestModel request) {
 
-        String token = signUpUser(userMapper.registrationRequestModelToUser(request));
+        String token = signUpUser(userMapper.userToEntity(request));
         String link = "http://localhost:8080/registration/confirm?token=" + token;
         emailSender.send(
                 request.getEmail(),
-                buildEmail(request.getFirstName(), link));
+                buildEmail(request.getName(), link));
 
         return token;
     }

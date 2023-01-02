@@ -4,6 +4,7 @@ package com.example.demo.attendence.controller;
 import com.example.demo.attendence.model.LoginRequestModel;
 import com.example.demo.attendence.model.LoginResponseModel;
 import com.example.demo.attendence.model.RegistrationRequestModel;
+import com.example.demo.attendence.model.UserRequestModel;
 import com.example.demo.attendence.security.JwtUtil;
 import com.example.demo.attendence.service.UserService;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class RegistrationController {
     private JwtUtil jwtUtil ;
 
     @PostMapping
-    public String register (@RequestBody RegistrationRequestModel request){
+    public String register (@RequestBody UserRequestModel request){
 
         return userService.register(request);
     }
