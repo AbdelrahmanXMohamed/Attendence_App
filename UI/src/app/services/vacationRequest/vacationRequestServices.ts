@@ -19,7 +19,9 @@ export class VacationRequestServices{
     constructor(private http:HttpClient){}
 
     createVacationRequest(id :number, vacationRequest : VacationRequest){
-        this.http.post<VacationRequest>("http://localhost:8080/vacations/"+id,vacationRequest)
+        this.http.post<VacationRequest>("http://localhost:8080/vacations/"+id,vacationRequest).subscribe((result:any) =>{
+            
+        })
     }
 
     getAllVacationRequestperTeam(userId:number, teamId:number):VacationModel[]{

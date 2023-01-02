@@ -44,8 +44,8 @@ export class VacationsComponent implements OnInit {
     }else if(planned.checked){
       this.vacationrequest.type=VacationType.PLANNED
     }
-    console.log(this.startDate)
-    this.vacationRequestServices.createVacationRequest(1,this.vacationrequest)
+    this.vacationRequestServices.createVacationRequest(1,this.vacationrequest);
+    
 
     this.modalRef.close()
   }
