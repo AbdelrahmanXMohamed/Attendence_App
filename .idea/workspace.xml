@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="Fix issues of auth">
-      <change afterPath="$PROJECT_DIR$/UI/src/app/guards/auth.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/src/app/guards/login.guard.ts" afterDir="false" />
+    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="Update status">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a81f01a8875be7cb22f14be2e830b142f7af9119" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/interceptors/token.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/interceptors/token.interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +135,7 @@
       <workItem from="1672221853878" duration="1692000" />
       <workItem from="1672300697926" duration="10289000" />
       <workItem from="1672682497093" duration="4981000" />
-      <workItem from="1672729679035" duration="5861000" />
+      <workItem from="1672729679035" duration="6779000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1672058705344</created>
@@ -222,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672736214530</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Update status">
+      <created>1672737543176</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672737543176</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +252,8 @@
     <MESSAGE value="mostafa ui 0.1% done" />
     <MESSAGE value="ya yaaaaaaaaaaaaaaaaaaaab" />
     <MESSAGE value="Fix issues of auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix issues of auth" />
+    <MESSAGE value="Update status" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update status" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

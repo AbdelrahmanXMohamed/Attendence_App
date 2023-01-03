@@ -14,7 +14,7 @@ public interface UserService extends UserDetailsService {
 
     UserResponseModel updateUser(UserRequestModel userRequestModel);
 
-    UserResponseModel getUser(Long id);
+    UserResponseModel getUser();
 
     List<UserResponseModel> getAllUsers();
 
