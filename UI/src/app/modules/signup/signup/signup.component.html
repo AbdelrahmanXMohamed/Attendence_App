@@ -3,25 +3,25 @@
     <p>Please Sign up</p>
     <form>
         <div class="form-group">
-            <label for="exampleInputEmail1">Name:</label>
-            <input type="text" class="form-control" placeholder="Enter Your Name">
+            <label for="exampleInputEmail1" >Name:</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="user.name" placeholder="Enter Your Name">
           </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">User Name:</label>
-          <input type="text" class="form-control" placeholder="Enter UserName">
+          <label for="exampleInputEmail1" >User Name:</label>
+          <input type="text" class="form-control" name="username" [(ngModel)]="user.username" placeholder="Enter UserName">
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Phone:</label>
-            <input type="text" class="form-control" placeholder="Enter Your Phone">
+            <label for="exampleInputEmail1" >Phone:</label>
+            <input type="text" class="form-control" name="phone" [(ngModel)]="user.phone" placeholder="Enter Your Phone">
           </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Email address:</label>
-          <input type="email" class="form-control"  placeholder="Enter Email Address">
+          <label for="exampleInputPassword1" >Email address:</label>
+          <input type="email" class="form-control" name="email" [(ngModel)]="user.email"  placeholder="Enter Email Address">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password:</label>
-            <input type="password" class="form-control"  placeholder="Password">
+            <label for="exampleInputPassword1" >Password:</label>
+            <input type="password" class="form-control" name="phone" [(ngModel)]="user.password"  placeholder="Password">
           </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="register($event)" >Submit</button>
       </form>
 </div>

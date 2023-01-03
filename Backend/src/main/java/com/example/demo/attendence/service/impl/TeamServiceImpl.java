@@ -11,6 +11,7 @@ import com.example.demo.attendence.model.UserResponseModel;
 import com.example.demo.attendence.repository.TeamRepository;
 import com.example.demo.attendence.repository.UserRepository;
 import com.example.demo.attendence.service.TeamService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,6 +33,9 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public TeamResponseModel createTeam(TeamRequestModel requestModel){
+
+        User currentLogin=(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        requestModel.setManager(currentLogin);
         if(requestModel.getManager() == null) throw new TeamMustHaveManagerException();
         // check if the manager exists
         if (!userRepository.findById(requestModel.getManager().getId()).isPresent()) {
@@ -81,7 +85,9 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public List<TeamResponseModel> getTeamsOfManager(Long managerId) {
-        List<Team> teams = this.teamRepository.findByManager_Id(managerId);
+        User currentLogin=(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        List<Team> teams = this.teamRepository.findByManager_Id(currentLogin.getId());
         return  teams
                 .stream()
                 .map(this.teamMapper::toResponseModel)
