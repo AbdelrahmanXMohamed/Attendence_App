@@ -23,6 +23,9 @@ export class UserServices {
         return this.http.get<UserModel>(`http://localhost:8080/users/${userId}`);
     }
 
+    getUser(): Observable<UserModel> {
+        return this.http.get<UserModel>(`http://localhost:8080/users`);
+    }
     getUserByUserName(username: string): Observable<UserModel> {
         return this.http.get<UserModel>(`http://localhost:8080/users/name/${username}`);
     }

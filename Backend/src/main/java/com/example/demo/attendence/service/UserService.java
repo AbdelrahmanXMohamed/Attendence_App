@@ -14,12 +14,13 @@ public interface UserService extends UserDetailsService {
 
     UserResponseModel updateUser(UserRequestModel userRequestModel);
 
-    UserResponseModel getUser(Long id);
+    UserResponseModel getUser();
 
     List<UserResponseModel> getAllUsers();
 
     void deleteUser (Long id);
 
+    UserResponseModel getUserById(Long id);
     UserResponseModel getUserByUserName(String username);
     String register(UserRequestModel registrationRequestModel);
     String confirmToken(String token);

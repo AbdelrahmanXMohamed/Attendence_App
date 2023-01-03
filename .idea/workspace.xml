@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="init">
+    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="Update get user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/VacationRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/VacationRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/VacationRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/VacationRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/VacationRequestImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/VacationRequestImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/services/vacationRequest/vacationRequestServices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/services/vacationRequest/vacationRequestServices.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/app/services/user/userServices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/services/user/userServices.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Abdelrahman-touch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -138,7 +135,7 @@
       <workItem from="1672221853878" duration="1692000" />
       <workItem from="1672300697926" duration="10289000" />
       <workItem from="1672682497093" duration="4981000" />
-      <workItem from="1672729679035" duration="4506000" />
+      <workItem from="1672729679035" duration="7236000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1672058705344</created>
@@ -210,7 +207,35 @@
       <option name="project" value="LOCAL" />
       <updated>1672685906468</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fix issues of auth">
+      <created>1672736164656</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1672736164657</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fix issues of auth">
+      <created>1672736214530</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1672736214530</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Update status">
+      <created>1672737543176</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672737543176</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Update get user">
+      <created>1672738439022</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1672738439022</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,11 +254,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="init" />
     <MESSAGE value="ayaa ui 0.1% done" />
     <MESSAGE value="mostafa ui 0.1% done" />
     <MESSAGE value="ya yaaaaaaaaaaaaaaaaaaaab" />
-    <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="Fix issues of auth" />
+    <MESSAGE value="Update status" />
+    <MESSAGE value="Update get user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update get user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

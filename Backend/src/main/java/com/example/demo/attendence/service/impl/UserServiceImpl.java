@@ -1,6 +1,7 @@
 package com.example.demo.attendence.service.impl;
 
 import com.example.demo.attendence.entity.ConfirmationToken;
+import com.example.demo.attendence.exception.UserDoesNotExistException;
 import com.example.demo.attendence.model.RegistrationRequestModel;
 import com.example.demo.attendence.model.UserRequestModel;
 import com.example.demo.attendence.model.UserResponseModel;
@@ -52,12 +53,6 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserResponseModel getUser(Long id) {
-        User currentLoginUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-
-        return userMapper.userToModel(currentLoginUser);
-    }
-    @Override
     public List<UserResponseModel> getAllUsers() {
         return null;
     }
@@ -66,6 +61,13 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long id) {
 
     }
+
+    @Override
+    public UserResponseModel getUserById(Long id) {
+        User user=userRepository.findById(id).orElseThrow(UserDoesNotExistException::new);
+        return userMapper.userToModel(user);
+    }
+
     @Override
     public UserResponseModel getUserByUserName(String username) {
         return this.userMapper.userToModel(this.userRepository.findByUsername(username).orElseThrow());
