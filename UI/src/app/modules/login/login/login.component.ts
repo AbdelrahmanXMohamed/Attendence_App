@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginModel } from 'src/app/models/LoginModel';
+import { LoginResponseModel } from 'src/app/models/LoginResponseModel';
+import { UserServices } from 'src/app/services/user/userServices';
 
 @Component({
   selector: 'app-login',
@@ -7,4 +11,17 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  user:LoginModel = {email:"",password:""};
+
+  constructor(private userService:UserServices,private router:Router){
+
+  }
+
+  login(event:any){
+    event.preventDefault();
+    this.userService.login(this.user).subscribe((result:LoginResponseModel) =>{
+      localStorage.setItem('token',result.token);
+      this.router.navigate(['profile'])
+    })
+  }
 }

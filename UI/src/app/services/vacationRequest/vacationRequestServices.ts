@@ -12,7 +12,7 @@ import { vacationRequestResponse } from "src/app/models/VacationRequestResponseM
 
 export class VacationRequestServices{
 
-    requests: VacationRequest[] = []
+    requests: vacationRequestResponse[] = []
 
 
 
@@ -24,7 +24,7 @@ export class VacationRequestServices{
         })
     }
 
-    getAllVacationRequestperTeam(userId:number, teamId:number):VacationRequest[]{
+    getAllVacationRequestperTeam(userId:number, teamId:number):vacationRequestResponse[]{
         let res= this.http.get<any>("http://localhost:8080/vacations/"+userId+"/"+teamId).subscribe(data=>{
             this.requests=data
         })

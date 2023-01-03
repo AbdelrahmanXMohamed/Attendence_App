@@ -132,6 +132,12 @@ public class UserServiceImpl implements UserService {
 
         return token;
     }
+
+
+    public UserResponseModel getUser(){
+        User currentLoginUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        return this.userMapper.userToModel(currentLoginUser);
+    }
     @Transactional
     public String confirmToken(String token) {
         ConfirmationToken confirmationToken = confirmationTokenService
@@ -153,6 +159,7 @@ public class UserServiceImpl implements UserService {
         enableAppUser(confirmationToken.getUser().getEmail());
         return "confirmed";
     }
+
 
     private String buildEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +

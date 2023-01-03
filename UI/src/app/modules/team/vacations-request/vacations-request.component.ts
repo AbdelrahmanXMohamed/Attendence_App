@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { right } from '@popperjs/core';
 import { VacationModel } from 'src/app/models/VacationModel';
 import { VacationRequest } from 'src/app/models/VacationRequestModel';
+import { vacationRequestResponse } from 'src/app/models/VacationRequestResponseModel';
 import { VacationRequestServices } from 'src/app/services/vacationRequest/vacationRequestServices';
 
 @Component({
@@ -11,7 +12,7 @@ import { VacationRequestServices } from 'src/app/services/vacationRequest/vacati
 })
 export class VacationsRequestComponent implements OnInit {
   
-  vacationRequests:VacationModel[] = [];
+  vacationRequests:vacationRequestResponse[] = [];
   teamId:number;
   managerId:number = 1;
 

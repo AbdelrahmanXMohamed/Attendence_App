@@ -2,8 +2,6 @@
     <div class=" row shadow p-3 mb-3 bg-white rounded" *ngFor="let request of vacationRequests">
         <div class="col-8">
             <p class="mb-0">Vacation Id : {{request.id}}</p>
-            <p class="mb-0">UserId : {{request.userId}}</p>
-            <p class="mb-0">UserName : {{request.username}}</p>
             <p class="mb-0">Vacation Type :{{request.type}}</p>
             <p class="mb-0">Vacation Start Date : {{request.startDate}}</p>
             <p class="mb-0">Vacation End Date : {{request.endDate}}</p>
@@ -13,7 +11,7 @@
         </div>
 
         <div class="col align-self-center d-flex justify-content-end">
-            <button class="btn btn-outline-success mr-3" (click)="approveRequest(request.id,request.userId)">Approve</button>
+            <button class="btn btn-outline-success mr-3" (click)="approveRequest(request.id,request.user.id)">Approve</button>
             <button class="btn btn-outline-danger">Reject</button>
         </div>
     </div>
