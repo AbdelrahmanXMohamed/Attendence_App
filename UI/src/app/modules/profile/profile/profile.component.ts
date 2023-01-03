@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private modalService: NgbModal, private userService: UserServices, private statusServices: StatusService) { }
   ngOnInit(): void {
-    this.userService.getUserById(12).subscribe(data => {
+    this.userService.getUser().subscribe(data => {
       this.userModel = data
     })
   }

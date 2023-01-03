@@ -139,7 +139,7 @@ public class StatusServiceImpl implements StatusService {
     private void teamStatusGuard(Long teamId) {
         User currentLoginUser = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         Team team =teamRepository.findById(teamId).orElseThrow(TeamDoesNotExistException::new);
-        if (!team.getManager().equals(currentLoginUser))
+        if (team.getManager().getId()!=currentLoginUser.getId())
         {
             throw new StatusAccessIsForbiddenException();
         }
@@ -149,7 +149,7 @@ public class StatusServiceImpl implements StatusService {
     private void userManagerStatusGuard(Long userId) {
         User currentLoginUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         User accessUser=userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
-        if (accessUser.getTeam()==null||accessUser.getTeam().getManager().equals(currentLoginUser))
+        if (accessUser.getTeam()==null||accessUser.getTeam().getManager().getId()!=currentLoginUser.getId())
         {
             throw new StatusAccessIsForbiddenException();
         }
