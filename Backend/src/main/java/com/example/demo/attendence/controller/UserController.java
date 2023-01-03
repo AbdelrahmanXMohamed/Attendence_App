@@ -27,6 +27,10 @@ public class UserController {
     public UserResponseModel getUser(){
         return userService.getUser();
     }
+    @GetMapping("{id}")
+    public UserResponseModel getUserById(@PathVariable Long id){
+        return userService.getUserById(id);
+    }
 
     @PutMapping
     public void updateUser(@RequestBody UserRequestModel userModel) {
