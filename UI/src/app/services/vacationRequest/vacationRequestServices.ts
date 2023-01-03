@@ -19,23 +19,23 @@ export class VacationRequestServices{
     constructor(private http:HttpClient){}
 
     createVacationRequest(id :number, vacationRequest : VacationRequest){
-        this.http.post<any>("http://localhost:8080/vacations/" +id, vacationRequest).subscribe(data=>{
+        this.http.post<any>("http://localhost:8080/vacations", vacationRequest).subscribe(data=>{
 
         })
     }
 
     getAllVacationRequestperTeam(userId:number, teamId:number):vacationRequestResponse[]{
-        let res= this.http.get<any>("http://localhost:8080/vacations/"+userId+"/"+teamId).subscribe(data=>{
+        let res= this.http.get<any>("http://localhost:8080/vacations/"+teamId).subscribe(data=>{
             this.requests=data
         })
         return this.requests
     }
 
     approveRequest(userId:number , vacationId:number, approveRequest:approveVacationRequest){
-        this.http.post<any>("http://localhost:8080/vacations/"+userId+"/"+vacationId,approveRequest)
+        this.http.post<any>("http://localhost:8080/vacations/"+vacationId, approveRequest)
     }
 
     getAllVacationRequestperUser(userId: number):Observable< vacationRequestResponse[]>{
-        return this.http.get<any>("http://localhost:8080/vacations/"+userId)
+        return this.http.get<any>("http://localhost:8080/vacations")
     }
 }

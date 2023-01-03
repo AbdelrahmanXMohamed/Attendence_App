@@ -21,23 +21,23 @@ public class VacationRequestController {
     @Autowired
     private VacationRequestService vacationRequestService;
 
-    @PostMapping("/{id}")
-    public void createRequestVacation(@PathVariable Long id, @Valid @RequestBody VacationRequestModel vacationRequestModel){
-        vacationRequestService.addRequestVacation(id,vacationRequestModel);
+    @PostMapping
+    public void createRequestVacation( @Valid @RequestBody VacationRequestModel vacationRequestModel){
+        vacationRequestService.addRequestVacation(vacationRequestModel);
     }
 
-    @GetMapping("/{userId}/{teamId}")
-    public List<VacationModel> getAllVacationRequestperTeam(@PathVariable Long userId , @PathVariable Long teamId){
-        return vacationRequestService.getAllVacationRequestPerTeam(userId,teamId);
+    @GetMapping("/{teamId}")
+    public List<VacationModel> getAllVacationRequestperTeam(  @PathVariable Long teamId){
+        return vacationRequestService.getAllVacationRequestPerTeam(teamId);
     }
 
-    @PostMapping("/{userId}/{vacationId}")
-    public void approveRequest(@PathVariable Long userId ,@PathVariable Long vacationId,@Valid @RequestBody ApproveRequuestModel approve){
-        vacationRequestService.approveRequest(userId,vacationId,approve);
+    @PostMapping("/{vacationId}")
+    public void approveRequest( @PathVariable Long vacationId,@Valid @RequestBody ApproveRequuestModel approve){
+        vacationRequestService.approveRequest(vacationId,approve);
     }
-    @GetMapping("/{userId}")
-    public List<VacationRequestResponseModel> getAllVacationRequestperUser(@PathVariable Long userId ){
-        return vacationRequestService.getAllVacationRequestPerUser(userId);
+    @GetMapping
+    public List<VacationRequestResponseModel> getAllVacationRequestperUser(){
+        return vacationRequestService.getAllVacationRequestPerUser();
     }
 
 

@@ -15,6 +15,7 @@ import com.example.demo.attendence.utils.DailyStatus;
 import com.example.demo.attendence.utils.VacationStatus;
 import com.example.demo.attendence.utils.VacationType;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -38,8 +39,9 @@ public class VacationRequestImpl implements VacationRequestService {
     }
 
     @Override
-    public void addRequestVacation(Long id, VacationRequestModel vacationRequestModel) {
-        User user =userRepository.findById(id).orElseThrow(UserDoesNotExistException::new);
+    public void addRequestVacation( VacationRequestModel vacationRequestModel) {
+        //User user =userRepository.findById(id).orElseThrow(UserDoesNotExistException::new);
+        User user=(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (user.getTeam()==null) {
             throw new UserCannotTakeVacationException();
         }
@@ -58,16 +60,19 @@ public class VacationRequestImpl implements VacationRequestService {
     }
 
     @Override
-    public List<VacationModel> getAllVacationRequestPerTeam(Long userId, Long teamId) {
-        userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+    public List<VacationModel> getAllVacationRequestPerTeam( Long teamId) {
+//        userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+        User user=(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Team team =teamRepository.findById(teamId).orElseThrow(TeamDoesNotExistException::new);
-        if(!team.getManager().getId().equals(userId)) {
+        if(!team.getManager().getId().equals(user.getId())) {
             throw new NotTeamManagerException();
         }
 
         List<VacationRequest> vacationRequestList =vacationRequestRepo.getAllVacationRequestPerTeam(teamId);
-        // filtering only pending vacation requests
-        vacationRequestList = vacationRequestList.stream().filter(vacationRequest -> vacationRequest.getStatus().equals(VacationStatus.PENDING)).toList();
+        vacationRequestList = vacationRequestList
+                .stream()
+                .filter(vacationRequest -> vacationRequest.getStatus().equals(VacationStatus.PENDING))
+                .toList();
         List<VacationModel> vacationModels=new ArrayList<>();
         vacationRequestList.forEach(v->{
             if(v.getUser().getTeam().getId().equals(teamId)){
@@ -79,12 +84,13 @@ public class VacationRequestImpl implements VacationRequestService {
     }
 
     @Override
-    public void approveRequest(Long userId, Long vacationId,  ApproveRequuestModel approveRequuestModel) {
-        userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+    public void approveRequest( Long vacationId,  ApproveRequuestModel approveRequuestModel) {
+//        userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+        User user=(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         VacationRequest vacationRequest =vacationRequestRepo.findById(vacationId).orElseThrow(VacationNotExistException::new);
 
-        if(!vacationRequest.getUser().getTeam().getManager().getId().equals(userId)) {
+        if(!vacationRequest.getUser().getTeam().getManager().getId().equals(user.getId())) {
             throw new NotTeamManagerException();
         }
 
@@ -101,10 +107,11 @@ public class VacationRequestImpl implements VacationRequestService {
     }
 
     @Override
-    public List<VacationRequestResponseModel> getAllVacationRequestPerUser(Long userId) {
-        userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+    public List<VacationRequestResponseModel> getAllVacationRequestPerUser() {
+//        userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+        User user=(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<VacationRequestResponseModel> vacationRequestResponseModels=new ArrayList<>();
-        List<VacationRequest> vacationRequests=vacationRequestRepo.getAllVacationRequestPerUser(userId);
+        List<VacationRequest> vacationRequests=vacationRequestRepo.getAllVacationRequestPerUser(user.getId());
         vacationRequests.forEach(v->{
             vacationRequestResponseModels.add(vacaionRequestMapper.entityToVacationResponseModel(v));
         });

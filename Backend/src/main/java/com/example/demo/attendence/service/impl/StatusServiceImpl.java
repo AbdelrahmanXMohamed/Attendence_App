@@ -43,6 +43,7 @@ public class StatusServiceImpl implements StatusService {
     @Override
     public Status setStatus(StatusRequestModel statusRequest) {
         User user = userRepository.findById(statusRequest.getUserId()).orElseThrow(UserDoesNotExistException::new);
+        statusRequest.setUserId(user.getId());
         if (statusRequest.getStatus().equals(DailyStatus.VACATION)) {
             userManagerStatusGuard(user.getId());
         } else {
