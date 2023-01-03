@@ -54,10 +54,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseModel getUser(Long id) {
         User currentLoginUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        System.out.println(currentLoginUser.getEmail());
-        User userGot = userRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("User Not Found"));
-        return userMapper.userToModel(userGot);
+        return userMapper.userToModel(currentLoginUser);
     }
     @Override
     public List<UserResponseModel> getAllUsers() {

@@ -39,9 +39,9 @@ public class TeamController {
         return this.teamService.removeUserFromTeam(userId,teamId);
     }
 
-    @GetMapping("/manager/{managerId}")
-    public List<TeamResponseModel> getTeamsOfManager(@PathVariable Long managerId){
-        return this.teamService.getTeamsOfManager(managerId);
+    @GetMapping("/manager")
+    public List<TeamResponseModel> getTeamsOfManager( ){
+        return this.teamService.getTeamsOfManager();
     }
 
     @GetMapping("{teamId}")

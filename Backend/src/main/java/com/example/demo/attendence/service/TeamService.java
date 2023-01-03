@@ -16,7 +16,7 @@ public interface TeamService {
     TeamResponseModel removeUserFromTeam(Long userId, Long teamId);
 
 
-    List<TeamResponseModel> getTeamsOfManager(Long managerId);
+    List<TeamResponseModel> getTeamsOfManager();
 
     TeamResponseModel getTeamById(Long teamId);
 }
