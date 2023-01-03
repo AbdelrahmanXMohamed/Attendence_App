@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="init">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20d465c487d7f9b038858c73ec7f6371adde9473" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a4e6bac5f7838826006db79b5563b8c3d03d94f9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a85f71499171e827fbf22c5f93ae835bf97f8afb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/c/cc2ebf9893e6bcfb6e6457e7f9b50ace985e1d2e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="0fdfd784-a51e-4aae-8cc1-725e91dced54" name="Changes" comment="adding final touch">
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/example/demo/attendence/service/impl/StatusServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/app/modules/profile/profile/profile.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +22,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/aya_final" />
+    <option name="BRANCH" value="origin/mostafa" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -138,7 +131,7 @@
       <workItem from="1672221853878" duration="1692000" />
       <workItem from="1672300697926" duration="10289000" />
       <workItem from="1672682497093" duration="4981000" />
-      <workItem from="1672729679035" duration="9327000" />
+      <workItem from="1672729679035" duration="10183000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1672058705344</created>
@@ -259,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672739272120</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="adding final touch">
+      <created>1672741004677</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1672741004677</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +286,8 @@
     <MESSAGE value="Update get user" />
     <MESSAGE value="Create by get userById" />
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="adding final touch" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding final touch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
