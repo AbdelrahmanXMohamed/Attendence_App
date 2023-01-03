@@ -43,11 +43,10 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public Status setStatus(StatusRequestModel statusRequest) {
-        User user = userRepository.findById(statusRequest.getUserId()).orElseThrow(UserDoesNotExistException::new);
+        User user = userRepository.findById(statusRequest.getUserId())
+                .orElse(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()));
         if (statusRequest.getStatus().equals(DailyStatus.VACATION)) {
             userManagerStatusGuard(user.getId());
-        } else {
-            userStatusGuard(user.getId());
         }
         if (!statusRequest.getDay().equals(LocalDate.now()) && !statusRequest.getStatus().equals(DailyStatus.VACATION)) {
             throw new StatusInvalidDateException("Date must be current date only");
@@ -63,19 +62,15 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public StatusModel todayStatus() {
-//        User currentLoginUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-//        return statusMapper.statusToStatusModel(statusRepository.findByUserAndDate(currentLoginUser.getId(),LocalDate.now())
-//                .orElse(new Status(0L,LocalDate.now(),currentLoginUser,DailyStatus.ABSENCE)));
-        return null;
+        User currentLoginUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        return statusMapper.statusToStatusModel(statusRepository.findByUserAndDate(currentLoginUser.getId(),LocalDate.now())
+                .orElse(new Status(0L,LocalDate.now(),currentLoginUser,DailyStatus.ABSENCE)));
+
     }
 
     @Override
     public List<StatusModel> getReportForUser(Long userId, StatusBetweenTwoDateRequestModel statusBetweenTwoDateRequestModel) {
-        try {
-            userStatusGuard(userId);
-        } catch (StatusAccessIsForbiddenException ex) {
-            userManagerStatusGuard(userId);
-        }
+        userManagerStatusGuard(userId);
         if (isValidRange(statusBetweenTwoDateRequestModel)) {
             throw new StatusInvalidDateException("Start date can't be after end date");
         }
@@ -88,11 +83,7 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public StatusModel getReportPerDayForUser(Long userId, LocalDate date) {
-        try {
-            userStatusGuard(userId);
-        } catch (StatusAccessIsForbiddenException ex) {
-            userManagerStatusGuard(userId);
-        }
+        userManagerStatusGuard(userId);
         return getStatusForUser(userId, date);
     }
 
@@ -105,11 +96,7 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public List<StatusModel> getReportForCurrentWeekForUser(Long userId) {
-        try {
-            userStatusGuard(userId);
-        } catch (StatusAccessIsForbiddenException ex) {
-            userManagerStatusGuard(userId);
-        }
+        userManagerStatusGuard(userId);
         List<LocalDate> allDaysOfWeek = Arrays.stream(DayOfWeek.values()).map(LocalDate.now()::with).toList();
         return allDaysOfWeek.stream().map(day -> getStatusForUser(userId, day)).toList();
     }
@@ -149,31 +136,22 @@ public class StatusServiceImpl implements StatusService {
                         .orElse(new Status(0L, starter, user, DailyStatus.ABSENCE)));
     }
 
-    private void userStatusGuard(Long userId) {
-//        User currentLoginUser = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-//        if (!currentLoginUser.getId().equals(userId))
-//        {
-//            throw new StatusAccessIsForbidden();
-//        }
-
-    }
-
     private void teamStatusGuard(Long teamId) {
-//        User currentLoginUser = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-//        Team team =teamRepository.findById(teamId).orElseThrow(TeamDoesNotExistException::new);
-//        if (!team.getManager().equals(currentLoginUser))
-//        {
-//            throw new StatusAccessIsForbidden();
-//        }
+        User currentLoginUser = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        Team team =teamRepository.findById(teamId).orElseThrow(TeamDoesNotExistException::new);
+        if (!team.getManager().equals(currentLoginUser))
+        {
+            throw new StatusAccessIsForbiddenException();
+        }
 
     }
 
     private void userManagerStatusGuard(Long userId) {
-//        User currentLoginUser = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-//        User accessUser=userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
-//        if (accessUser.getTeam()==null||accessUser.getTeam().getManager().equals(currentLoginUser))
-//        {
-//            throw new StatusAccessIsForbidden();
-//        }
+        User currentLoginUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        User accessUser=userRepository.findById(userId).orElseThrow(UserDoesNotExistException::new);
+        if (accessUser.getTeam()==null||accessUser.getTeam().getManager().equals(currentLoginUser))
+        {
+            throw new StatusAccessIsForbiddenException();
+        }
     }
 }
