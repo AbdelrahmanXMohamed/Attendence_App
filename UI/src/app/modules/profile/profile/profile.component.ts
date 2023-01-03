@@ -16,9 +16,9 @@ export class ProfileComponent implements OnInit {
   title = 'Profile';
 
   modalRef!: NgbModalRef;
-  statusRequest ={} as StatusRequestModel
+  statusRequest = {} as StatusRequestModel
 
-  userModel:UserModel={
+  userModel: UserModel = {
     id: 0,
     name: '',
     username: '',
@@ -30,36 +30,36 @@ export class ProfileComponent implements OnInit {
   loseResult: string = '';
   status: string = "ABSENCE"
 
-  constructor(private modalService: NgbModal, private userService : UserServices, private statusServices: StatusService) { }
+  constructor(private modalService: NgbModal, private userService: UserServices, private statusServices: StatusService) { }
   ngOnInit(): void {
-   this.userService.getUserById(1).subscribe(data=>{
-      this.userModel=data
+    this.userService.getUserById(12).subscribe(data => {
+      this.userModel = data
     })
   }
 
   open(content: any) {
     this.modalRef = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', backdrop: "static" })
   }
- 
+
   submit() {
-    let onsite =document.getElementById('onSite') as HTMLInputElement
-    let remote =document.getElementById('remote') as HTMLInputElement
-    let day =new Date()
-    this.statusRequest.day=day
-    this.statusRequest.userId =1
-    if(onsite.checked){
-      this.statusRequest.status=DailyStatus.ONSITE
-    }else if (remote.checked){
-      this.statusRequest.status=DailyStatus.REMOTE
+    let onsite = document.getElementById('onSite') as HTMLInputElement
+    let remote = document.getElementById('remote') as HTMLInputElement
+    let day = new Date()
+    this.statusRequest.day = day
+    this.statusRequest.userId = 12
+    if (onsite.checked) {
+      this.statusRequest.status = DailyStatus.ONSITE
+    } else if (remote.checked) {
+      this.statusRequest.status = DailyStatus.REMOTE
     }
     console.log(this.statusRequest)
-    this.statusServices.setStatus(this.statusRequest).subscribe(data=>{
+    this.statusServices.setStatus(this.statusRequest).subscribe(data => {
       console.log(data)
     })
-    
+
 
     console.log("submit")
-    
-     this.modalRef.close()
+
+    this.modalRef.close()
   }
 }
