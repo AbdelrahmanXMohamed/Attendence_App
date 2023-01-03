@@ -1,0 +1,13 @@
+
+A
+java:S1948&"&Make "team" transient or serializable.(’¼ÂËùÿÿÿÿ
+A
+java:S1168*"+Return an empty collection instead of null.(¥¹ï
+^
+java:S42753"HRefactor this getter so that it actually refers to the field "username".(ú´­÷
+C
+java:S1128"(Remove this unused import 'lombok.Data'.(÷í«ÿÿÿÿÿ
+z
+java:S1128"_Remove this unused import 'org.springframework.security.core.authority.SimpleGrantedAuthority'.(– ‹Ìûÿÿÿÿ
+M
+java:S1128"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ

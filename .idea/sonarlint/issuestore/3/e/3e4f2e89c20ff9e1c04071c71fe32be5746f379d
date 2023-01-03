@@ -1,0 +1,9 @@
+
+n
+java:S1128"QRemove this unused import 'com.example.demo.attendence.entity.ConfirmationToken'.(ÎËÑı8âßÈ×0
+p
+java:S1128"NRemove this unused import 'org.springframework.data.jpa.repository.Modifying'.(—·Ñ”şÿÿÿÿ8âßÈ×0
+w
+java:S1128	"URemove this unused import 'org.springframework.transaction.annotation.Transactional'.(ğùçøùÿÿÿÿ8ãßÈ×0
+V
+java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8ãßÈ×0
