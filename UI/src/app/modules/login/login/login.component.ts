@@ -1,3 +1,4 @@
+import { LocalService } from './../../../services/local/local.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/LoginModel';
@@ -11,18 +12,19 @@ import { UserServices } from 'src/app/services/user/userServices';
 })
 export class LoginComponent {
 
-  user:LoginModel = {email:"",password:""};
+  user: LoginModel = { email: "", password: "" };
 
-  constructor(private userService:UserServices,private router:Router){
+  constructor(private userService: UserServices, private router: Router, private localService: LocalService) {
 
   }
 
-  login(event:any){
+  login(event: any) {
     event.preventDefault();
-    this.userService.login(this.user).subscribe((result:LoginResponseModel) =>{
-      localStorage.setItem('token',result.token);
-      console.log("test");
+    this.userService.login(this.user).subscribe((result: LoginResponseModel) => {
+      this.localService.saveData('token', result.token)
       this.router.navigate(['profile'])
+    }, err => {
+      console.log(err)
     })
   }
 }

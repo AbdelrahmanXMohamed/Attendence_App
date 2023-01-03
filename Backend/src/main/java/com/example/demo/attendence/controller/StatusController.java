@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/status")
-@CrossOrigin("http://localhost:4200")
 public class StatusController {
     @Autowired
     StatusService statusService;
