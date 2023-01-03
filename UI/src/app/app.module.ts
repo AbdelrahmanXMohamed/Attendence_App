@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
