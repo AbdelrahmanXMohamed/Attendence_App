@@ -24,7 +24,7 @@ export class TeamsComponent implements OnInit {
     
   }
   ngOnInit(): void {
-    this.getTeams(this.userId);
+    this.getTeams();
   }
 
 
@@ -68,14 +68,14 @@ export class TeamsComponent implements OnInit {
     this.createTeam(teamRequest);
     this.modalRef.close()
   }
-  getTeams(managerId:number): void {
-    this.teamService.getTeamsOfManager(managerId).subscribe((result: TeamResponseModel[]) => {
+  getTeams(): void {
+    this.teamService.getTeamsOfManager().subscribe((result: TeamResponseModel[]) => {
       this.teams.push(...result);
     });
   }
   createTeam(team:TeamRequestModel){
     this.teamService.createTeam(team).subscribe((result:TeamResponseModel) => {
-      this.getTeams(this.userId);
+      this.getTeams();
     });
   }
 }

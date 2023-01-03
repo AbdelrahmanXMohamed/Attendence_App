@@ -33,7 +33,6 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public TeamResponseModel createTeam(TeamRequestModel requestModel){
-
         User currentLogin=(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         requestModel.setManager(currentLogin);
         if(requestModel.getManager() == null) throw new TeamMustHaveManagerException();
@@ -84,9 +83,8 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public List<TeamResponseModel> getTeamsOfManager(Long managerId) {
+    public List<TeamResponseModel> getTeamsOfManager() {
         User currentLogin=(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         List<Team> teams = this.teamRepository.findByManager_Id(currentLogin.getId());
         return  teams
                 .stream()
