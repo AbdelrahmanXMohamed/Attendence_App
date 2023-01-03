@@ -21,6 +21,7 @@ export class LoginComponent {
     event.preventDefault();
     this.userService.login(this.user).subscribe((result:LoginResponseModel) =>{
       localStorage.setItem('token',result.token);
+      console.log("test");
       this.router.navigate(['profile'])
     })
   }
