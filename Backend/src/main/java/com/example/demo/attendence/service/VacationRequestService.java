@@ -9,13 +9,13 @@ import java.util.List;
 
 public interface VacationRequestService {
 
-    public void addRequestVacation(Long id, VacationRequestModel vacationRequestModel);
+    public void addRequestVacation( VacationRequestModel vacationRequestModel);
 
-    public List<VacationModel> getAllVacationRequestPerTeam(Long userId , Long teamId);
+    public List<VacationModel> getAllVacationRequestPerTeam( Long teamId);
 
-    public void approveRequest(Long userId, Long vacationId, ApproveRequuestModel approveRequuestModel);
+    public void approveRequest( Long vacationId, ApproveRequuestModel approveRequuestModel);
 
-    public List<VacationRequestResponseModel> getAllVacationRequestPerUser(Long userId);
+    public List<VacationRequestResponseModel> getAllVacationRequestPerUser();
 
 
 }

@@ -8,7 +8,6 @@ import java.time.LocalDate;
 public class VacationModel {
     private Long id;
 
-
     private Long userId;
 
     private String username;

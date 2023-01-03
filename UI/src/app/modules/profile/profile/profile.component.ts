@@ -2,9 +2,9 @@ import { StatusService } from './../../../services/status/status.service';
 import { StatusRequestModel } from 'src/app/models/StatusRequestModel';
 import { UserModel } from 'src/app/models/UserModel';
 import { UserServices } from './../../../services/user/userServices';
-import { Status } from './../../../models/Status';
+
 import { Component, OnInit } from '@angular/core';
-import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import {  NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DailyStatus } from 'src/app/models/DailyStatus';
 
 @Component({
@@ -46,11 +46,13 @@ export class ProfileComponent implements OnInit {
     let remote = document.getElementById('remote') as HTMLInputElement
     let day = new Date()
     this.statusRequest.day = day
-    this.statusRequest.userId = 12
+    this.statusRequest.userId = 1
     if (onsite.checked) {
       this.statusRequest.status = DailyStatus.ONSITE
+      this.status='OnSite'
     } else if (remote.checked) {
       this.statusRequest.status = DailyStatus.REMOTE
+      this.status='Remote'
     }
     console.log(this.statusRequest)
     this.statusServices.setStatus(this.statusRequest).subscribe(data => {
